@@ -48,6 +48,7 @@ def download_data(isbn):
 
 
 def save_authors_list(authors):
+    """Save the list of authors + occurrence counts."""
     with open(OUTPUT_AUTHORS, 'w') as output_file:
         csvwriter = csv.writer(output_file, delimiter='\t')
         csvwriter.writerow(["count", "name"])
