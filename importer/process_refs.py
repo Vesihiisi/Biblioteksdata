@@ -10,21 +10,10 @@ the ISBN's to titles and authors.
 import argparse
 import csv
 import json
-import re
 import requests
 
 URL = "http://api.libris.kb.se/xsearch?query=ISBN:{}&format=json"
 OUTPUT = "isbn_output.tsv"
-
-
-def only_digits(input):
-    """
-    Remove punctuation from ISBN.
-
-    Some ISBN numbers in Libris have ;
-    in them.
-    """
-    return re.sub('[^\w\s]', '', input)
 
 
 def load_frequencies(fname):
@@ -88,12 +77,19 @@ if __name__ == "__main__":
         records = download_data(isbn)
         if records and len(records) == 1:
             for record in records:
-                work = {}
                 work = record
                 work["count"] = item["count"]
                 work["isbn"] = item["id"]
                 if "creator" not in work.keys():
                     work["creator"] = ""
                 work["identifier"] = work["identifier"].split("/")[-1]
-                works[isbn] = work
+        else:
+            work = {"identifier": "",
+                    "creator": "",
+                    "isbn": isbn,
+                    "title": "",
+                    "language": "",
+                    }
+        work["count"] = item["count"]
+        works[isbn] = work
     save_works_list(works)
