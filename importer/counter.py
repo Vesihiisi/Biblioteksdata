@@ -33,6 +33,7 @@ def load_references(fname):
 
 
 def save_references(sorted_data, fname):
+    """Save sorted ref data as tsv file."""
     with open(fname, "w") as f:
         for k, v in references_sorted:
             f.write("{}\t{}\n".format(k, v))
