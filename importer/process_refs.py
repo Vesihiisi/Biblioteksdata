@@ -88,12 +88,19 @@ if __name__ == "__main__":
         records = download_data(isbn)
         if records and len(records) == 1:
             for record in records:
-                work = {}
                 work = record
                 work["count"] = item["count"]
                 work["isbn"] = item["id"]
                 if "creator" not in work.keys():
                     work["creator"] = ""
                 work["identifier"] = work["identifier"].split("/")[-1]
-                works[isbn] = work
+        else:
+            work = {"identifier": "",
+                    "creator": "",
+                    "isbn": isbn,
+                    "title": "",
+                    "language": "",
+                    }
+        work["count"] = item["count"]
+        works[isbn] = work
     save_works_list(works)
