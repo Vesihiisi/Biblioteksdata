@@ -32,13 +32,17 @@ def load_references(fname):
     return references
 
 
+def save_references(sorted_data, fname):
+    with open(fname, "w") as f:
+        for k, v in references_sorted:
+            f.write("{}\t{}\n".format(k, v))
+    print("Saved file: {}".format(OUTPUT))
+
+
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("path")
     args = parser.parse_args()
     references = load_references(args.path)
     references_sorted = Counter(references).most_common()
-    with open(OUTPUT, "w") as f:
-        for k, v in references_sorted:
-            f.write("{}\t{}\n".format(k, v))
-    print("Saved file: {}".format(OUTPUT))
+    save_references(references_sorted, OUTPUT)
