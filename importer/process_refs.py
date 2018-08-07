@@ -14,6 +14,7 @@ import requests
 
 URL = "http://api.libris.kb.se/xsearch?query=ISBN:{}&format=json"
 OUTPUT = "isbn_output.tsv"
+OUTPUT_AUTHORS = "authors_output.tsv"
 
 
 def load_frequencies(fname):
@@ -46,6 +47,16 @@ def download_data(isbn):
         return False
 
 
+def save_authors_list(authors):
+    with open(OUTPUT_AUTHORS, 'w') as output_file:
+        csvwriter = csv.writer(output_file, delimiter='\t')
+        csvwriter.writerow(["count", "name"])
+        for person in authors:
+            values = authors[person]
+            to_print = [values["count"], values["name"]]
+            csvwriter.writerow(to_print)
+
+
 def save_works_list(works):
     """
     Save the works list to file.
@@ -62,7 +73,6 @@ def save_works_list(works):
                         values["creator"], values["title"],
                         values["identifier"], values["language"]]
             csvwriter.writerow(to_print)
-        output_file.close()
 
 
 if __name__ == "__main__":
@@ -71,6 +81,7 @@ if __name__ == "__main__":
     parser.add_argument("--limit", type=int, default=100)
     args = parser.parse_args()
     works = {}
+    authors = {}
     frequencies = load_frequencies(args.path)
     for item in frequencies[:args.limit]:
         isbn = item["id"]
@@ -82,6 +93,13 @@ if __name__ == "__main__":
                 work["isbn"] = item["id"]
                 if "creator" not in work.keys():
                     work["creator"] = ""
+                else:
+                    if work["creator"] not in authors.keys():
+                        authors[work["creator"]] = {
+                            "name": work["creator"],
+                            "count": int(item["count"])}
+                    else:
+                        authors[work["creator"]]["count"] += int(item["count"])
                 work["identifier"] = work["identifier"].split("/")[-1]
         else:
             work = {"identifier": "",
@@ -93,3 +111,4 @@ if __name__ == "__main__":
         work["count"] = item["count"]
         works[isbn] = work
     save_works_list(works)
+    save_authors_list(authors)
