@@ -1,4 +1,6 @@
 *.csv
+*.tsv
+*.json
 user-config.py
 throttle.ctrl
 __pycache__/
