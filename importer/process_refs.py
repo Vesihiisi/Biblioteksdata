@@ -43,7 +43,11 @@ def is_match(idno, record):
 def download_data(isbn):
     book_url = URL.format(isbn)
     book_data = json.loads(requests.get(book_url).text)
-    return book_data["xsearch"]["records"]
+    records = book_data["xsearch"]["records"]
+    if records > 0:
+        return book_data["xsearch"]["list"]
+    else:
+        return False
 
 
 if __name__ == "__main__":
@@ -54,11 +58,9 @@ if __name__ == "__main__":
     works = {}
     frequencies = load_frequencies(args.path)
     for item in frequencies:
-        book_url = URL.format(item)
-        book_data = json.loads(requests.get(book_url).text)
-        records = book_data["xsearch"]["records"]
-        if records > 0:
-            for record in book_data["xsearch"]["list"]:
+        records = download_data(item)
+        if records:
+            for record in records:
                 if is_match(item, record):
                     works[item] = {}
                     works[item]["count"] = frequencies[item]["count"]
