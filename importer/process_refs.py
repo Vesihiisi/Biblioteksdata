@@ -5,7 +5,6 @@ import csv
 import json
 import re
 import requests
-from collections import Counter
 
 URL = "http://api.libris.kb.se/xsearch?query=ISBN:{}&format=json"
 FILENAME = "isbn_sorted_medium.tsv"
@@ -39,6 +38,12 @@ def is_match(idno, record):
             if only_digits(potential_isbn) == idno:
                 return True
     return False
+
+
+def download_data(isbn):
+    book_url = URL.format(isbn)
+    book_data = json.loads(requests.get(book_url).text)
+    return book_data["xsearch"]["records"]
 
 
 if __name__ == "__main__":
