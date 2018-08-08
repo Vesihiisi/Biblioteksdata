@@ -12,9 +12,19 @@ import csv
 import json
 import requests
 
+from Work import Work
+import importer_utils as utils
+
 URL = "http://api.libris.kb.se/xsearch?query=ISBN:{}&format=json"
 OUTPUT = "isbn_output.tsv"
 OUTPUT_AUTHORS = "authors_output.tsv"
+LIBRIS = "P1182"
+
+
+def get_existing_works():
+    """Get WD items that use identifiers."""
+    libris_works = utils.get_wd_items_using_prop(LIBRIS)
+    return {"libris": libris_works}
 
 
 def load_frequencies(fname):
@@ -70,9 +80,9 @@ def save_works_list(works):
                             "title", "LIBRIS", "language"])
         for item in works:
             values = works[item]
-            to_print = [values["count"], values["isbn"],
-                        values["creator"], values["title"],
-                        values["identifier"], values["language"]]
+            to_print = [values.count, values.searched_isbn,
+                        values.creator, values.title,
+                        values.libris, values.language]
             csvwriter.writerow(to_print)
 
 
@@ -83,33 +93,25 @@ if __name__ == "__main__":
     args = parser.parse_args()
     works = {}
     authors = {}
+    existing_works = get_existing_works()
     frequencies = load_frequencies(args.path)
     for item in frequencies[:args.limit]:
         isbn = item["id"]
+        work = Work()
+        work.searched_isbn = item["id"]
         records = download_data(isbn)
         if records and len(records) == 1:
             for record in records:
-                work = record
-                work["count"] = item["count"]
-                work["isbn"] = item["id"]
-                if "creator" not in work.keys():
-                    work["creator"] = ""
-                else:
-                    if work["creator"] not in authors.keys():
-                        authors[work["creator"]] = {
-                            "name": work["creator"],
-                            "count": int(item["count"])}
+                work.load_libris_data(record)
+                work.count = item["count"]
+                if work.creator:
+                    if work.creator not in authors.keys():
+                        authors[work.creator] = {"name": work.creator,
+                                                 "count": int(item["count"])}
                     else:
-                        authors[work["creator"]]["count"] += int(item["count"])
-                work["identifier"] = work["identifier"].split("/")[-1]
-        else:
-            work = {"identifier": "",
-                    "creator": "",
-                    "isbn": isbn,
-                    "title": "",
-                    "language": "",
-                    }
-        work["count"] = item["count"]
+                        authors[work.creator]["count"] += int(item["count"])
+        work.count = item["count"]
+        work.add_wikidata(existing_works)
         works[isbn] = work
     save_works_list(works)
     save_authors_list(authors)
