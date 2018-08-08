@@ -12,8 +12,8 @@ import csv
 import json
 import requests
 
-from Work import Work
 import importer_utils as utils
+import Work as Work
 
 URL = "http://api.libris.kb.se/xsearch?query=ISBN:{}&format=json"
 OUTPUT = "isbn_output.tsv"
@@ -103,7 +103,7 @@ if __name__ == "__main__":
     frequencies = load_frequencies(args.path)
     for item in frequencies[:args.limit]:
         isbn = item["id"]
-        work = Work()
+        work = Work.Work()
         work.searched_isbn = item["id"]
         records = download_data(isbn)
         if records and len(records) == 1:
