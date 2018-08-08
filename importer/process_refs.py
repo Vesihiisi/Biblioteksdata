@@ -82,12 +82,12 @@ def save_works_list(works):
     """
     with open(OUTPUT, 'w') as output_file:
         csvwriter = csv.writer(output_file, delimiter='\t')
-        csvwriter.writerow(["count", "isbn", "author",
+        csvwriter.writerow(["count", "isbn", "wikidata", "author",
                             "title", "LIBRIS", "language"])
         for item in works:
             values = works[item]
             to_print = [values.count, values.searched_isbn,
-                        values.creator, values.title,
+                        values.wikidata, values.creator, values.title,
                         values.libris, values.language]
             csvwriter.writerow(to_print)
 
