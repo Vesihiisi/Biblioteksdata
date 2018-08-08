@@ -19,12 +19,18 @@ URL = "http://api.libris.kb.se/xsearch?query=ISBN:{}&format=json"
 OUTPUT = "isbn_output.tsv"
 OUTPUT_AUTHORS = "authors_output.tsv"
 LIBRIS = "P1182"
+ISBN13 = "P212"
+ISBN10 = "P957"
 
 
 def get_existing_works():
     """Get WD items that use identifiers."""
     libris_works = utils.get_wd_items_using_prop(LIBRIS)
-    return {"libris": libris_works}
+    isbn13_works = utils.get_wd_items_using_prop(ISBN13)
+    isbn10_works = utils.get_wd_items_using_prop(ISBN10)
+    return {"libris": libris_works,
+            "isbn13": isbn13_works,
+            "isbn10": isbn10_works}
 
 
 def load_frequencies(fname):

@@ -10,7 +10,12 @@ class Work(object):
         """Add possible Wikidata connections."""
         if self.libris and self.libris in existing_works["libris"].keys():
             self.wikidata = existing_works["libris"][self.libris]
-            print(self.wikidata)
+        elif self.searched_isbn in existing_works["isbn13"].keys():
+            self.wikidata = existing_works["isbn13"][self.searched_isbn]
+            print(self.title)
+        elif self.searched_isbn in existing_works["isbn10"].keys():
+            self.wikidata = existing_works["isbn10"][self.searched_isbn]
+            print(self.title)
 
     def set_language(self):
         """Set the language if possible."""
@@ -48,7 +53,7 @@ class Work(object):
         self.set_language()
 
     def __init__(self):
-        """Initiate an empty object."""
+        """Initialize an empty object."""
         self.libris = ""
         self.title = ""
         self.isbn = ""
