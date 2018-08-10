@@ -9,4 +9,4 @@ env:
 install:
  - pip install tox-travis
 script:
-- tox -e $TOX_ENV
+ - tox -e $TOX_ENV
