@@ -11,13 +11,25 @@ def get_nationality(auth_item):
     return nat
 
 
+def get_occupation(auth_item):
+    bio_section = auth_item["@graph"][1]
+    if bio_section.get("hasOccupation"):
+        occs = bio_section.get("hasOccupation")[0].get("label")
+        return [x.lower() for x in occs]
+
+
 def get_dates(auth_item):
     dates = {"born": None, "dead": None}
-    life = auth_item["@graph"][1]["lifeSpan"].split("-")
+    bio_section = auth_item["@graph"][1]
+    life = bio_section["lifeSpan"].split("-")
     if len(life[0]) == 4:
         dates["born"] = life[0]
     if len(life[1]) == 4:
         dates["dead"] = life[1]
+    if "birthDate" in bio_section.keys():
+        dates["born"] = bio_section["birthDate"]
+    if "deathDate" in bio_section.keys():
+        dates["dead"] = bio_section["deathDate"]
     return dates
 
 
@@ -76,7 +88,7 @@ def get_data(args):
 
 
 def main(data):
-    print(get_ids(data))
+    print(is_person(data))
 
 
 if __name__ == "__main__":

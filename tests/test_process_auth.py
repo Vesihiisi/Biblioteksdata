@@ -57,6 +57,13 @@ class TestAuthProcessing(unittest.TestCase):
         dates = {"born": "1838", "dead": "1920"}
         self.assertEqual(process.get_dates(self.runeberg), dates)
 
+    def test_get_occupation_one(self):
+        self.assertEqual(process.get_occupation(
+            self.strindberg), ["författare"])
+
+    def test_get_occupation_none(self):
+        self.assertIsNone(process.get_occupation(self.enckell))
+
 
 if __name__ == '__main__':
     unittest.main()
