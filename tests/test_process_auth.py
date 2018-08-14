@@ -19,6 +19,16 @@ class TestAuthProcessing(unittest.TestCase):
         selibr = process.get_selibr(self.enckell)
         self.assertEqual(selibr, "185114")
 
+    def test_get_ids(self):
+        ids = [{"type": "viaf", "value": "74098998"}, {
+            "type": "isni", "value": "0000000051964492"}]
+        get_ids = process.get_ids(self.enckell)
+        self.assertEqual(get_ids, ids)
+
+    def test_get_ids_none(self):
+        get_ids = process.get_ids(self.runeberg)
+        self.assertEqual(len(get_ids), 0)
+
     def test_is_person_pass(self):
         personhood = process.is_person(self.enckell)
         self.assertTrue(personhood)
@@ -44,7 +54,7 @@ class TestAuthProcessing(unittest.TestCase):
         self.assertEqual(process.get_dates(self.enckell), dates)
 
     def test_get_dates_simple_dead(self):
-        dates = {"born": "1838", "dead": "1912"}
+        dates = {"born": "1838", "dead": "1920"}
         self.assertEqual(process.get_dates(self.runeberg), dates)
 
 

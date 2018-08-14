@@ -14,11 +14,10 @@ def get_nationality(auth_item):
 def get_dates(auth_item):
     dates = {"born": None, "dead": None}
     life = auth_item["@graph"][1]["lifeSpan"].split("-")
-    if len(life) == 2:
+    if len(life[0]) == 4:
         dates["born"] = life[0]
+    if len(life[1]) == 4:
         dates["dead"] = life[1]
-    elif len(life) == 1:
-        dates["born"] = life[0]
     return dates
 
 
