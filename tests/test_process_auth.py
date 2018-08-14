@@ -26,7 +26,7 @@ class TestAuthProcessing(unittest.TestCase):
         self.assertEqual(get_ids, ids)
 
     def test_get_ids_none(self):
-        get_ids = process.get_ids(self.runeberg)
+        get_ids = process.get_ids(self.strindberg)
         self.assertEqual(len(get_ids), 0)
 
     def test_is_person_pass(self):

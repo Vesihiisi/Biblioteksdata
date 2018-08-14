@@ -53,12 +53,11 @@ def get_selibr(auth_item):
 def get_ids(auth_item):
     allowed_types = ["viaf", "isni"]
     auth_ids = []
-    ids = auth_item["@graph"][1]["identifiedBy"]
-    for i in ids:
-        if i["@type"] == "Identifier":
-            if i["typeNote"] in allowed_types:
-                auth_ids.append({"type": i["typeNote"],
-                                 "value": i["value"]})
+    bio_section = auth_item["@graph"][1]
+    if bio_section.get("identifiedBy"):
+        for i in bio_section.get("identifiedBy"):
+            if i["@type"] == "Identifier" and i["typeNote"] in allowed_types:
+                auth_ids.append({"type": i["typeNote"], "value": i["value"]})
     return auth_ids
 
 
@@ -77,7 +76,7 @@ def get_data(args):
 
 
 def main(data):
-    print(is_person(data))
+    print(get_ids(data))
 
 
 if __name__ == "__main__":
