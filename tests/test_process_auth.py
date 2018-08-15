@@ -2,6 +2,7 @@
 # -*- coding: utf-8  -*-
 import unittest
 import importer.process_auth as process
+from importer.Person import Person
 
 
 class TestAuthProcessing(unittest.TestCase):
@@ -16,18 +17,18 @@ class TestAuthProcessing(unittest.TestCase):
             "64jljffq17m41sr")  # non-person
 
     def test_get_selibr(self):
-        selibr = process.get_selibr(self.enckell)
-        self.assertEqual(selibr, "185114")
+        person = Person(self.enckell)
+        self.assertEqual(person.selibr, "185114")
 
     def test_get_ids(self):
+        person = Person(self.enckell)
         ids = [{"type": "viaf", "value": "74098998"}, {
             "type": "isni", "value": "0000000051964492"}]
-        get_ids = process.get_ids(self.enckell)
-        self.assertEqual(get_ids, ids)
+        self.assertEqual(person.auth_ids, ids)
 
     def test_get_ids_none(self):
-        get_ids = process.get_ids(self.strindberg)
-        self.assertEqual(len(get_ids), 0)
+        person = Person(self.strindberg)
+        self.assertEqual(person.auth_ids, 0)
 
     def test_is_person_pass(self):
         personhood = process.is_person(self.enckell)
@@ -38,16 +39,17 @@ class TestAuthProcessing(unittest.TestCase):
         self.assertFalse(personhood)
 
     def test_get_surname_1(self):
-        surname = process.get_surname(self.enckell)
-        self.assertEqual(surname, "Enckell")
+        person = Person(self.enckell)
+        self.assertEqual(person.surname, "Enckell")
 
     def test_get_first_name(self):
-        first_name = process.get_first_name(self.enckell)
-        self.assertEqual(first_name, "Martin")
+        person = Person(self.enckell)
+        self.assertEqual(person.first_name, "Martin")
 
     def test_get_descriptions_1(self):
+        person = Person(self.enckell)
         desc = ["Finlandsvensk författare"]
-        self.assertEqual(process.get_descriptions(self.enckell), desc)
+        self.assertEqual(person.descriptions, desc)
 
     def test_get_dates_simple_living(self):
         dates = {"born": "1954", "dead": None}
