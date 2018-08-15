@@ -2,7 +2,6 @@
 # -*- coding: utf-8  -*-
 import unittest
 import importer.process_auth as process
-from importer.Person import Person
 
 
 class TestAuthProcessing(unittest.TestCase):
@@ -17,17 +16,17 @@ class TestAuthProcessing(unittest.TestCase):
             "64jljffq17m41sr")  # non-person
 
     def test_get_selibr(self):
-        person = Person(self.enckell)
+        person = process.make_person(self.enckell)
         self.assertEqual(person.selibr, "185114")
 
     def test_get_ids(self):
-        person = Person(self.enckell)
+        person = process.make_person(self.enckell)
         ids = [{"type": "viaf", "value": "74098998"}, {
             "type": "isni", "value": "0000000051964492"}]
         self.assertEqual(person.auth_ids, ids)
 
     def test_get_ids_none(self):
-        person = Person(self.strindberg)
+        person = process.make_person(self.strindberg)
         self.assertEqual(person.auth_ids, 0)
 
     def test_is_person_pass(self):

@@ -11,6 +11,10 @@ def is_person(auth_item):
     return auth_item["@graph"][1]["@type"] == "Person"
 
 
+def make_person(auth_data):
+    return Person(data)
+
+
 def get_from_uri(uri):
     url = "https://libris-qa.kb.se/{}/data.jsonld".format(uri)
     return json.loads(requests.get(url).text)
@@ -27,7 +31,7 @@ def get_data(args):
 
 def main(data):
     if is_person(data):
-        person = Person(data)
+        person = make_person(data)
 
 
 if __name__ == "__main__":
