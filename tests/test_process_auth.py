@@ -27,7 +27,7 @@ class TestAuthProcessing(unittest.TestCase):
 
     def test_get_ids_none(self):
         person = process.make_person(self.strindberg)
-        self.assertEqual(person.auth_ids, 0)
+        self.assertEqual(len(person.auth_ids), 0)
 
     def test_is_person_pass(self):
         personhood = process.is_person(self.enckell)
@@ -38,32 +38,32 @@ class TestAuthProcessing(unittest.TestCase):
         self.assertFalse(personhood)
 
     def test_get_surname_1(self):
-        person = Person(self.enckell)
+        person = process.make_person(self.enckell)
         self.assertEqual(person.surname, "Enckell")
 
     def test_get_first_name(self):
-        person = Person(self.enckell)
+        person = process.make_person(self.enckell)
         self.assertEqual(person.first_name, "Martin")
 
-    def test_get_descriptions_1(self):
-        person = Person(self.enckell)
-        desc = ["Finlandsvensk författare"]
-        self.assertEqual(person.descriptions, desc)
+    # def test_get_descriptions_1(self):
+    #     person = Person(self.enckell)
+    #     desc = ["Finlandsvensk författare"]
+    #     self.assertEqual(person.descriptions, desc)
 
-    def test_get_dates_simple_living(self):
-        dates = {"born": "1954", "dead": None}
-        self.assertEqual(process.get_dates(self.enckell), dates)
+    # def test_get_dates_simple_living(self):
+    #     dates = {"born": "1954", "dead": None}
+    #     self.assertEqual(process.get_dates(self.enckell), dates)
 
-    def test_get_dates_simple_dead(self):
-        dates = {"born": "1838", "dead": "1920"}
-        self.assertEqual(process.get_dates(self.runeberg), dates)
+    # def test_get_dates_simple_dead(self):
+    #     dates = {"born": "1838", "dead": "1920"}
+    #     self.assertEqual(process.get_dates(self.runeberg), dates)
 
-    def test_get_occupation_one(self):
-        self.assertEqual(process.get_occupation(
-            self.strindberg), ["författare"])
+    # def test_get_occupation_one(self):
+    #     self.assertEqual(process.get_occupation(
+    #         self.strindberg), ["författare"])
 
-    def test_get_occupation_none(self):
-        self.assertIsNone(process.get_occupation(self.enckell))
+    # def test_get_occupation_none(self):
+    #     self.assertIsNone(process.get_occupation(self.enckell))
 
 
 if __name__ == '__main__':

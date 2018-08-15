@@ -12,7 +12,7 @@ def is_person(auth_item):
 
 
 def make_person(auth_data):
-    return Person(data)
+    return Person(auth_data)
 
 
 def get_from_uri(uri):
