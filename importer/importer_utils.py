@@ -3,9 +3,9 @@
 import datetime
 import json
 import re
+
 import pywikibot
 import wikidataStuff.wdqsLookup as lookup
-from wikidataStuff.WikidataStuff import WikidataStuff as wds
 
 site_cache = {}
 

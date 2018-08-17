@@ -3,8 +3,8 @@
 import argparse
 import json
 import os
-import requests
 import pywikibot
+import requests
 
 import importer_utils as utils
 from Person import Person
