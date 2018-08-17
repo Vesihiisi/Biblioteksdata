@@ -94,3 +94,8 @@ def date_to_dict(datestring, dateformat):
     if "%d" in dateformat:
         date_dict["day"] = date_obj.day
     return date_dict
+
+
+def format_isni(st):
+    """Format ISNI id by inserting space after every 4 chars."""
+    return ' '.join(st[i:i + 4] for i in range(0, len(st), 4))

@@ -58,12 +58,12 @@ class Person(WikidataItem):
 
     def set_ids(self):
         """
-        Look into formatting of isni...
+        Set other authority ID's.
 
-        If isni with spaces is present, it's not
-        recognized as exact duplicate.
-
-        See if other types present.
+        ISNI numbers are formatted with spaces
+        because it's a property constraint.
+        Also, the uploader doesn't recognize
+        formatted/unformatted ISNI as duplicates.
         """
         allowed_types = ["viaf", "isni"]
         self.auth_ids = []
@@ -72,6 +72,8 @@ class Person(WikidataItem):
             for i in bio_section.get("identifiedBy"):
                 if (i["@type"] == "Identifier" and
                    i["typeNote"] in allowed_types):
+                    if i["typeNote"] == "isni":
+                        i["value"] = utils.format_isni(i["value"])
                     self.add_statement(i["typeNote"], i["value"])
 
     def set_descriptions(self):
