@@ -42,7 +42,7 @@ def save_references(sorted_data, fname):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
-    parser.add_argument("path")
+    parser.add_argument("--path", required=True)
     args = parser.parse_args()
     references = load_references(args.path)
     references_sorted = Counter(references).most_common()
