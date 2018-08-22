@@ -17,3 +17,5 @@ python3 counter.py --path svwiki.tsv
 ```
 python3 process_refs.py --path isbn_sorted.tsv --limit 20
 ```
+
+* **process_runeberg.py** – create a frequency count for the runeberg.org template with different parameters on svwp. [Output](https://gist.github.com/Vesihiisi/4ed15b89a5a5c316398adea5b165625f).
