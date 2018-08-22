@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # -*- coding: utf-8  -*-
 """
-Examine of runeberg.org templates on svwp.
+Examine runeberg.org templates on svwp.
 
 This generates a frequency list of runeberg.org
 templates with different parameters
@@ -38,6 +38,7 @@ def get_template_usage(article, template):
     Examples:
     {{runeberg.org|nfbj|0368.html Gustaf III}} → nfbj
     {{runeberg.org|vemardet|1977|0513.html Jansson, Alvar}} → vemardet|1977
+
     """
     usages = []
     page_str = parser.parse(article.get())
