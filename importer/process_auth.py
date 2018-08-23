@@ -10,7 +10,7 @@ import importer_utils as utils
 from Person import Person
 from Uploader import Uploader
 
-EDIT_SUMMARY = "test"
+EDIT_SUMMARY = "#WMSE #LibraryData_KB"
 MAPPINGS = "mappings"
 
 
