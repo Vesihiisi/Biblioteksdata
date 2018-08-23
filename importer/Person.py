@@ -11,19 +11,11 @@ class Person(WikidataItem):
     URL_BASE = "https://libris.kb.se/katalogisering/{}"
 
     def set_is(self):
+        """Set is as a person."""
         self.add_statement("is", "Q5", ref=self.source)
 
     def set_labels(self):
-        """
-        To do - when can we set labels in
-        different languages?
-        Nationality tags - swedish, finnish etc.
-        can have english etc labels, but not russian...
-
-        NOTE: the same strategy will have to be
-        applied to first/last names -- only add those
-        to items with ROman source language.
-        """
+        """Set labels in different languages."""
         roman_nationalities = ["e-fi---",
                                "e-sw---"]
         languages = ["sv", "en", "fi"]
@@ -41,13 +33,8 @@ class Person(WikidataItem):
                 for lng in languages:
                     self.add_label(lng, label)
 
-    # def set_first_name(self):
-    #     self.first_name = self.raw_data[1]["givenName"]
-
-    # def set_surname(self):
-    #     self.surname = self.raw_data[1]["familyName"]
-
     def set_uri(self):
+        """Set Libris URI."""
         uri = self.raw_data[0]["@id"].split("/")[-1]
         self.add_statement("libris_uri", uri)
 
@@ -77,22 +64,14 @@ class Person(WikidataItem):
                     self.add_statement(i["typeNote"], i["value"])
 
     def set_descriptions(self):
-        # NOTE - sometimes they are longish, or messy.. Not sure if we should
-        # upload them indiscriminately
-        # Maybe detect if there's a full stop, and cut off there?
-        # Also: lower-case?
-        # Make a dump of some descriptions so that we can
-        # make some generalizations.
+        """Set the Swedish description."""
         bio_info = self.raw_data[1].get("hasBiographicalInformation")
         if bio_info and bio_info[0]["@type"] == "BiographicalNote":
             desc = bio_info[0]["label"]
             self.add_description("sv", desc)
 
     def set_profession(self):
-        """
-        To do -- see exactly which professions are present
-        and map them.
-        """
+        """Set profession of the person."""
         bio_section = self.raw_data[1]
         if bio_section.get("hasOccupation"):
             occs = bio_section.get("hasOccupation")[0].get("label")
@@ -103,11 +82,11 @@ class Person(WikidataItem):
 
     def set_lifespan(self):
         """
-        These should only be uploaded when item doesn't
-        already have them? Or is it possible to check
-        if item has lower exactness and then upload if
-        we have a better one?
-        Will be handled in the Uploader....
+        Add birth and death dates.
+
+        If the item has both a lifeSpan lump
+        and separate birth/deathDate dates, the
+        latter one will be selected if more precise.
         """
         born_dict, dead_dict = None, None
         self.lifespan = {"born": None, "dead": None}
@@ -138,10 +117,7 @@ class Person(WikidataItem):
             self.add_statement("dead", dead_pwb, ref=self.source)
 
     def set_nationality(self):
-        """
-        To do: see exactly which nationalities are present
-        and map.
-        """
+        """Add country of nationality, converted from MARC code."""
         has_nationality = self.raw_data[1].get("nationality")
         if has_nationality:
             nationality = self.raw_data[1]["nationality"][0]["@id"].split(
@@ -151,17 +127,20 @@ class Person(WikidataItem):
                 self.add_statement("citizenship", country, ref=self.source)
 
     def create_sources(self):
+        """Create a stated in reference."""
         uri = self.raw_data[0]["@id"].split("/")[-1]
         url = self.URL_BASE.format(uri)
 
         publication_date = self.timestamp
-        retrieval_date = "2018-08-15"  # replace date of the dump
+        retrieval_date = "2018-08-23"  # replace date of the dump
         self.source = self.make_stated_in_ref("Q1798125",
                                               publication_date,
                                               url, retrieval_date)
 
     def match_wikidata(self):
         """
+        Match a Wikidata item.
+
         Matching order:
         1. LIBRIS URI
         2. SELIBR
@@ -188,6 +167,7 @@ class Person(WikidataItem):
             self.associate_wd_item(selibr_match)
 
     def set_timestamp(self):
+        """Get timestamp of last change of post."""
         self.timestamp = self.raw_data[0].get("modified").split("T")[0]
 
     def __init__(self, raw_data, repository, data_files, existing):
@@ -198,16 +178,16 @@ class Person(WikidataItem):
         self.data_files = data_files
         self.create_sources()
 
-        self.set_ids()
-        self.set_selibr()
+        # self.set_ids()
+        # self.set_selibr()
         self.match_wikidata()
 
-        self.set_is()
+        # self.set_is()
         self.set_uri()
-        self.set_nationality()
-        self.set_lifespan()
-        self.set_profession()
+        # self.set_nationality()
+        # self.set_lifespan()
+        # self.set_profession()
         # self.set_surname()
         # self.set_first_name()
-        self.set_descriptions()
-        self.set_labels()
+        # self.set_descriptions()
+        # self.set_labels()
