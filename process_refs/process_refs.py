@@ -92,11 +92,8 @@ def save_works_list(works):
             csvwriter.writerow(to_print)
 
 
-if __name__ == "__main__":
-    parser = argparse.ArgumentParser()
-    parser.add_argument("--path")
-    parser.add_argument("--limit", type=int, default=100)
-    args = parser.parse_args()
+def main(args):
+    """Process ISBN:count list from provided file."""
     works = {}
     authors = {}
     existing_works = get_existing_works()
@@ -121,3 +118,11 @@ if __name__ == "__main__":
         works[isbn] = work
     save_works_list(works)
     save_authors_list(authors)
+
+
+if __name__ == "__main__":
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--path", required=True)
+    parser.add_argument("--limit", type=int, default=100)
+    args = parser.parse_args()
+    main(args)
