@@ -36,7 +36,7 @@ class Person(WikidataItem):
     def set_uri(self):
         """Set Libris URI."""
         uri = self.raw_data[0]["@id"].split("/")[-1]
-        self.add_statement("libris_uri", uri)
+        self.add_statement("libris_uri", uri, ref=self.source)
 
     def set_selibr(self):
         """Set Selibr identifier."""

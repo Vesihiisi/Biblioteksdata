@@ -48,7 +48,7 @@ def is_person(auth_item):
 
 def get_from_uri(uri):
     """Load data from uri."""
-    url = "https://libris-qa.kb.se/{}/data.jsonld".format(uri)
+    url = "https://libris.kb.se/{}/data.jsonld".format(uri)
     return json.loads(requests.get(url).text)
 
 
