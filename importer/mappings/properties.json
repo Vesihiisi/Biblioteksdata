@@ -1,0 +1,18 @@
+{
+	"born": "P569",
+	"citizenship": "P27",
+	"dead": "P570",
+	"first_name": "P735",
+	"gender": "P21",
+	"is" : "P31",
+	"last_name": "P734",
+	"libris_uri": "P5587",
+	"profession": "P106",
+	"viaf": "P214",
+	"isni": "P213",
+	"publication_date": "P577",
+	"reference_url": "P854",
+	"retrieved": "P813",
+	"selibr": "P906",
+	"stated_in": "P248"
+}
