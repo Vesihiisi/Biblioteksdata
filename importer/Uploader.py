@@ -93,4 +93,5 @@ class Uploader(object):
         print("---------------")
         self.data = data_object.wd_item
         self.wdstuff = WDS(self.repo, edit_summary=self.summary)
-        self.set_wd_item()
+        if self.data["upload"]:
+            self.set_wd_item()
