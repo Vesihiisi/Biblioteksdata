@@ -58,7 +58,7 @@ class Person(WikidataItem):
         if bio_section.get("identifiedBy"):
             for i in bio_section.get("identifiedBy"):
                 if (i["@type"] == "Identifier" and
-                   i["typeNote"] in allowed_types):
+                        i["typeNote"] in allowed_types):
                     if i["typeNote"] == "isni":
                         i["value"] = utils.format_isni(i["value"])
                     self.add_statement(i["typeNote"], i["value"])
@@ -156,10 +156,20 @@ class Person(WikidataItem):
         search viaf.org to see if it links
         back to the wd item.
         """
+        selibrs = self.data_files["selibr"]
         uri = self.raw_data[0]["@id"].split("/")[-1]
         selibr = self.raw_data[0]["controlNumber"]
         uri_match = self.existing.get(uri)
-        selibr_match = self.data_files["selibr"].get(selibr)
+        selibr_match = selibrs.get(selibr)
+
+        #  If there's more than one selibr-key associated
+        #  with a Q number, exclude this object from the upload.
+        #  That way we avoid editing WD items with multiple
+        #  P906 (error either on WD or in Libris)
+        if len([x for x in selibrs.keys()
+                if selibrs[x] == selibr_match]) > 1:
+            self.set_upload(False)
+            return
 
         if uri_match:
             self.associate_wd_item(uri_match)
