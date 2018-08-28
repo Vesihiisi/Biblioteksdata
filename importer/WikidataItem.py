@@ -118,6 +118,9 @@ class WikidataItem(object):
         if wd_item is not None:
             self.wd_item["wd-item"] = wd_item
 
+    def set_upload(self, booln):
+        self.wd_item["upload"] = booln
+
     def add_label(self, language, text):
         base = self.wd_item["labels"]
         base.append({"language": language, "value": text})
