@@ -171,11 +171,12 @@ class Person(WikidataItem):
         elif selibr_match:
             selibrs_on_this_q = [x for x in selibrs.keys()
                                  if selibrs[x] == selibr_match]
-            if len(selibrs_on_this_q) > 1:
-                self.set_upload(False)
-                return
-            else:
+            if len(selibrs_on_this_q) == 1:
                 self.associate_wd_item(selibr_match)
+            else:
+                self.set_upload(False)
+        else:
+            self.set_upload(False)
 
     def set_timestamp(self):
         """Get timestamp of last change of post."""
