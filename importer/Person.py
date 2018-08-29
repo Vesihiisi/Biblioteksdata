@@ -128,11 +128,14 @@ class Person(WikidataItem):
 
     def create_sources(self):
         """Create a stated in reference."""
+        retrieval_date = "2018-08-23"  # replace date of the dump
         uri = self.raw_data[0]["@id"].split("/")[-1]
         url = self.URL_BASE.format(uri)
 
-        publication_date = self.timestamp
-        retrieval_date = "2018-08-23"  # replace date of the dump
+        modified = self.raw_data[0].get("modified")
+        if modified:
+            publication_date = modified.split("T")[0]
+
         self.source = self.make_stated_in_ref("Q1798125",
                                               publication_date,
                                               url, retrieval_date)
@@ -186,7 +189,6 @@ class Person(WikidataItem):
         """Initialize an empty object."""
         WikidataItem.__init__(self, raw_data, repository, data_files, existing)
         self.raw_data = raw_data["@graph"]
-        self.set_timestamp()
         self.data_files = data_files
         self.create_sources()
 

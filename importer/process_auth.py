@@ -52,39 +52,38 @@ def get_from_uri(uri):
     return json.loads(requests.get(url).text)
 
 
-def get_data(args):
-    """Load data from specified source."""
-    if args.get("file"):
-        with open(args.get("file"), 'r') as f:
-            data = json.load(f)
-    elif args.get("uri"):
-        data = get_from_uri(args.get("uri"))
-    return data
+def list_available_files(path):
+    files = []
+    for fname in os.listdir(path):
+        files.append(os.path.join(path, fname))
+    return files
 
 
 def main(arguments):
     """Get arguments and process data."""
     wikidata_site = utils.create_site_instance("wikidata", "wikidata")
     data_files = load_mapping_files()
-    data = get_data(arguments)
     existing_people = utils.get_wd_items_using_prop(
         data_files["properties"]["libris_uri"])
-    if is_person(data):
-        person = Person(data, wikidata_site, data_files, existing_people)
-        if arguments.get("upload"):
-            live = True if arguments["upload"] == "live" else False
-            uploader = Uploader(person, repo=wikidata_site,
-                                live=live, edit_summary=EDIT_SUMMARY)
-            try:
-                uploader.upload()
-            except pywikibot.data.api.APIError as e:
-                print(e)
+    libris_files = list_available_files(arguments.get("dir"))
+
+    for fname in libris_files:
+        data = utils.load_json(fname)
+        if is_person(data):
+            person = Person(data, wikidata_site, data_files, existing_people)
+            if arguments.get("upload"):
+                live = True if arguments["upload"] == "live" else False
+                uploader = Uploader(person, repo=wikidata_site,
+                                    live=live, edit_summary=EDIT_SUMMARY)
+                try:
+                    uploader.upload()
+                except pywikibot.data.api.APIError as e:
+                    print(e)
 
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
-    parser.add_argument("--file")
-    parser.add_argument("--uri")
+    parser.add_argument("--dir", required=True)
     parser.add_argument("--upload", action='store')
     args = parser.parse_args()
     main(vars(args))
