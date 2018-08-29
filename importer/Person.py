@@ -128,7 +128,7 @@ class Person(WikidataItem):
 
     def create_sources(self):
         """Create a stated in reference."""
-        retrieval_date = "2018-08-23"  # replace date of the dump
+        retrieval_date = "2018-08-24"
         uri = self.raw_data[0]["@id"].split("/")[-1]
         url = self.URL_BASE.format(uri)
 
