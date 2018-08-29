@@ -132,7 +132,7 @@ class Person(WikidataItem):
         url = self.URL_BASE.format(uri)
 
         publication_date = self.timestamp
-        retrieval_date = "2018-08-23"  # replace date of the dump
+        retrieval_date = "2018-08-24"
         self.source = self.make_stated_in_ref("Q1798125",
                                               publication_date,
                                               url, retrieval_date)
