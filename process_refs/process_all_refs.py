@@ -4,8 +4,19 @@
 import argparse
 import csv
 import mwparserfromhell as parser
-
+from collections import Counter
 import importer_utils as utils
+
+OUTPUT = "all_refs_sorted.tsv"
+
+
+def save_sorted(sorted_data, fname):
+    """Save sorted  data as tsv file."""
+    with open(fname, "w") as f:
+        f.write("{}\t{}\t{}\n".format("count", "author", "book"))
+        for k, v in sorted_data:
+            f.write("{}\t{}\n".format(v, k))
+    print("Saved file: {}".format(OUTPUT))
 
 
 def ref_to_template(bokref):
@@ -22,7 +33,7 @@ def bokref_to_work(bokref):
     except ValueError:
         title = ""
     try:
-        author = str(bokref.get("författare").value)
+        author = utils.remove_markup(str(bokref.get("författare").value))
     except ValueError:
         try:
             last = bokref.get("efternamn").value
@@ -34,7 +45,7 @@ def bokref_to_work(bokref):
 
     if len(title) > 0:
         title = utils.remove_markup(title)
-        work = {"title": title, "author": author}
+        work = "{}\t{}".format(author, title)
         return work
 
 
@@ -42,20 +53,25 @@ def load_bokrefs(path):
     """Extract okay-looking bookrefs from file."""
     bokrefs = []
     required = ["bokref", "titel"]
+    counter = 0
     with open(path) as tsvfile:
         reader = csv.reader(tsvfile, delimiter='\t')
         for row in reader:
             if all(s in row[0].lower() for s in required):
-                bokrefs.append(row[0])
                 bokref_tpl = ref_to_template(row[0])
                 if bokref_tpl:
-                    work = bokref_to_work(bokref_tpl)
-                    print(work)
+                    counter += 1
+                    if counter % 1000 == 0:
+                        print("Processed {} refs.".format(counter))
+                    bokrefs.append(bokref_to_work(bokref_tpl))
+    return bokrefs
 
 
 def main(args):
     """Process file with all refs."""
     bokrefs = load_bokrefs(args.path)
+    commonest = Counter(bokrefs).most_common()
+    save_sorted(commonest, OUTPUT)
 
 
 if __name__ == "__main__":
