@@ -1,6 +1,22 @@
 #!/usr/bin/python
 # -*- coding: utf-8  -*-
+import re
+import mwparserfromhell as wparser
 import wikidataStuff.wdqsLookup as lookup
+
+
+def remove_multiple_spaces(text):
+    return re.sub(' +', ' ', text)
+
+
+def remove_markup(text):
+    remove_br = re.compile('<br.*?>\W*', re.I)
+    text = remove_br.sub(' ', text)
+    text = " ".join(text.split())
+    if "[" in text or "''" in text:
+        text = wparser.parse(text)
+        text = text.strip_code()
+    return remove_multiple_spaces(text.strip())
 
 
 def get_wd_items_using_prop(prop):
