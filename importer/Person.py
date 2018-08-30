@@ -36,7 +36,7 @@ class Person(WikidataItem):
     def set_uri(self):
         """Set Libris URI."""
         uri = self.raw_data[0]["@id"].split("/")[-1]
-        self.add_statement("libris_uri", uri, ref=self.source)
+        self.add_statement("libris_uri", uri)
 
     def set_selibr(self):
         """Set Selibr identifier."""
@@ -190,7 +190,7 @@ class Person(WikidataItem):
         WikidataItem.__init__(self, raw_data, repository, data_files, existing)
         self.raw_data = raw_data["@graph"]
         self.data_files = data_files
-        self.create_sources()
+        # self.create_sources()
 
         # self.set_ids()
         # self.set_selibr()
