@@ -13,7 +13,7 @@ OUTPUT = "all_refs_sorted.tsv"
 def save_sorted(sorted_data, fname):
     """Save sorted  data as tsv file."""
     with open(fname, "w") as f:
-        f.write("{}\t{}\t{}\n".format("count", "author", "book"))
+        f.write("{}\t{}\t{}\n".format("count", "book", "author"))
         for k, v in sorted_data:
             f.write("{}\t{}\n".format(v, k))
     print("Saved file: {}".format(OUTPUT))
@@ -45,7 +45,7 @@ def bokref_to_work(bokref):
 
     if len(title) > 0:
         title = utils.remove_markup(title)
-        work = "{}\t{}".format(author, title)
+        work = "{}\t{}".format(title, author)
         return work
 
 
