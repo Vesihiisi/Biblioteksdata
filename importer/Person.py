@@ -136,15 +136,15 @@ class Person(WikidataItem):
         in the dump. These seem to be recently created
         items, from summer 2018 onwards, i.e. probably
         native "new Libris" objects, not imported.
+        For these we only add retrieval date.
         """
         uri = self.raw_data[0]["@id"].split("/")[-1]
         url = self.URL_BASE.format(uri)
 
+        publication_date = None
         modified = self.raw_data[0].get("modified")
         if modified:
             publication_date = modified.split("T")[0]
-        else:
-            publication_date = self.DUMP_DATE
 
         self.source = self.make_stated_in_ref("Q1798125",
                                               publication_date,
