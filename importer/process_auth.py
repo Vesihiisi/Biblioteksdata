@@ -52,7 +52,7 @@ def get_from_uri(uri):
     return json.loads(requests.get(url).text)
 
 
-def list_available_files(path, limit):
+def list_available_files(path, limit=None, uri=None):
     """
     Load a list of files in directory.
 
@@ -61,15 +61,24 @@ def list_available_files(path, limit):
     files = []
     for fname in os.listdir(path):
         files.append(os.path.join(path, fname))
+        if uri:
+            data = utils.load_json(os.path.join(path, fname))
+            file_uri = data["@graph"][0]["@id"].split("/")[-1]
+            if file_uri == uri:
+                print("Ready to process file with URI {}.".format(uri))
+                return [os.path.join(path, fname)]
     if limit:
         files = files[:limit]
+    print("Ready to process {} files.".format(len(files)))
     return files
 
 
 def main(arguments):
     """Get arguments and process data."""
     libris_files = list_available_files(arguments.get("dir"),
-                                        arguments.get("limit"))
+                                        arguments.get("limit"),
+                                        arguments.get("uri"))
+
     wikidata_site = utils.create_site_instance("wikidata", "wikidata")
     data_files = load_mapping_files()
     existing_people = utils.get_wd_items_using_prop(
@@ -92,6 +101,7 @@ def main(arguments):
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("--dir", required=True)
+    parser.add_argument("--uri")
     parser.add_argument("--upload", action='store')
     parser.add_argument("--limit",
                         nargs='?',
