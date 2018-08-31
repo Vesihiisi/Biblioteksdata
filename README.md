@@ -6,8 +6,16 @@ Tools for the Library Data 2018 project @ Wikimedia Sverige.
 
 * **importer/process_auth.py** – taking a directory of Libris authority posts (one json-ld object per file), match with Wikidata items with corresponding Selibr ID's and add Libris URI to it.
 
+Options:
+
+`--limit` – only process the first x files in the directory
+
+`--uri` – find and process single file with specific Libris URI
+
+`--upload` – upload changes to Wikidata, either to a `sandbox` or `live`
+
 ```
-python3 importer/process_auth.py --dir librisfiles/ --upload live
+python3 importer/process_auth.py --dir librisfiles/ --limit 1000 --upload live
 ```
 
 ## Data pre-processing
