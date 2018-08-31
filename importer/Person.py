@@ -9,6 +9,7 @@ class Person(WikidataItem):
     """A person as represented in Libris."""
 
     URL_BASE = "https://libris.kb.se/katalogisering/{}"
+    DUMP_DATE = "2018-08-24"
 
     def set_is(self):
         """Set is as a person."""
@@ -36,7 +37,7 @@ class Person(WikidataItem):
     def set_uri(self):
         """Set Libris URI."""
         uri = self.raw_data[0]["@id"].split("/")[-1]
-        self.add_statement("libris_uri", uri)
+        self.add_statement("libris_uri", uri, ref=self.source)
 
     def set_selibr(self):
         """Set Selibr identifier."""
@@ -127,18 +128,27 @@ class Person(WikidataItem):
                 self.add_statement("citizenship", country, ref=self.source)
 
     def create_sources(self):
-        """Create a stated in reference."""
-        retrieval_date = "2018-08-24"
+        """
+        Create a stated in reference.
+
+        Note that some objects do not have last
+        modification date, or any other date,
+        in the dump. These seem to be recently created
+        items, from summer 2018 onwards, i.e. probably
+        native "new Libris" objects, not imported.
+        """
         uri = self.raw_data[0]["@id"].split("/")[-1]
         url = self.URL_BASE.format(uri)
 
         modified = self.raw_data[0].get("modified")
         if modified:
             publication_date = modified.split("T")[0]
+        else:
+            publication_date = self.DUMP_DATE
 
         self.source = self.make_stated_in_ref("Q1798125",
                                               publication_date,
-                                              url, retrieval_date)
+                                              url, self.DUMP_DATE)
 
     def match_wikidata(self):
         """
@@ -190,7 +200,7 @@ class Person(WikidataItem):
         WikidataItem.__init__(self, raw_data, repository, data_files, existing)
         self.raw_data = raw_data["@graph"]
         self.data_files = data_files
-        # self.create_sources()
+        self.create_sources()
 
         # self.set_ids()
         # self.set_selibr()
