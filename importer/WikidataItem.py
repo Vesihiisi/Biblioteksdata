@@ -80,15 +80,17 @@ class WikidataItem(object):
 
     def make_stated_in_ref(self,
                            value,
-                           pub_date,
+                           pub_date=None,
                            ref_url=None,
                            retrieved_date=None):
         item_prop = self.props["stated_in"]
         published_prop = self.props["publication_date"]
-        pub_date = utils.date_to_dict(pub_date, "%Y-%m-%d")
-        timestamp = self.make_pywikibot_item({"date_value": pub_date})
-        published_claim = self.wdstuff.make_simple_claim(
-            published_prop, timestamp)
+        published_claim = None
+        if pub_date:
+            pub_date = utils.date_to_dict(pub_date, "%Y-%m-%d")
+            timestamp = self.make_pywikibot_item({"date_value": pub_date})
+            published_claim = self.wdstuff.make_simple_claim(
+                published_prop, timestamp)
         source_item = self.wdstuff.QtoItemPage(value)
         source_claim = self.wdstuff.make_simple_claim(item_prop, source_item)
         if ref_url and retrieved_date:
@@ -104,9 +106,14 @@ class WikidataItem(object):
             retrieved_on_claim = self.wdstuff.make_simple_claim(
                 retrieved_date_prop, retrieved_date)
 
-            ref = self.wdstuff.Reference(
-                source_test=[source_claim, ref_url_claim],
-                source_notest=[published_claim, retrieved_on_claim])
+            if published_claim:
+                ref = self.wdstuff.Reference(
+                    source_test=[source_claim, ref_url_claim],
+                    source_notest=[published_claim, retrieved_on_claim])
+            else:
+                ref = self.wdstuff.Reference(
+                    source_test=[source_claim, ref_url_claim],
+                    source_notest=[retrieved_on_claim])
         else:
             ref = self.wdstuff.Reference(
                 source_test=[source_claim],

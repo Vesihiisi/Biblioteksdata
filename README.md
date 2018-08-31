@@ -4,10 +4,10 @@ Tools for the Library Data 2018 project @ Wikimedia Sverige.
 
 ## Import of Libris URI's
 
-* **importer/process_auth.py** – taking a single New Libris Authority post, either in a local file or online, match with a Wikidata item with a corresponding Selibr ID and add Libris URI to it.
+* **importer/process_auth.py** – taking a directory of Libris authority posts (one json-ld object per file), match with Wikidata items with corresponding Selibr ID's and add Libris URI to it.
 
 ```
-python3 importer/process_auth.py --uri xxxxxx --upload live
+python3 importer/process_auth.py --dir librisfiles/ --upload live
 ```
 
 ## Data pre-processing

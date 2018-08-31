@@ -9,6 +9,7 @@ class Person(WikidataItem):
     """A person as represented in Libris."""
 
     URL_BASE = "https://libris.kb.se/katalogisering/{}"
+    DUMP_DATE = "2018-08-24"
 
     def set_is(self):
         """Set is as a person."""
@@ -127,15 +128,27 @@ class Person(WikidataItem):
                 self.add_statement("citizenship", country, ref=self.source)
 
     def create_sources(self):
-        """Create a stated in reference."""
+        """
+        Create a stated in reference.
+
+        Note that some objects do not have last
+        modification date, or any other date,
+        in the dump. These seem to be recently created
+        items, from summer 2018 onwards, i.e. probably
+        native "new Libris" objects, not imported.
+        For these we only add retrieval date.
+        """
         uri = self.raw_data[0]["@id"].split("/")[-1]
         url = self.URL_BASE.format(uri)
 
-        publication_date = self.timestamp
-        retrieval_date = "2018-08-24"
+        publication_date = None
+        modified = self.raw_data[0].get("modified")
+        if modified:
+            publication_date = modified.split("T")[0]
+
         self.source = self.make_stated_in_ref("Q1798125",
                                               publication_date,
-                                              url, retrieval_date)
+                                              url, self.DUMP_DATE)
 
     def match_wikidata(self):
         """
@@ -186,7 +199,6 @@ class Person(WikidataItem):
         """Initialize an empty object."""
         WikidataItem.__init__(self, raw_data, repository, data_files, existing)
         self.raw_data = raw_data["@graph"]
-        self.set_timestamp()
         self.data_files = data_files
         self.create_sources()
 
