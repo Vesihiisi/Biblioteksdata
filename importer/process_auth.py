@@ -52,10 +52,17 @@ def get_from_uri(uri):
     return json.loads(requests.get(url).text)
 
 
-def list_available_files(path):
+def list_available_files(path, limit):
+    """
+    Load a list of files in directory.
+
+    :param limit: return the first x files."
+    """
     files = []
     for fname in os.listdir(path):
         files.append(os.path.join(path, fname))
+    if limit:
+        files = files[:limit]
     return files
 
 
@@ -65,7 +72,8 @@ def main(arguments):
     data_files = load_mapping_files()
     existing_people = utils.get_wd_items_using_prop(
         data_files["properties"]["libris_uri"])
-    libris_files = list_available_files(arguments.get("dir"))
+    libris_files = list_available_files(arguments.get("dir"),
+                                        arguments.get("limit"))
 
     for fname in libris_files:
         data = utils.load_json(fname)
