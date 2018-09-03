@@ -272,12 +272,12 @@
   {
     "count": 117,
     "name": "https://id.kb.se/nationality/n-mx---",
-    "q": ""
+    "q": "Q96"
   },
   {
     "count": 115,
     "name": "https://id.kb.se/nationality/e-lv---",
-    "q": ""
+    "q": "Q211"
   },
   {
     "count": 104,
@@ -287,27 +287,27 @@
   {
     "count": 103,
     "name": "https://id.kb.se/nationality/e-li",
-    "q": ""
+    "q": "Q37"
   },
   {
     "count": 101,
     "name": "https://id.kb.se/nationality/f-nr---",
-    "q": ""
+    "q": "Q1033"
   },
   {
     "count": 93,
     "name": "https://id.kb.se/nationality/s-cl---",
-    "q": ""
+    "q": "Q298"
   },
   {
     "count": 90,
     "name": "https://id.kb.se/nationality/e-bu---",
-    "q": ""
+    "q": "Q219"
   },
   {
     "count": 86,
     "name": "https://id.kb.se/nationality/f-mr---",
-    "q": ""
+    "q": "f-mr---"
   },
   {
     "count": 85,
@@ -317,7 +317,7 @@
   {
     "count": 84,
     "name": "https://id.kb.se/nationality/e-rm---",
-    "q": ""
+    "q": "Q218"
   },
   {
     "count": 80,
