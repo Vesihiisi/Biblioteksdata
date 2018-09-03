@@ -1,10 +1,2692 @@
-{
-	"a-ja---": "Q17",
-	"e-fi---": "Q33",
-	"e-fr---": "Q142",
-	"e-gx---": "Q183",
-	"e-ru---": "Q159",
-	"e-sw---": "Q34",
-	"e-uk---": "Q145",
-	"xxu": "Q30"
-}
+[
+  {
+    "count": 99949,
+    "name": "https://id.kb.se/nationality/e-sw---",
+    "q": "Q34"
+  },
+  {
+    "count": 7800,
+    "name": "https://id.kb.se/nationality/e-gx---",
+    "q": "Q183"
+  },
+  {
+    "count": 6009,
+    "name": "https://id.kb.se/nationality/xxu",
+    "q": "Q30"
+  },
+  {
+    "count": 5003,
+    "name": "https://id.kb.se/nationality/xx",
+    "q": ""
+  },
+  {
+    "count": 4113,
+    "name": "https://id.kb.se/nationality/e-fr---",
+    "q": "Q142"
+  },
+  {
+    "count": 4062,
+    "name": "https://id.kb.se/nationality/xxk",
+    "q": "Q145"
+  },
+  {
+    "count": 3994,
+    "name": "https://id.kb.se/nationality/e-ru---",
+    "q": "Q159"
+  },
+  {
+    "count": 2530,
+    "name": "https://id.kb.se/nationality/n-us---",
+    "q": "Q30"
+  },
+  {
+    "count": 2511,
+    "name": "https://id.kb.se/nationality/e-fi---",
+    "q": "Q33"
+  },
+  {
+    "count": 1923,
+    "name": "https://id.kb.se/nationality/e-dk---",
+    "q": "Q35"
+  },
+  {
+    "count": 1831,
+    "name": "https://id.kb.se/nationality/e-it",
+    "q": "Q38"
+  },
+  {
+    "count": 1789,
+    "name": "https://id.kb.se/nationality/e-uk---",
+    "q": "Q145"
+  },
+  {
+    "count": 1416,
+    "name": "https://id.kb.se/nationality/e-no---",
+    "q": "Q20"
+  },
+  {
+    "count": 1165,
+    "name": "https://id.kb.se/nationality/e-sp---",
+    "q": "Q29"
+  },
+  {
+    "count": 1154,
+    "name": "https://id.kb.se/nationality/e-ne---",
+    "q": "Q55"
+  },
+  {
+    "count": 1045,
+    "name": "https://id.kb.se/nationality/e-swe---",
+    "q": ""
+  },
+  {
+    "count": 1015,
+    "name": "https://id.kb.se/nationality/f-ua---",
+    "q": "Q79"
+  },
+  {
+    "count": 749,
+    "name": "https://id.kb.se/nationality/sw",
+    "q": ""
+  },
+  {
+    "count": 716,
+    "name": "https://id.kb.se/nationality/e-pl---",
+    "q": "Q36"
+  },
+  {
+    "count": 661,
+    "name": "https://id.kb.se/nationality/e-gr---",
+    "q": "Q41"
+  },
+  {
+    "count": 574,
+    "name": "https://id.kb.se/nationality/e-au---",
+    "q": "Q40"
+  },
+  {
+    "count": 504,
+    "name": "https://id.kb.se/nationality/e-sz---",
+    "q": "Q39"
+  },
+  {
+    "count": 438,
+    "name": "https://id.kb.se/nationality/e-hu---",
+    "q": "Q28"
+  },
+  {
+    "count": 423,
+    "name": "https://id.kb.se/nationality/a-ir---",
+    "q": "Q794"
+  },
+  {
+    "count": 417,
+    "name": "https://id.kb.se/nationality/a-is---",
+    "q": "Q801"
+  },
+  {
+    "count": 394,
+    "name": "https://id.kb.se/nationality/e-be---",
+    "q": "Q31"
+  },
+  {
+    "count": 368,
+    "name": "https://id.kb.se/nationality/u-at---",
+    "q": "Q408"
+  },
+  {
+    "count": 355,
+    "name": "https://id.kb.se/nationality/e-ic---",
+    "q": "Q189"
+  },
+  {
+    "count": 351,
+    "name": "https://id.kb.se/nationality/a-cc---",
+    "q": "Q148"
+  },
+  {
+    "count": 333,
+    "name": "https://id.kb.se/nationality/a-iq---",
+    "q": "Q796"
+  },
+  {
+    "count": 299,
+    "name": "https://id.kb.se/nationality/a-ii---",
+    "q": "Q668"
+  },
+  {
+    "count": 263,
+    "name": "https://id.kb.se/nationality/xxc",
+    "q": ""
+  },
+  {
+    "count": 245,
+    "name": "https://id.kb.se/nationality/a-sy---",
+    "q": "Q858"
+  },
+  {
+    "count": 237,
+    "name": "https://id.kb.se/nationality/n-xxu---",
+    "q": ""
+  },
+  {
+    "count": 215,
+    "name": "https://id.kb.se/nationality/e-er---",
+    "q": ""
+  },
+  {
+    "count": 195,
+    "name": "https://id.kb.se/nationality/a-su---",
+    "q": "Saudi Arabia"
+  },
+  {
+    "count": 192,
+    "name": "https://id.kb.se/nationality/e-po---",
+    "q": "Q45"
+  },
+  {
+    "count": 192,
+    "name": "https://id.kb.se/nationality/e-ie---",
+    "q": "Q27"
+  },
+  {
+    "count": 186,
+    "name": "https://id.kb.se/nationality/ponl---",
+    "q": ""
+  },
+  {
+    "count": 177,
+    "name": "https://id.kb.se/nationality/a-ja---",
+    "q": "Q17"
+  },
+  {
+    "count": 176,
+    "name": "https://id.kb.se/nationality/a-le---",
+    "q": "Q822"
+  },
+  {
+    "count": 175,
+    "name": "https://id.kb.se/nationality/s-bl---",
+    "q": "Q155"
+  },
+  {
+    "count": 167,
+    "name": "https://id.kb.se/nationality/f-sa---",
+    "q": "Q258"
+  },
+  {
+    "count": 162,
+    "name": "https://id.kb.se/nationality/gw",
+    "q": ""
+  },
+  {
+    "count": 159,
+    "name": "https://id.kb.se/nationality/e-xr---",
+    "q": ""
+  },
+  {
+    "count": 158,
+    "name": "https://id.kb.se/nationality/a-tu---",
+    "q": ""
+  },
+  {
+    "count": 143,
+    "name": "https://id.kb.se/nationality/s-ag---",
+    "q": ""
+  },
+  {
+    "count": 142,
+    "name": "https://id.kb.se/nationality/e-it---",
+    "q": "Q38"
+  },
+  {
+    "count": 136,
+    "name": "https://id.kb.se/nationality/e-gw---",
+    "q": ""
+  },
+  {
+    "count": 132,
+    "name": "https://id.kb.se/nationality/e-un---",
+    "q": ""
+  },
+  {
+    "count": 132,
+    "name": "https://id.kb.se/nationality/n-cn---",
+    "q": "Q16"
+  },
+  {
+    "count": 129,
+    "name": "https://id.kb.se/nationality/e-sw--",
+    "q": ""
+  },
+  {
+    "count": 127,
+    "name": "https://id.kb.se/nationality/xxx",
+    "q": ""
+  },
+  {
+    "count": 121,
+    "name": "https://id.kb.se/nationality/e-xxk---",
+    "q": ""
+  },
+  {
+    "count": 117,
+    "name": "https://id.kb.se/nationality/n-mx---",
+    "q": ""
+  },
+  {
+    "count": 115,
+    "name": "https://id.kb.se/nationality/e-lv---",
+    "q": ""
+  },
+  {
+    "count": 104,
+    "name": "https://id.kb.se/nationality/f-ti---",
+    "q": ""
+  },
+  {
+    "count": 103,
+    "name": "https://id.kb.se/nationality/e-li",
+    "q": ""
+  },
+  {
+    "count": 101,
+    "name": "https://id.kb.se/nationality/f-nr---",
+    "q": ""
+  },
+  {
+    "count": 93,
+    "name": "https://id.kb.se/nationality/s-cl---",
+    "q": ""
+  },
+  {
+    "count": 90,
+    "name": "https://id.kb.se/nationality/e-bu---",
+    "q": ""
+  },
+  {
+    "count": 86,
+    "name": "https://id.kb.se/nationality/f-mr---",
+    "q": ""
+  },
+  {
+    "count": 85,
+    "name": "https://id.kb.se/nationality/it",
+    "q": ""
+  },
+  {
+    "count": 84,
+    "name": "https://id.kb.se/nationality/e-rm---",
+    "q": ""
+  },
+  {
+    "count": 80,
+    "name": "https://id.kb.se/nationality/e-cs---",
+    "q": ""
+  },
+  {
+    "count": 71,
+    "name": "https://id.kb.se/nationality/e-bw---",
+    "q": ""
+  },
+  {
+    "count": 67,
+    "name": "https://id.kb.se/nationality/xxr",
+    "q": ""
+  },
+  {
+    "count": 66,
+    "name": "https://id.kb.se/nationality/u-nz---",
+    "q": "Q664"
+  },
+  {
+    "count": 63,
+    "name": "https://id.kb.se/nationality/s-pe---",
+    "q": ""
+  },
+  {
+    "count": 61,
+    "name": "https://id.kb.se/nationality/a-ye---",
+    "q": ""
+  },
+  {
+    "count": 60,
+    "name": "https://id.kb.se/nationality/ax",
+    "q": ""
+  },
+  {
+    "count": 60,
+    "name": "https://id.kb.se/nationality/e-ge---",
+    "q": "Q16957"
+  },
+  {
+    "count": 59,
+    "name": "https://id.kb.se/nationality/fr",
+    "q": ""
+  },
+  {
+    "count": 55,
+    "name": "https://id.kb.se/nationality/a-ko---",
+    "q": "Q884"
+  },
+  {
+    "count": 54,
+    "name": "https://id.kb.se/nationality/nwcu---",
+    "q": ""
+  },
+  {
+    "count": 51,
+    "name": "https://id.kb.se/nationality/s-ck---",
+    "q": "Q739"
+  },
+  {
+    "count": 46,
+    "name": "https://id.kb.se/nationality/e-ur---",
+    "q": ""
+  },
+  {
+    "count": 44,
+    "name": "https://id.kb.se/nationality/e--sw---",
+    "q": ""
+  },
+  {
+    "count": 44,
+    "name": "https://id.kb.se/nationality/a-ch---",
+    "q": ""
+  },
+  {
+    "count": 44,
+    "name": "https://id.kb.se/nationality/pl",
+    "q": ""
+  },
+  {
+    "count": 43,
+    "name": "https://id.kb.se/nationality/f-ae---",
+    "q": ""
+  },
+  {
+    "count": 43,
+    "name": "https://id.kb.se/nationality/f-et---",
+    "q": ""
+  },
+  {
+    "count": 40,
+    "name": "https://id.kb.se/nationality/sp",
+    "q": ""
+  },
+  {
+    "count": 40,
+    "name": "https://id.kb.se/nationality/f-cm---",
+    "q": ""
+  },
+  {
+    "count": 39,
+    "name": "https://id.kb.se/nationality/s-uy---",
+    "q": ""
+  },
+  {
+    "count": 39,
+    "name": "https://id.kb.se/nationality/da",
+    "q": ""
+  },
+  {
+    "count": 38,
+    "name": "https://id.kb.se/nationality/e-sw----",
+    "q": ""
+  },
+  {
+    "count": 37,
+    "name": "https://id.kb.se/nationality/e-yu---",
+    "q": ""
+  },
+  {
+    "count": 37,
+    "name": "https://id.kb.se/nationality/f-rh---",
+    "q": "Q954"
+  },
+  {
+    "count": 36,
+    "name": "https://id.kb.se/nationality/a-pk---",
+    "q": "Q843"
+  },
+  {
+    "count": 35,
+    "name": "https://id.kb.se/nationality/de",
+    "q": ""
+  },
+  {
+    "count": 35,
+    "name": "https://id.kb.se/nationality/f-sj---",
+    "q": ""
+  },
+  {
+    "count": 33,
+    "name": "https://id.kb.se/nationality/e-sw",
+    "q": ""
+  },
+  {
+    "count": 32,
+    "name": "https://id.kb.se/nationality/e-xxu---",
+    "q": ""
+  },
+  {
+    "count": 30,
+    "name": "https://id.kb.se/nationality/f-ke---",
+    "q": ""
+  },
+  {
+    "count": 30,
+    "name": "https://id.kb.se/nationality/awba---",
+    "q": ""
+  },
+  {
+    "count": 29,
+    "name": "https://id.kb.se/nationality/f-sg---",
+    "q": "Q1041"
+  },
+  {
+    "count": 29,
+    "name": "https://id.kb.se/nationality/f-gh---",
+    "q": ""
+  },
+  {
+    "count": 29,
+    "name": "https://id.kb.se/nationality/a-uz",
+    "q": ""
+  },
+  {
+    "count": 27,
+    "name": "https://id.kb.se/nationality/swe",
+    "q": ""
+  },
+  {
+    "count": 27,
+    "name": "https://id.kb.se/nationality/e-ci---",
+    "q": ""
+  },
+  {
+    "count": 27,
+    "name": "https://id.kb.se/nationality/in",
+    "q": ""
+  },
+  {
+    "count": 27,
+    "name": "https://id.kb.se/nationality/a-jo---",
+    "q": ""
+  },
+  {
+    "count": 26,
+    "name": "https://id.kb.se/nationality/a-th---",
+    "q": ""
+  },
+  {
+    "count": 26,
+    "name": "https://id.kb.se/nationality/a-ku---",
+    "q": ""
+  },
+  {
+    "count": 26,
+    "name": "https://id.kb.se/nationality/e-xv---",
+    "q": ""
+  },
+  {
+    "count": 25,
+    "name": "https://id.kb.se/nationality/e-uk-en",
+    "q": ""
+  },
+  {
+    "count": 25,
+    "name": "https://id.kb.se/nationality/e-se---",
+    "q": ""
+  },
+  {
+    "count": 25,
+    "name": "https://id.kb.se/nationality/a-af---",
+    "q": ""
+  },
+  {
+    "count": 24,
+    "name": "https://id.kb.se/nationality/f-ly---",
+    "q": ""
+  },
+  {
+    "count": 24,
+    "name": "https://id.kb.se/nationality/s-bo---",
+    "q": ""
+  },
+  {
+    "count": 23,
+    "name": "https://id.kb.se/nationality/a-ai---",
+    "q": ""
+  },
+  {
+    "count": 21,
+    "name": "https://id.kb.se/nationality/s-ve---",
+    "q": ""
+  },
+  {
+    "count": 19,
+    "name": "https://id.kb.se/nationality/il",
+    "q": ""
+  },
+  {
+    "count": 19,
+    "name": "https://id.kb.se/nationality/e-rb---",
+    "q": ""
+  },
+  {
+    "count": 19,
+    "name": "https://id.kb.se/nationality/a-si---",
+    "q": ""
+  },
+  {
+    "count": 18,
+    "name": "https://id.kb.se/nationality/ne",
+    "q": ""
+  },
+  {
+    "count": 18,
+    "name": "https://id.kb.se/nationality/f-ea---",
+    "q": ""
+  },
+  {
+    "count": 18,
+    "name": "https://id.kb.se/nationality/nces---",
+    "q": ""
+  },
+  {
+    "count": 18,
+    "name": "https://id.kb.se/nationality/lnfa---",
+    "q": ""
+  },
+  {
+    "count": 18,
+    "name": "https://id.kb.se/nationality/ar",
+    "q": ""
+  },
+  {
+    "count": 17,
+    "name": "https://id.kb.se/nationality/ru",
+    "q": ""
+  },
+  {
+    "count": 17,
+    "name": "https://id.kb.se/nationality/a-ba---",
+    "q": ""
+  },
+  {
+    "count": 17,
+    "name": "https://id.kb.se/nationality/f-ug---",
+    "q": ""
+  },
+  {
+    "count": 17,
+    "name": "https://id.kb.se/nationality/a-vt---",
+    "q": ""
+  },
+  {
+    "count": 17,
+    "name": "https://id.kb.se/nationality/jp",
+    "q": ""
+  },
+  {
+    "count": 16,
+    "name": "https://id.kb.se/nationality/ncgt---",
+    "q": ""
+  },
+  {
+    "count": 16,
+    "name": "https://id.kb.se/nationality/s-ec---",
+    "q": ""
+  },
+  {
+    "count": 16,
+    "name": "https://id.kb.se/nationality/e-xo---",
+    "q": ""
+  },
+  {
+    "count": 16,
+    "name": "https://id.kb.se/nationality/f-tz---",
+    "q": ""
+  },
+  {
+    "count": 15,
+    "name": "https://id.kb.se/nationality/e-us---",
+    "q": ""
+  },
+  {
+    "count": 15,
+    "name": "https://id.kb.se/nationality/e-li---",
+    "q": ""
+  },
+  {
+    "count": 15,
+    "name": "https://id.kb.se/nationality/e-gb---",
+    "q": ""
+  },
+  {
+    "count": 15,
+    "name": "https://id.kb.se/nationality/dk",
+    "q": ""
+  },
+  {
+    "count": 14,
+    "name": "https://id.kb.se/nationality/po",
+    "q": ""
+  },
+  {
+    "count": 14,
+    "name": "https://id.kb.se/nationality/a-br---",
+    "q": ""
+  },
+  {
+    "count": 14,
+    "name": "https://id.kb.se/nationality/eng",
+    "q": ""
+  },
+  {
+    "count": 14,
+    "name": "https://id.kb.se/nationality/pokb---",
+    "q": ""
+  },
+  {
+    "count": 14,
+    "name": "https://id.kb.se/nationality/be",
+    "q": ""
+  },
+  {
+    "count": 13,
+    "name": "https://id.kb.se/nationality/n-xxc---",
+    "q": ""
+  },
+  {
+    "count": 13,
+    "name": "https://id.kb.se/nationality/e-nl---",
+    "q": ""
+  },
+  {
+    "count": 12,
+    "name": "https://id.kb.se/nationality/n-us--",
+    "q": ""
+  },
+  {
+    "count": 12,
+    "name": "https://id.kb.se/nationality/e-swe--",
+    "q": ""
+  },
+  {
+    "count": 12,
+    "name": "https://id.kb.se/nationality/e-ru--",
+    "q": ""
+  },
+  {
+    "count": 12,
+    "name": "https://id.kb.se/nationality/a-gs---",
+    "q": ""
+  },
+  {
+    "count": 12,
+    "name": "https://id.kb.se/nationality/a-tk---",
+    "q": ""
+  },
+  {
+    "count": 12,
+    "name": "https://id.kb.se/nationality/f-ao---",
+    "q": ""
+  },
+  {
+    "count": 12,
+    "name": "https://id.kb.se/nationality/f-mv---",
+    "q": ""
+  },
+  {
+    "count": 11,
+    "name": "https://id.kb.se/nationality/e-vc---",
+    "q": ""
+  },
+  {
+    "count": 11,
+    "name": "https://id.kb.se/nationality/e-gx--",
+    "q": ""
+  },
+  {
+    "count": 11,
+    "name": "https://id.kb.se/nationality/e-swe",
+    "q": ""
+  },
+  {
+    "count": 11,
+    "name": "https://id.kb.se/nationality/f-za---",
+    "q": ""
+  },
+  {
+    "count": 11,
+    "name": "https://id.kb.se/nationality/a-mk---",
+    "q": ""
+  },
+  {
+    "count": 10,
+    "name": "https://id.kb.se/nationality/f-so---",
+    "q": ""
+  },
+  {
+    "count": 10,
+    "name": "https://id.kb.se/nationality/f-cg---",
+    "q": ""
+  },
+  {
+    "count": 10,
+    "name": "https://id.kb.se/nationality/s-sw---",
+    "q": ""
+  },
+  {
+    "count": 10,
+    "name": "https://id.kb.se/nationality/nwpr---",
+    "q": ""
+  },
+  {
+    "count": 10,
+    "name": "https://id.kb.se/nationality/e-bn---",
+    "q": ""
+  },
+  {
+    "count": 10,
+    "name": "https://id.kb.se/nationality/xxq",
+    "q": ""
+  },
+  {
+    "count": 10,
+    "name": "https://id.kb.se/nationality/e-ir---",
+    "q": ""
+  },
+  {
+    "count": 10,
+    "name": "https://id.kb.se/nationality/nccr---",
+    "q": ""
+  },
+  {
+    "count": 10,
+    "name": "https://id.kb.se/nationality/ncnq---",
+    "q": ""
+  },
+  {
+    "count": 9,
+    "name": "https://id.kb.se/nationality/e--gr",
+    "q": ""
+  },
+  {
+    "count": 9,
+    "name": "https://id.kb.se/nationality/a-io---",
+    "q": ""
+  },
+  {
+    "count": 9,
+    "name": "https://id.kb.se/nationality/fi",
+    "q": ""
+  },
+  {
+    "count": 9,
+    "name": "https://id.kb.se/nationality/cz",
+    "q": ""
+  },
+  {
+    "count": 9,
+    "name": "https://id.kb.se/nationality/f-bs---",
+    "q": ""
+  },
+  {
+    "count": 9,
+    "name": "https://id.kb.se/nationality/sw-e---",
+    "q": ""
+  },
+  {
+    "count": 9,
+    "name": "https://id.kb.se/nationality/e-lu---",
+    "q": ""
+  },
+  {
+    "count": 8,
+    "name": "https://id.kb.se/nationality/a-em---",
+    "q": ""
+  },
+  {
+    "count": 8,
+    "name": "https://id.kb.se/nationality/a-kn---",
+    "q": ""
+  },
+  {
+    "count": 8,
+    "name": "https://id.kb.se/nationality/a-aj---",
+    "q": ""
+  },
+  {
+    "count": 8,
+    "name": "https://id.kb.se/nationality/a-cy---",
+    "q": ""
+  },
+  {
+    "count": 8,
+    "name": "https://id.kb.se/nationality/nwdr---",
+    "q": ""
+  },
+  {
+    "count": 8,
+    "name": "https://id.kb.se/nationality/nl",
+    "q": ""
+  },
+  {
+    "count": 8,
+    "name": "https://id.kb.se/nationality/f-ml---",
+    "q": ""
+  },
+  {
+    "count": 8,
+    "name": "https://id.kb.se/nationality/no",
+    "q": ""
+  },
+  {
+    "count": 7,
+    "name": "https://id.kb.se/nationality/a-bg---",
+    "q": ""
+  },
+  {
+    "count": 7,
+    "name": "https://id.kb.se/nationality/f-sl---",
+    "q": ""
+  },
+  {
+    "count": 7,
+    "name": "https://id.kb.se/nationality/e-xxx---",
+    "q": ""
+  },
+  {
+    "count": 7,
+    "name": "https://id.kb.se/nationality/a-ph---",
+    "q": ""
+  },
+  {
+    "count": 7,
+    "name": "https://id.kb.se/nationality/n-us",
+    "q": ""
+  },
+  {
+    "count": 7,
+    "name": "https://id.kb.se/nationality/e-ua---",
+    "q": ""
+  },
+  {
+    "count": 7,
+    "name": "https://id.kb.se/nationality/e-aa---",
+    "q": ""
+  },
+  {
+    "count": 7,
+    "name": "https://id.kb.se/nationality/f-mz---",
+    "q": ""
+  },
+  {
+    "count": 7,
+    "name": "https://id.kb.se/nationality/e-dk--",
+    "q": ""
+  },
+  {
+    "count": 7,
+    "name": "https://id.kb.se/nationality/a-kr---",
+    "q": ""
+  },
+  {
+    "count": 6,
+    "name": "https://id.kb.se/nationality/e-mv---",
+    "q": ""
+  },
+  {
+    "count": 6,
+    "name": "https://id.kb.se/nationality/e-no--",
+    "q": ""
+  },
+  {
+    "count": 6,
+    "name": "https://id.kb.se/nationality/-sw---",
+    "q": ""
+  },
+  {
+    "count": 6,
+    "name": "https://id.kb.se/nationality/au",
+    "q": ""
+  },
+  {
+    "count": 6,
+    "name": "https://id.kb.se/nationality/e-xx---",
+    "q": ""
+  },
+  {
+    "count": 6,
+    "name": "https://id.kb.se/nationality/e--fr",
+    "q": ""
+  },
+  {
+    "count": 6,
+    "name": "https://id.kb.se/nationality/e-ne",
+    "q": ""
+  },
+  {
+    "count": 6,
+    "name": "https://id.kb.se/nationality/a-in---",
+    "q": ""
+  },
+  {
+    "count": 6,
+    "name": "https://id.kb.se/nationality/e-fr--",
+    "q": ""
+  },
+  {
+    "count": 6,
+    "name": "https://id.kb.se/nationality/at",
+    "q": ""
+  },
+  {
+    "count": 6,
+    "name": "https://id.kb.se/nationality/nwjm---",
+    "q": ""
+  },
+  {
+    "count": 6,
+    "name": "https://id.kb.se/nationality/nwtr---",
+    "q": ""
+  },
+  {
+    "count": 6,
+    "name": "https://id.kb.se/nationality/f-sx---",
+    "q": ""
+  },
+  {
+    "count": 6,
+    "name": "https://id.kb.se/nationality/s-py---",
+    "q": ""
+  },
+  {
+    "count": 6,
+    "name": "https://id.kb.se/nationality/a-ts---",
+    "q": ""
+  },
+  {
+    "count": 6,
+    "name": "https://id.kb.se/nationality/e-it--",
+    "q": ""
+  },
+  {
+    "count": 5,
+    "name": "https://id.kb.se/nationality/ir",
+    "q": ""
+  },
+  {
+    "count": 5,
+    "name": "https://id.kb.se/nationality/e-mm---",
+    "q": ""
+  },
+  {
+    "count": 5,
+    "name": "https://id.kb.se/nationality/e--uk",
+    "q": ""
+  },
+  {
+    "count": 5,
+    "name": "https://id.kb.se/nationality/nwht---",
+    "q": ""
+  },
+  {
+    "count": 5,
+    "name": "https://id.kb.se/nationality/e-uk-ni",
+    "q": ""
+  },
+  {
+    "count": 5,
+    "name": "https://id.kb.se/nationality/pows---",
+    "q": ""
+  },
+  {
+    "count": 5,
+    "name": "https://id.kb.se/nationality/ee",
+    "q": ""
+  },
+  {
+    "count": 5,
+    "name": "https://id.kb.se/nationality/f-iv---",
+    "q": ""
+  },
+  {
+    "count": 5,
+    "name": "https://id.kb.se/nationality/a-sw---",
+    "q": ""
+  },
+  {
+    "count": 5,
+    "name": "https://id.kb.se/nationality/ncpn---",
+    "q": ""
+  },
+  {
+    "count": 5,
+    "name": "https://id.kb.se/nationality/a-my---",
+    "q": ""
+  },
+  {
+    "count": 5,
+    "name": "https://id.kb.se/nationality/e-xxu--",
+    "q": ""
+  },
+  {
+    "count": 5,
+    "name": "https://id.kb.se/nationality/sz",
+    "q": ""
+  },
+  {
+    "count": 5,
+    "name": "https://id.kb.se/nationality/se",
+    "q": ""
+  },
+  {
+    "count": 5,
+    "name": "https://id.kb.se/nationality/a-ce---",
+    "q": ""
+  },
+  {
+    "count": 5,
+    "name": "https://id.kb.se/nationality/a-mp---",
+    "q": ""
+  },
+  {
+    "count": 5,
+    "name": "https://id.kb.se/nationality/f-gm---",
+    "q": ""
+  },
+  {
+    "count": 4,
+    "name": "https://id.kb.se/nationality/mm-----",
+    "q": ""
+  },
+  {
+    "count": 4,
+    "name": "https://id.kb.se/nationality/f-eg---",
+    "q": ""
+  },
+  {
+    "count": 4,
+    "name": "https://id.kb.se/nationality/a-cc-hk",
+    "q": ""
+  },
+  {
+    "count": 4,
+    "name": "https://id.kb.se/nationality/f-ng---",
+    "q": ""
+  },
+  {
+    "count": 4,
+    "name": "https://id.kb.se/nationality/a-cb---",
+    "q": ""
+  },
+  {
+    "count": 4,
+    "name": "https://id.kb.se/nationality/a-ta---",
+    "q": ""
+  },
+  {
+    "count": 4,
+    "name": "https://id.kb.se/nationality/f-cf---",
+    "q": ""
+  },
+  {
+    "count": 4,
+    "name": "https://id.kb.se/nationality/e-es---",
+    "q": ""
+  },
+  {
+    "count": 4,
+    "name": "https://id.kb.se/nationality/e-bu--",
+    "q": ""
+  },
+  {
+    "count": 4,
+    "name": "https://id.kb.se/nationality/-e-sw---",
+    "q": ""
+  },
+  {
+    "count": 4,
+    "name": "https://id.kb.se/nationality/ca",
+    "q": ""
+  },
+  {
+    "count": 4,
+    "name": "https://id.kb.se/nationality/e-et---",
+    "q": ""
+  },
+  {
+    "count": 4,
+    "name": "https://id.kb.se/nationality/f-dm---",
+    "q": ""
+  },
+  {
+    "count": 4,
+    "name": "https://id.kb.se/nationality/nr",
+    "q": ""
+  },
+  {
+    "count": 4,
+    "name": "https://id.kb.se/nationality/e-sw-",
+    "q": ""
+  },
+  {
+    "count": 4,
+    "name": "https://id.kb.se/nationality/e-uk--",
+    "q": ""
+  },
+  {
+    "count": 4,
+    "name": "https://id.kb.se/nationality/xu",
+    "q": ""
+  },
+  {
+    "count": 4,
+    "name": "https://id.kb.se/nationality/i------",
+    "q": ""
+  },
+  {
+    "count": 4,
+    "name": "https://id.kb.se/nationality/ro",
+    "q": ""
+  },
+  {
+    "count": 4,
+    "name": "https://id.kb.se/nationality/hu",
+    "q": ""
+  },
+  {
+    "count": 4,
+    "name": "https://id.kb.se/nationality/e-sp--",
+    "q": ""
+  },
+  {
+    "count": 4,
+    "name": "https://id.kb.se/nationality/f-lb---",
+    "q": ""
+  },
+  {
+    "count": 4,
+    "name": "https://id.kb.se/nationality/e-xn---",
+    "q": ""
+  },
+  {
+    "count": 4,
+    "name": "https://id.kb.se/nationality/f-rw---",
+    "q": ""
+  },
+  {
+    "count": 4,
+    "name": "https://id.kb.se/nationality/ita",
+    "q": ""
+  },
+  {
+    "count": 3,
+    "name": "https://id.kb.se/nationality/f-uv---",
+    "q": ""
+  },
+  {
+    "count": 3,
+    "name": "https://id.kb.se/nationality/e-fi--",
+    "q": ""
+  },
+  {
+    "count": 3,
+    "name": "https://id.kb.se/nationality/cc",
+    "q": ""
+  },
+  {
+    "count": 3,
+    "name": "https://id.kb.se/nationality/nwco---",
+    "q": ""
+  },
+  {
+    "count": 3,
+    "name": "https://id.kb.se/nationality/e-gx",
+    "q": ""
+  },
+  {
+    "count": 3,
+    "name": "https://id.kb.se/nationality/e--swe---",
+    "q": ""
+  },
+  {
+    "count": 3,
+    "name": "https://id.kb.se/nationality/a-us---",
+    "q": ""
+  },
+  {
+    "count": 3,
+    "name": "https://id.kb.se/nationality/n-ca---",
+    "q": ""
+  },
+  {
+    "count": 3,
+    "name": "https://id.kb.se/nationality/i-ii---",
+    "q": ""
+  },
+  {
+    "count": 3,
+    "name": "https://id.kb.se/nationality/e-su---",
+    "q": ""
+  },
+  {
+    "count": 3,
+    "name": "https://id.kb.se/nationality/a-qa---",
+    "q": ""
+  },
+  {
+    "count": 3,
+    "name": "https://id.kb.se/nationality/gr",
+    "q": ""
+  },
+  {
+    "count": 3,
+    "name": "https://id.kb.se/nationality/xxu----",
+    "q": ""
+  },
+  {
+    "count": 3,
+    "name": "https://id.kb.se/nationality/n-gl---",
+    "q": ""
+  },
+  {
+    "count": 3,
+    "name": "https://id.kb.se/nationality/xr",
+    "q": ""
+  },
+  {
+    "count": 3,
+    "name": "https://id.kb.se/nationality/e-sv--",
+    "q": ""
+  },
+  {
+    "count": 3,
+    "name": "https://id.kb.se/nationality/e--es",
+    "q": ""
+  },
+  {
+    "count": 3,
+    "name": "https://id.kb.se/nationality/a-ii",
+    "q": ""
+  },
+  {
+    "count": 3,
+    "name": "https://id.kb.se/nationality/awgz---",
+    "q": ""
+  },
+  {
+    "count": 3,
+    "name": "https://id.kb.se/nationality/e-bl---",
+    "q": ""
+  },
+  {
+    "count": 3,
+    "name": "https://id.kb.se/nationality/e-pol---",
+    "q": ""
+  },
+  {
+    "count": 3,
+    "name": "https://id.kb.se/nationality/n-xxk---",
+    "q": ""
+  },
+  {
+    "count": 3,
+    "name": "https://id.kb.se/nationality/a-ls---",
+    "q": ""
+  },
+  {
+    "count": 3,
+    "name": "https://id.kb.se/nationality/f-gv---",
+    "q": ""
+  },
+  {
+    "count": 3,
+    "name": "https://id.kb.se/nationality/ri",
+    "q": ""
+  },
+  {
+    "count": 3,
+    "name": "https://id.kb.se/nationality/w-sw---",
+    "q": ""
+  },
+  {
+    "count": 2,
+    "name": "https://id.kb.se/nationality/vm",
+    "q": ""
+  },
+  {
+    "count": 2,
+    "name": "https://id.kb.se/nationality/n-mx--",
+    "q": ""
+  },
+  {
+    "count": 2,
+    "name": "https://id.kb.se/nationality/sj",
+    "q": ""
+  },
+  {
+    "count": 2,
+    "name": "https://id.kb.se/nationality/e-uk----",
+    "q": ""
+  },
+  {
+    "count": 2,
+    "name": "https://id.kb.se/nationality/stk",
+    "q": ""
+  },
+  {
+    "count": 2,
+    "name": "https://id.kb.se/nationality/i-xc---",
+    "q": ""
+  },
+  {
+    "count": 2,
+    "name": "https://id.kb.se/nationality/n-xxu",
+    "q": ""
+  },
+  {
+    "count": 2,
+    "name": "https://id.kb.se/nationality/e-mc---",
+    "q": ""
+  },
+  {
+    "count": 2,
+    "name": "https://id.kb.se/nationality/lncv---",
+    "q": ""
+  },
+  {
+    "count": 2,
+    "name": "https://id.kb.se/nationality/i-mf---",
+    "q": ""
+  },
+  {
+    "count": 2,
+    "name": "https://id.kb.se/nationality/a-np---",
+    "q": ""
+  },
+  {
+    "count": 2,
+    "name": "https://id.kb.se/nationality/gx",
+    "q": ""
+  },
+  {
+    "count": 2,
+    "name": "https://id.kb.se/nationality/e-aj---",
+    "q": ""
+  },
+  {
+    "count": 2,
+    "name": "https://id.kb.se/nationality/w",
+    "q": ""
+  },
+  {
+    "count": 2,
+    "name": "https://id.kb.se/nationality/e-ja---",
+    "q": ""
+  },
+  {
+    "count": 2,
+    "name": "https://id.kb.se/nationality/ncho---",
+    "q": ""
+  },
+  {
+    "count": 2,
+    "name": "https://id.kb.se/nationality/e-gw",
+    "q": ""
+  },
+  {
+    "count": 2,
+    "name": "https://id.kb.se/nationality/e-sp",
+    "q": ""
+  },
+  {
+    "count": 2,
+    "name": "https://id.kb.se/nationality/e-aa--",
+    "q": ""
+  },
+  {
+    "count": 2,
+    "name": "https://id.kb.se/nationality/er",
+    "q": ""
+  },
+  {
+    "count": 2,
+    "name": "https://id.kb.se/nationality/ger",
+    "q": ""
+  },
+  {
+    "count": 2,
+    "name": "https://id.kb.se/nationality/i-re---",
+    "q": ""
+  },
+  {
+    "count": 2,
+    "name": "https://id.kb.se/nationality/n------",
+    "q": ""
+  },
+  {
+    "count": 2,
+    "name": "https://id.kb.se/nationality/n--us",
+    "q": ""
+  },
+  {
+    "count": 2,
+    "name": "https://id.kb.se/nationality/sw-e--",
+    "q": ""
+  },
+  {
+    "count": 2,
+    "name": "https://id.kb.se/nationality/a-swe---",
+    "q": ""
+  },
+  {
+    "count": 2,
+    "name": "https://id.kb.se/nationality/is",
+    "q": ""
+  },
+  {
+    "count": 2,
+    "name": "https://id.kb.se/nationality/swx",
+    "q": ""
+  },
+  {
+    "count": 2,
+    "name": "https://id.kb.se/nationality/e--ge",
+    "q": ""
+  },
+  {
+    "count": 2,
+    "name": "https://id.kb.se/nationality/qw",
+    "q": ""
+  },
+  {
+    "count": 2,
+    "name": "https://id.kb.se/nationality/nwxk---",
+    "q": ""
+  },
+  {
+    "count": 2,
+    "name": "https://id.kb.se/nationality/f-mg---",
+    "q": ""
+  },
+  {
+    "count": 2,
+    "name": "https://id.kb.se/nationality/e-sv---",
+    "q": ""
+  },
+  {
+    "count": 2,
+    "name": "https://id.kb.se/nationality/e---sw",
+    "q": ""
+  },
+  {
+    "count": 2,
+    "name": "https://id.kb.se/nationality/e-swe----",
+    "q": ""
+  },
+  {
+    "count": 2,
+    "name": "https://id.kb.se/nationality/e-xxk--",
+    "q": ""
+  },
+  {
+    "count": 2,
+    "name": "https://id.kb.se/nationality/nwmj---",
+    "q": ""
+  },
+  {
+    "count": 2,
+    "name": "https://id.kb.se/nationality/f-mu---",
+    "q": ""
+  },
+  {
+    "count": 2,
+    "name": "https://id.kb.se/nationality/f-tr---",
+    "q": ""
+  },
+  {
+    "count": 2,
+    "name": "https://id.kb.se/nationality/vac",
+    "q": ""
+  },
+  {
+    "count": 2,
+    "name": "https://id.kb.se/nationality/xxus",
+    "q": ""
+  },
+  {
+    "count": 2,
+    "name": "https://id.kb.se/nationality/xr-e--",
+    "q": ""
+  },
+  {
+    "count": 2,
+    "name": "https://id.kb.se/nationality/ii",
+    "q": ""
+  },
+  {
+    "count": 2,
+    "name": "https://id.kb.se/nationality/ie",
+    "q": ""
+  },
+  {
+    "count": 2,
+    "name": "https://id.kb.se/nationality/sa",
+    "q": ""
+  },
+  {
+    "count": 2,
+    "name": "https://id.kb.se/nationality/e-fi",
+    "q": ""
+  },
+  {
+    "count": 2,
+    "name": "https://id.kb.se/nationality/e--ne",
+    "q": ""
+  },
+  {
+    "count": 2,
+    "name": "https://id.kb.se/nationality/e--de",
+    "q": ""
+  },
+  {
+    "count": 2,
+    "name": "https://id.kb.se/nationality/a-ii--",
+    "q": ""
+  },
+  {
+    "count": 2,
+    "name": "https://id.kb.se/nationality/jo",
+    "q": ""
+  },
+  {
+    "count": 2,
+    "name": "https://id.kb.se/nationality/e-er",
+    "q": ""
+  },
+  {
+    "count": 2,
+    "name": "https://id.kb.se/nationality/ccu",
+    "q": ""
+  },
+  {
+    "count": 2,
+    "name": "https://id.kb.se/nationality/n-us----",
+    "q": ""
+  },
+  {
+    "count": 2,
+    "name": "https://id.kb.se/nationality/s-gy---",
+    "q": ""
+  },
+  {
+    "count": 2,
+    "name": "https://id.kb.se/nationality/u-uz---",
+    "q": ""
+  },
+  {
+    "count": 2,
+    "name": "https://id.kb.se/nationality/n-cn--",
+    "q": ""
+  },
+  {
+    "count": 2,
+    "name": "https://id.kb.se/nationality/ae",
+    "q": ""
+  },
+  {
+    "count": 2,
+    "name": "https://id.kb.se/nationality/a-kz---",
+    "q": ""
+  },
+  {
+    "count": 2,
+    "name": "https://id.kb.se/nationality/e-at---",
+    "q": ""
+  },
+  {
+    "count": 2,
+    "name": "https://id.kb.se/nationality/cck",
+    "q": ""
+  },
+  {
+    "count": 2,
+    "name": "https://id.kb.se/nationality/nwsc---",
+    "q": ""
+  },
+  {
+    "count": 2,
+    "name": "https://id.kb.se/nationality/-e-sp---",
+    "q": ""
+  },
+  {
+    "count": 2,
+    "name": "https://id.kb.se/nationality/bl",
+    "q": ""
+  },
+  {
+    "count": 2,
+    "name": "https://id.kb.se/nationality/bu",
+    "q": ""
+  },
+  {
+    "count": 1,
+    "name": "https://id.kb.se/nationality/e-ev---",
+    "q": ""
+  },
+  {
+    "count": 1,
+    "name": "https://id.kb.se/nationality/ke",
+    "q": ""
+  },
+  {
+    "count": 1,
+    "name": "https://id.kb.se/nationality/rdu",
+    "q": ""
+  },
+  {
+    "count": 1,
+    "name": "https://id.kb.se/nationality/e-cr--",
+    "q": ""
+  },
+  {
+    "count": 1,
+    "name": "https://id.kb.se/nationality/e-sx---",
+    "q": ""
+  },
+  {
+    "count": 1,
+    "name": "https://id.kb.se/nationality/n-cn-on",
+    "q": ""
+  },
+  {
+    "count": 1,
+    "name": "https://id.kb.se/nationality/e-tu---",
+    "q": ""
+  },
+  {
+    "count": 1,
+    "name": "https://id.kb.se/nationality/e-nor---",
+    "q": ""
+  },
+  {
+    "count": 1,
+    "name": "https://id.kb.se/nationality/fe",
+    "q": ""
+  },
+  {
+    "count": 1,
+    "name": "https://id.kb.se/nationality/n-sus---",
+    "q": ""
+  },
+  {
+    "count": 1,
+    "name": "https://id.kb.se/nationality/e-eng---",
+    "q": ""
+  },
+  {
+    "count": 1,
+    "name": "https://id.kb.se/nationality/e-na---",
+    "q": ""
+  },
+  {
+    "count": 1,
+    "name": "https://id.kb.se/nationality/xo",
+    "q": ""
+  },
+  {
+    "count": 1,
+    "name": "https://id.kb.se/nationality/e-po--",
+    "q": ""
+  },
+  {
+    "count": 1,
+    "name": "https://id.kb.se/nationality/a-tu",
+    "q": ""
+  },
+  {
+    "count": 1,
+    "name": "https://id.kb.se/nationality/e-bo---",
+    "q": ""
+  },
+  {
+    "count": 1,
+    "name": "https://id.kb.se/nationality/xxi",
+    "q": ""
+  },
+  {
+    "count": 1,
+    "name": "https://id.kb.se/nationality/cat",
+    "q": ""
+  },
+  {
+    "count": 1,
+    "name": "https://id.kb.se/nationality/i-----",
+    "q": ""
+  },
+  {
+    "count": 1,
+    "name": "https://id.kb.se/nationality/e-sw-sss",
+    "q": ""
+  },
+  {
+    "count": 1,
+    "name": "https://id.kb.se/nationality/cs",
+    "q": ""
+  },
+  {
+    "count": 1,
+    "name": "https://id.kb.se/nationality/--",
+    "q": ""
+  },
+  {
+    "count": 1,
+    "name": "https://id.kb.se/nationality/ic",
+    "q": ""
+  },
+  {
+    "count": 1,
+    "name": "https://id.kb.se/nationality/e-sz",
+    "q": ""
+  },
+  {
+    "count": 1,
+    "name": "https://id.kb.se/nationality/e-be",
+    "q": ""
+  },
+  {
+    "count": 1,
+    "name": "https://id.kb.se/nationality/ch",
+    "q": ""
+  },
+  {
+    "count": 1,
+    "name": "https://id.kb.se/nationality/nwxa---",
+    "q": ""
+  },
+  {
+    "count": 1,
+    "name": "https://id.kb.se/nationality/ja",
+    "q": ""
+  },
+  {
+    "count": 1,
+    "name": "https://id.kb.se/nationality/a-us",
+    "q": ""
+  },
+  {
+    "count": 1,
+    "name": "https://id.kb.se/nationality/a-no---",
+    "q": ""
+  },
+  {
+    "count": 1,
+    "name": "https://id.kb.se/nationality/u-au---",
+    "q": ""
+  },
+  {
+    "count": 1,
+    "name": "https://id.kb.se/nationality/ga",
+    "q": ""
+  },
+  {
+    "count": 1,
+    "name": "https://id.kb.se/nationality/fa",
+    "q": ""
+  },
+  {
+    "count": 1,
+    "name": "https://id.kb.se/nationality/a-se---",
+    "q": ""
+  },
+  {
+    "count": 1,
+    "name": "https://id.kb.se/nationality/-pl---",
+    "q": ""
+  },
+  {
+    "count": 1,
+    "name": "https://id.kb.se/nationality/fin-e---",
+    "q": ""
+  },
+  {
+    "count": 1,
+    "name": "https://id.kb.se/nationality/ck",
+    "q": ""
+  },
+  {
+    "count": 1,
+    "name": "https://id.kb.se/nationality/n-pe---",
+    "q": ""
+  },
+  {
+    "count": 1,
+    "name": "https://id.kb.se/nationality/swxxu",
+    "q": ""
+  },
+  {
+    "count": 1,
+    "name": "https://id.kb.se/nationality/e-aus---",
+    "q": ""
+  },
+  {
+    "count": 1,
+    "name": "https://id.kb.se/nationality/e-cn---",
+    "q": ""
+  },
+  {
+    "count": 1,
+    "name": "https://id.kb.se/nationality/-n-us---",
+    "q": ""
+  },
+  {
+    "count": 1,
+    "name": "https://id.kb.se/nationality/a-fr---",
+    "q": ""
+  },
+  {
+    "count": 1,
+    "name": "https://id.kb.se/nationality/a-e---",
+    "q": ""
+  },
+  {
+    "count": 1,
+    "name": "https://id.kb.se/nationality/anl",
+    "q": ""
+  },
+  {
+    "count": 1,
+    "name": "https://id.kb.se/nationality/e-lh---",
+    "q": ""
+  },
+  {
+    "count": 1,
+    "name": "https://id.kb.se/nationality/e-xxk-",
+    "q": ""
+  },
+  {
+    "count": 1,
+    "name": "https://id.kb.se/nationality/lat",
+    "q": ""
+  },
+  {
+    "count": 1,
+    "name": "https://id.kb.se/nationality/a-sa---",
+    "q": ""
+  },
+  {
+    "count": 1,
+    "name": "https://id.kb.se/nationality/e-sdk---",
+    "q": ""
+  },
+  {
+    "count": 1,
+    "name": "https://id.kb.se/nationality/e-ru---e-sw---",
+    "q": ""
+  },
+  {
+    "count": 1,
+    "name": "https://id.kb.se/nationality/nwaw---",
+    "q": ""
+  },
+  {
+    "count": 1,
+    "name": "https://id.kb.se/nationality/nwmq---",
+    "q": ""
+  },
+  {
+    "count": 1,
+    "name": "https://id.kb.se/nationality/xxkw",
+    "q": ""
+  },
+  {
+    "count": 1,
+    "name": "https://id.kb.se/nationality/e-ukr---",
+    "q": ""
+  },
+  {
+    "count": 1,
+    "name": "https://id.kb.se/nationality/-e-gx---",
+    "q": ""
+  },
+  {
+    "count": 1,
+    "name": "https://id.kb.se/nationality/e-ie--",
+    "q": ""
+  },
+  {
+    "count": 1,
+    "name": "https://id.kb.se/nationality/u------",
+    "q": ""
+  },
+  {
+    "count": 1,
+    "name": "https://id.kb.se/nationality/e-fi-eee",
+    "q": ""
+  },
+  {
+    "count": 1,
+    "name": "https://id.kb.se/nationality/e-ii---",
+    "q": ""
+  },
+  {
+    "count": 1,
+    "name": "https://id.kb.se/nationality/uuk",
+    "q": ""
+  },
+  {
+    "count": 1,
+    "name": "https://id.kb.se/nationality/e-ei---",
+    "q": ""
+  },
+  {
+    "count": 1,
+    "name": "https://id.kb.se/nationality/xxxu",
+    "q": ""
+  },
+  {
+    "count": 1,
+    "name": "https://id.kb.se/nationality/ccx",
+    "q": ""
+  },
+  {
+    "count": 1,
+    "name": "https://id.kb.se/nationality/us-----",
+    "q": ""
+  },
+  {
+    "count": 1,
+    "name": "https://id.kb.se/nationality/e-ua---e-gw---",
+    "q": ""
+  },
+  {
+    "count": 1,
+    "name": "https://id.kb.se/nationality/e-ie",
+    "q": ""
+  },
+  {
+    "count": 1,
+    "name": "https://id.kb.se/nationality/kw",
+    "q": ""
+  },
+  {
+    "count": 1,
+    "name": "https://id.kb.se/nationality/e-kv---",
+    "q": ""
+  },
+  {
+    "count": 1,
+    "name": "https://id.kb.se/nationality/e-dan---",
+    "q": ""
+  },
+  {
+    "count": 1,
+    "name": "https://id.kb.se/nationality/e-fr----",
+    "q": ""
+  },
+  {
+    "count": 1,
+    "name": "https://id.kb.se/nationality/es",
+    "q": ""
+  },
+  {
+    "count": 1,
+    "name": "https://id.kb.se/nationality/w-sw--",
+    "q": ""
+  },
+  {
+    "count": 1,
+    "name": "https://id.kb.se/nationality/lt",
+    "q": ""
+  },
+  {
+    "count": 1,
+    "name": "https://id.kb.se/nationality/spa",
+    "q": ""
+  },
+  {
+    "count": 1,
+    "name": "https://id.kb.se/nationality/e-",
+    "q": ""
+  },
+  {
+    "count": 1,
+    "name": "https://id.kb.se/nationality/e-ch---",
+    "q": ""
+  },
+  {
+    "count": 1,
+    "name": "https://id.kb.se/nationality/e-gr--",
+    "q": ""
+  },
+  {
+    "count": 1,
+    "name": "https://id.kb.se/nationality/e-br---",
+    "q": ""
+  },
+  {
+    "count": 1,
+    "name": "https://id.kb.se/nationality/e-us--",
+    "q": ""
+  },
+  {
+    "count": 1,
+    "name": "https://id.kb.se/nationality/ty",
+    "q": ""
+  },
+  {
+    "count": 1,
+    "name": "https://id.kb.se/nationality/a-sgs---",
+    "q": ""
+  },
+  {
+    "count": 1,
+    "name": "https://id.kb.se/nationality/n-bl---",
+    "q": ""
+  },
+  {
+    "count": 1,
+    "name": "https://id.kb.se/nationality/e--sp--",
+    "q": ""
+  },
+  {
+    "count": 1,
+    "name": "https://id.kb.se/nationality/zw",
+    "q": ""
+  },
+  {
+    "count": 1,
+    "name": "https://id.kb.se/nationality/di",
+    "q": ""
+  },
+  {
+    "count": 1,
+    "name": "https://id.kb.se/nationality/fre",
+    "q": ""
+  },
+  {
+    "count": 1,
+    "name": "https://id.kb.se/nationality/e--ie",
+    "q": ""
+  },
+  {
+    "count": 1,
+    "name": "https://id.kb.se/nationality/nz",
+    "q": ""
+  },
+  {
+    "count": 1,
+    "name": "https://id.kb.se/nationality/br",
+    "q": ""
+  },
+  {
+    "count": 1,
+    "name": "https://id.kb.se/nationality/dd",
+    "q": ""
+  },
+  {
+    "count": 1,
+    "name": "https://id.kb.se/nationality/-s-bl---",
+    "q": ""
+  },
+  {
+    "count": 1,
+    "name": "https://id.kb.se/nationality/-a-ir---",
+    "q": ""
+  },
+  {
+    "count": 1,
+    "name": "https://id.kb.se/nationality/sw-se---",
+    "q": ""
+  },
+  {
+    "count": 1,
+    "name": "https://id.kb.se/nationality/u--at",
+    "q": ""
+  },
+  {
+    "count": 1,
+    "name": "https://id.kb.se/nationality/e-vt--",
+    "q": ""
+  },
+  {
+    "count": 1,
+    "name": "https://id.kb.se/nationality/hi",
+    "q": ""
+  },
+  {
+    "count": 1,
+    "name": "https://id.kb.se/nationality/lsbv---",
+    "q": ""
+  },
+  {
+    "count": 1,
+    "name": "https://id.kb.se/nationality/ec",
+    "q": ""
+  },
+  {
+    "count": 1,
+    "name": "https://id.kb.se/nationality/rus",
+    "q": ""
+  },
+  {
+    "count": 1,
+    "name": "https://id.kb.se/nationality/e-gr",
+    "q": ""
+  },
+  {
+    "count": 1,
+    "name": "https://id.kb.se/nationality/e--sw",
+    "q": ""
+  },
+  {
+    "count": 1,
+    "name": "https://id.kb.se/nationality/e-cc---",
+    "q": ""
+  },
+  {
+    "count": 1,
+    "name": "https://id.kb.se/nationality/aj",
+    "q": ""
+  },
+  {
+    "count": 1,
+    "name": "https://id.kb.se/nationality/ua",
+    "q": ""
+  },
+  {
+    "count": 1,
+    "name": "https://id.kb.se/nationality/a-cc-ti",
+    "q": ""
+  },
+  {
+    "count": 1,
+    "name": "https://id.kb.se/nationality/e--no---",
+    "q": ""
+  },
+  {
+    "count": 1,
+    "name": "https://id.kb.se/nationality/cl",
+    "q": ""
+  },
+  {
+    "count": 1,
+    "name": "https://id.kb.se/nationality/f-tg---",
+    "q": ""
+  },
+  {
+    "count": 1,
+    "name": "https://id.kb.se/nationality/f-go---",
+    "q": ""
+  },
+  {
+    "count": 1,
+    "name": "https://id.kb.se/nationality/e--swe",
+    "q": ""
+  },
+  {
+    "count": 1,
+    "name": "https://id.kb.se/nationality/e-jp---",
+    "q": ""
+  },
+  {
+    "count": 1,
+    "name": "https://id.kb.se/nationality/nwgp---",
+    "q": ""
+  },
+  {
+    "count": 1,
+    "name": "https://id.kb.se/nationality/xxg",
+    "q": ""
+  },
+  {
+    "count": 1,
+    "name": "https://id.kb.se/nationality/tn",
+    "q": ""
+  },
+  {
+    "count": 1,
+    "name": "https://id.kb.se/nationality/e-tu--",
+    "q": ""
+  },
+  {
+    "count": 1,
+    "name": "https://id.kb.se/nationality/a-nl---",
+    "q": ""
+  },
+  {
+    "count": 1,
+    "name": "https://id.kb.se/nationality/nwvi---",
+    "q": ""
+  },
+  {
+    "count": 1,
+    "name": "https://id.kb.se/nationality/e-nl--",
+    "q": ""
+  },
+  {
+    "count": 1,
+    "name": "https://id.kb.se/nationality/e-xr--",
+    "q": ""
+  },
+  {
+    "count": 1,
+    "name": "https://id.kb.se/nationality/e-por---",
+    "q": ""
+  },
+  {
+    "count": 1,
+    "name": "https://id.kb.se/nationality/ni",
+    "q": ""
+  },
+  {
+    "count": 1,
+    "name": "https://id.kb.se/nationality/e-tk---",
+    "q": ""
+  },
+  {
+    "count": 1,
+    "name": "https://id.kb.se/nationality/e-ger---",
+    "q": ""
+  },
+  {
+    "count": 1,
+    "name": "https://id.kb.se/nationality/sv",
+    "q": ""
+  },
+  {
+    "count": 1,
+    "name": "https://id.kb.se/nationality/ser",
+    "q": ""
+  },
+  {
+    "count": 1,
+    "name": "https://id.kb.se/nationality/e-sq--",
+    "q": ""
+  },
+  {
+    "count": 1,
+    "name": "https://id.kb.se/nationality/f-nr------",
+    "q": ""
+  },
+  {
+    "count": 1,
+    "name": "https://id.kb.se/nationality/n-cu---",
+    "q": ""
+  },
+  {
+    "count": 1,
+    "name": "https://id.kb.se/nationality/e-by---",
+    "q": ""
+  },
+  {
+    "count": 1,
+    "name": "https://id.kb.se/nationality/e-rus---",
+    "q": ""
+  },
+  {
+    "count": 1,
+    "name": "https://id.kb.se/nationality/rm",
+    "q": ""
+  },
+  {
+    "count": 1,
+    "name": "https://id.kb.se/nationality/e-lv--",
+    "q": ""
+  },
+  {
+    "count": 1,
+    "name": "https://id.kb.se/nationality/ya",
+    "q": ""
+  },
+  {
+    "count": 1,
+    "name": "https://id.kb.se/nationality/a-ls",
+    "q": ""
+  },
+  {
+    "count": 1,
+    "name": "https://id.kb.se/nationality/swe--",
+    "q": ""
+  },
+  {
+    "count": 1,
+    "name": "https://id.kb.se/nationality/cro",
+    "q": ""
+  },
+  {
+    "count": 1,
+    "name": "https://id.kb.se/nationality/gk",
+    "q": ""
+  },
+  {
+    "count": 1,
+    "name": "https://id.kb.se/nationality/e-xxk",
+    "q": ""
+  },
+  {
+    "count": 1,
+    "name": "https://id.kb.se/nationality/th",
+    "q": ""
+  },
+  {
+    "count": 1,
+    "name": "https://id.kb.se/nationality/e-we---",
+    "q": ""
+  },
+  {
+    "count": 1,
+    "name": "https://id.kb.se/nationality/dn",
+    "q": ""
+  },
+  {
+    "count": 1,
+    "name": "https://id.kb.se/nationality/dek",
+    "q": ""
+  },
+  {
+    "count": 1,
+    "name": "https://id.kb.se/nationality/nn",
+    "q": ""
+  },
+  {
+    "count": 1,
+    "name": "https://id.kb.se/nationality/e-swe-",
+    "q": ""
+  },
+  {
+    "count": 1,
+    "name": "https://id.kb.se/nationality/e-ci--",
+    "q": ""
+  },
+  {
+    "count": 1,
+    "name": "https://id.kb.se/nationality/s-w---",
+    "q": ""
+  },
+  {
+    "count": 1,
+    "name": "https://id.kb.se/nationality/x",
+    "q": ""
+  },
+  {
+    "count": 1,
+    "name": "https://id.kb.se/nationality/ei",
+    "q": ""
+  },
+  {
+    "count": 1,
+    "name": "https://id.kb.se/nationality/uk",
+    "q": ""
+  },
+  {
+    "count": 1,
+    "name": "https://id.kb.se/nationality/ag",
+    "q": ""
+  },
+  {
+    "count": 1,
+    "name": "https://id.kb.se/nationality/wb",
+    "q": ""
+  },
+  {
+    "count": 1,
+    "name": "https://id.kb.se/nationality/-mr---",
+    "q": ""
+  },
+  {
+    "count": 1,
+    "name": "https://id.kb.se/nationality/e-ch--",
+    "q": ""
+  },
+  {
+    "count": 1,
+    "name": "https://id.kb.se/nationality/xkk",
+    "q": ""
+  },
+  {
+    "count": 1,
+    "name": "https://id.kb.se/nationality/cu",
+    "q": ""
+  },
+  {
+    "count": 1,
+    "name": "https://id.kb.se/nationality/e--xr",
+    "q": ""
+  },
+  {
+    "count": 1,
+    "name": "https://id.kb.se/nationality/s-fg---",
+    "q": ""
+  },
+  {
+    "count": 1,
+    "name": "https://id.kb.se/nationality/sy",
+    "q": ""
+  },
+  {
+    "count": 1,
+    "name": "https://id.kb.se/nationality/ssu",
+    "q": ""
+  },
+  {
+    "count": 1,
+    "name": "https://id.kb.se/nationality/--sw---",
+    "q": ""
+  },
+  {
+    "count": 1,
+    "name": "https://id.kb.se/nationality/a-at---",
+    "q": ""
+  },
+  {
+    "count": 1,
+    "name": "https://id.kb.se/nationality/al",
+    "q": ""
+  },
+  {
+    "count": 1,
+    "name": "https://id.kb.se/nationality/jam",
+    "q": ""
+  },
+  {
+    "count": 1,
+    "name": "https://id.kb.se/nationality/e-fr",
+    "q": ""
+  },
+  {
+    "count": 1,
+    "name": "https://id.kb.se/nationality/-e-fi--",
+    "q": ""
+  },
+  {
+    "count": 1,
+    "name": "https://id.kb.se/nationality/e-fi---i",
+    "q": ""
+  },
+  {
+    "count": 1,
+    "name": "https://id.kb.se/nationality/e-rm--",
+    "q": ""
+  },
+  {
+    "count": 1,
+    "name": "https://id.kb.se/nationality/swfi",
+    "q": ""
+  },
+  {
+    "count": 1,
+    "name": "https://id.kb.se/nationality/pt",
+    "q": ""
+  },
+  {
+    "count": 1,
+    "name": "https://id.kb.se/nationality/e-ro---",
+    "q": ""
+  },
+  {
+    "count": 1,
+    "name": "https://id.kb.se/nationality/a-iq----",
+    "q": ""
+  },
+  {
+    "count": 1,
+    "name": "https://id.kb.se/nationality/n--mx",
+    "q": ""
+  },
+  {
+    "count": 1,
+    "name": "https://id.kb.se/nationality/xy",
+    "q": ""
+  },
+  {
+    "count": 1,
+    "name": "https://id.kb.se/nationality/ux",
+    "q": ""
+  },
+  {
+    "count": 1,
+    "name": "https://id.kb.se/nationality/zs",
+    "q": ""
+  },
+  {
+    "count": 1,
+    "name": "https://id.kb.se/nationality/xxit",
+    "q": ""
+  },
+  {
+    "count": 1,
+    "name": "https://id.kb.se/nationality/f-sq---",
+    "q": ""
+  },
+  {
+    "count": 1,
+    "name": "https://id.kb.se/nationality/a-ch--",
+    "q": ""
+  },
+  {
+    "count": 1,
+    "name": "https://id.kb.se/nationality/e-es",
+    "q": ""
+  },
+  {
+    "count": 1,
+    "name": "https://id.kb.se/nationality/e-bu---e-no---",
+    "q": ""
+  },
+  {
+    "count": 1,
+    "name": "https://id.kb.se/nationality/f-so--",
+    "q": ""
+  },
+  {
+    "count": 1,
+    "name": "https://id.kb.se/nationality/hr",
+    "q": ""
+  },
+  {
+    "count": 1,
+    "name": "https://id.kb.se/nationality/e--it",
+    "q": ""
+  },
+  {
+    "count": 1,
+    "name": "https://id.kb.se/nationality/a-pp---",
+    "q": ""
+  },
+  {
+    "count": 1,
+    "name": "https://id.kb.se/nationality/nwaq---",
+    "q": ""
+  },
+  {
+    "count": 1,
+    "name": "https://id.kb.se/nationality/a-kg---",
+    "q": ""
+  },
+  {
+    "count": 1,
+    "name": "https://id.kb.se/nationality/e-xuu---",
+    "q": ""
+  },
+  {
+    "count": 1,
+    "name": "https://id.kb.se/nationality/e-un",
+    "q": ""
+  },
+  {
+    "count": 1,
+    "name": "https://id.kb.se/nationality/xxuq",
+    "q": ""
+  },
+  {
+    "count": 1,
+    "name": "https://id.kb.se/nationality/sw---",
+    "q": ""
+  },
+  {
+    "count": 1,
+    "name": "https://id.kb.se/nationality/-e-uk---",
+    "q": ""
+  },
+  {
+    "count": 1,
+    "name": "https://id.kb.se/nationality/-e-sp--",
+    "q": ""
+  },
+  {
+    "count": 1,
+    "name": "https://id.kb.se/nationality/li",
+    "q": ""
+  },
+  {
+    "count": 1,
+    "name": "https://id.kb.se/nationality/den",
+    "q": ""
+  },
+  {
+    "count": 1,
+    "name": "https://id.kb.se/nationality/ew-sw---",
+    "q": ""
+  },
+  {
+    "count": 1,
+    "name": "https://id.kb.se/nationality/e-pl---e-dk---",
+    "q": ""
+  },
+  {
+    "count": 1,
+    "name": "https://id.kb.se/nationality/a-jp--",
+    "q": ""
+  },
+  {
+    "count": 1,
+    "name": "https://id.kb.se/nationality/f-ft---",
+    "q": ""
+  },
+  {
+    "count": 1,
+    "name": "https://id.kb.se/nationality/e-ru-eee",
+    "q": ""
+  },
+  {
+    "count": 1,
+    "name": "https://id.kb.se/nationality/e-bw",
+    "q": ""
+  },
+  {
+    "count": 1,
+    "name": "https://id.kb.se/nationality/e-gx----",
+    "q": ""
+  },
+  {
+    "count": 1,
+    "name": "https://id.kb.se/nationality/a-ja--",
+    "q": ""
+  }
+]
