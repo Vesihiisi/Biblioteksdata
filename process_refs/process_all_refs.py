@@ -7,7 +7,7 @@ import mwparserfromhell as parser
 from collections import Counter
 import importer_utils as utils
 
-OUTPUT = "all_refs_sorted.tsv"
+OUTPUT_BOOKS = "all_book_refs_sorted.tsv"
 
 
 def save_sorted(sorted_data, fname):
@@ -16,7 +16,7 @@ def save_sorted(sorted_data, fname):
         f.write("{}\t{}\t{}\n".format("count", "book", "author"))
         for k, v in sorted_data:
             f.write("{}\t{}\n".format(v, k))
-    print("Saved file: {}".format(OUTPUT))
+    print("Saved file: {}".format(OUTPUT_BOOKS))
 
 
 def ref_to_template(bokref):
@@ -67,15 +67,15 @@ def load_bokrefs(path):
     return bokrefs
 
 
-def main(args):
+def get_frequencies_books(args):
     """Process file with all refs."""
     bokrefs = load_bokrefs(args.path)
     commonest = Counter(bokrefs).most_common()
-    save_sorted(commonest, OUTPUT)
+    save_sorted(commonest, OUTPUT_BOOKS)
 
 
 if __name__ == "__main__":
     argparser = argparse.ArgumentParser()
     argparser.add_argument("--path", required=True)
     args = argparser.parse_args()
-    main(args)
+    get_frequencies_books(args)
