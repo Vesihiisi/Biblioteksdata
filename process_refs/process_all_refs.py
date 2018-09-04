@@ -62,6 +62,7 @@ def bokref_to_work(bokref):
 
 
 def load_webrefs(path):
+    """Process all url's found in the dumpfile."""
     webrefs = []
     counter = 0
     regex = ('http[s]?://(?:[a-zA-Z]|[0-9]|[$-_@.&+]'
@@ -103,13 +104,14 @@ def load_bokrefs(path):
 
 
 def get_frequencies_websites(args):
+    """Process file with all refs to extract websites."""
     webrefs = load_webrefs(args.path)
     commonest = Counter(webrefs).most_common()
     save_sorted_websites(commonest, OUTPUT_WEBSITES)
 
 
 def get_frequencies_books(args):
-    """Process file with all refs."""
+    """Process file with all refs to extract books."""
     bokrefs = load_bokrefs(args.path)
     commonest = Counter(bokrefs).most_common()
     save_sorted_books(commonest, OUTPUT_BOOKS)
@@ -120,4 +122,4 @@ if __name__ == "__main__":
     argparser.add_argument("--path", required=True)
     args = argparser.parse_args()
     get_frequencies_websites(args)
-    # get_frequencies_books(args)
+    get_frequencies_books(args)

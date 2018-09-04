@@ -36,4 +36,4 @@ python3 process_refs.py --path isbn_sorted.tsv --limit 20
 
 * **process_refs/process_runeberg.py** – create a frequency count for the runeberg.org template with different parameters on svwp. [Output](https://gist.github.com/Vesihiisi/4ed15b89a5a5c316398adea5b165625f).
 
-* **process_refs/process_all_refs.py** create a frequency count for the bokref template on svwp. [Output](https://gist.github.com/Vesihiisi/400529978ad1757db9b096ff1ee6545a).
+* **process_refs/process_all_refs.py** create a frequency count for the bokref template and URL's on svwp. [Output – bookrefs](https://gist.github.com/Vesihiisi/400529978ad1757db9b096ff1ee6545a). [Output – URL's](https://gist.github.com/Vesihiisi/1a47ea5cbf1d8532f8a4469b74e9c121)
