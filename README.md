@@ -28,10 +28,12 @@ The pre-processing scripts take the data from https://figshare.com/articles/Wiki
 python3 counter.py --path svwiki.tsv
 ```
 
-* **process_refs/process_refs.py** – using the Libris API, convert the ISBN frequency list to titles and authors. Can be limited to n top entries. Wikidata matches for works will be found via ISBN and Libris ID. [Output for svwp – works](https://gist.github.com/Vesihiisi/04ec2c73a774b7a33b48de62143fe62c). [Output for svwp – authors](https://gist.github.com/Vesihiisi/0dd90db206bbe86ad2f502781365fa28).
+* **process_refs/process_isbn_refs.py** – using the Libris API, convert the ISBN frequency list to titles and authors. Can be limited to n top entries. Wikidata matches for works will be found via ISBN and Libris ID. [Output for svwp – works](https://gist.github.com/Vesihiisi/04ec2c73a774b7a33b48de62143fe62c). [Output for svwp – authors](https://gist.github.com/Vesihiisi/0dd90db206bbe86ad2f502781365fa28).
 
 ```
 python3 process_refs.py --path isbn_sorted.tsv --limit 20
 ```
 
 * **process_refs/process_runeberg.py** – create a frequency count for the runeberg.org template with different parameters on svwp. [Output](https://gist.github.com/Vesihiisi/4ed15b89a5a5c316398adea5b165625f).
+
+* **process_refs/process_all_refs.py** create a frequency count for the bokref template on svwp. [Output](https://gist.github.com/Vesihiisi/400529978ad1757db9b096ff1ee6545a).
