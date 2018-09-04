@@ -3,20 +3,32 @@
 """Process all bookrefs from svwp."""
 import argparse
 import csv
+import re
+from urllib.parse import urlparse
 import mwparserfromhell as parser
 from collections import Counter
 import importer_utils as utils
 
 OUTPUT_BOOKS = "all_book_refs_sorted.tsv"
+OUTPUT_WEBSITES = "all_websites_sorted.tsv"
 
 
-def save_sorted(sorted_data, fname):
-    """Save sorted  data as tsv file."""
+def save_sorted_websites(sorted_data, fname):
+    """Save sorted website data as tsv file."""
+    with open(fname, "w") as f:
+        f.write("{}\t{}\n".format("count", "website"))
+        for k, v in sorted_data:
+            f.write("{}\t{}\n".format(v, k))
+    print("Saved file: {}".format(fname))
+
+
+def save_sorted_books(sorted_data, fname):
+    """Save sorted book data as tsv file."""
     with open(fname, "w") as f:
         f.write("{}\t{}\t{}\n".format("count", "book", "author"))
         for k, v in sorted_data:
             f.write("{}\t{}\n".format(v, k))
-    print("Saved file: {}".format(OUTPUT_BOOKS))
+    print("Saved file: {}".format(fname))
 
 
 def ref_to_template(bokref):
@@ -49,6 +61,29 @@ def bokref_to_work(bokref):
         return work
 
 
+def load_webrefs(path):
+    webrefs = []
+    counter = 0
+    regex = ('http[s]?://(?:[a-zA-Z]|[0-9]|[$-_@.&+]'
+             '|[!*\(\),]|(?:%[0-9a-fA-F][0-9a-fA-F]))+')
+    with open(path) as tsvfile:
+        reader = csv.reader(tsvfile, delimiter='\t')
+        for row in reader:
+            urls = re.findall(regex, row[0])
+            for url in urls:
+                try:
+                    netloc = urlparse(url).netloc
+                except ValueError:
+                    continue
+                if netloc.startswith("www."):
+                    netloc = netloc[4:]
+                webrefs.append(netloc)
+                counter += 1
+                if counter % 1000 == 0:
+                    print("Processed {} refs.".format(counter))
+    return webrefs
+
+
 def load_bokrefs(path):
     """Extract okay-looking bookrefs from file."""
     bokrefs = []
@@ -67,15 +102,22 @@ def load_bokrefs(path):
     return bokrefs
 
 
+def get_frequencies_websites(args):
+    webrefs = load_webrefs(args.path)
+    commonest = Counter(webrefs).most_common()
+    save_sorted_websites(commonest, OUTPUT_WEBSITES)
+
+
 def get_frequencies_books(args):
     """Process file with all refs."""
     bokrefs = load_bokrefs(args.path)
     commonest = Counter(bokrefs).most_common()
-    save_sorted(commonest, OUTPUT_BOOKS)
+    save_sorted_books(commonest, OUTPUT_BOOKS)
 
 
 if __name__ == "__main__":
     argparser = argparse.ArgumentParser()
     argparser.add_argument("--path", required=True)
     args = argparser.parse_args()
-    get_frequencies_books(args)
+    get_frequencies_websites(args)
+    # get_frequencies_books(args)
