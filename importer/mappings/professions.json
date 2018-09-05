@@ -1,3 +1,2832 @@
-{
-	"författare": "Q36180"
-}
+[
+    {
+        "name": "författare",
+        "count": 241,
+        "q": "Q36180"
+    },
+    {
+        "name": "journalister",
+        "count": 167,
+        "q": "Q1930187"
+    },
+    {
+        "name": "översättare",
+        "count": 143,
+        "q": "Q333634"
+    },
+    {
+        "name": "illustratörer",
+        "count": 142,
+        "q": "Q644687"
+    },
+    {
+        "name": "fotografer",
+        "count": 137,
+        "q": "Q33231"
+    },
+    {
+        "name": "konstnärer",
+        "count": 114,
+        "q": "Q483501"
+    },
+    {
+        "name": "lärare",
+        "count": 71,
+        "q": "Q37226"
+    },
+    {
+        "name": "forskare",
+        "count": 71,
+        "q": "Q1650915"
+    },
+    {
+        "name": "poeter",
+        "count": 59,
+        "q": "Q49757"
+    },
+    {
+        "name": "läkare",
+        "count": 58,
+        "q": "Q39631"
+    },
+    {
+        "name": "psykologer",
+        "count": 54,
+        "q": "Q212980"
+    },
+    {
+        "name": "barnboksförfattare",
+        "count": 45,
+        "q": "Q4853732"
+    },
+    {
+        "name": "jurister",
+        "count": 39,
+        "q": "Q185351"
+    },
+    {
+        "name": "professorer",
+        "count": 35,
+        "q": "Q121594"
+    },
+    {
+        "name": "poliser",
+        "count": 35,
+        "q": "Q384593"
+    },
+    {
+        "name": "politiker",
+        "count": 33,
+        "q": "Q82955"
+    },
+    {
+        "name": "präster",
+        "count": 31,
+        "q": "Q42603"
+    },
+    {
+        "name": "musiker",
+        "count": 30,
+        "q": "Q639669"
+    },
+    {
+        "name": "skådespelare",
+        "count": 29,
+        "q": "Q33999"
+    },
+    {
+        "name": "historiker",
+        "count": 27,
+        "q": "Q201788"
+    },
+    {
+        "name": "militärer",
+        "count": 24,
+        "q": "Q47064"
+    },
+    {
+        "name": "bibliotekarier",
+        "count": 24,
+        "q": "Q182436"
+    },
+    {
+        "name": "serietecknare",
+        "count": 23,
+        "q": "Q715301"
+    },
+    {
+        "name": "litteraturvetare",
+        "count": 22,
+        "q": "Q17167049"
+    },
+    {
+        "name": "redaktörer",
+        "count": 21,
+        "q": "Q1607826"
+    },
+    {
+        "name": "arkitekter",
+        "count": 21,
+        "q": "Q42973"
+    },
+    {
+        "name": "gymnasielärare",
+        "count": 18,
+        "q": "Q10511368"
+    },
+    {
+        "name": "tonsättare",
+        "count": 17,
+        "q": "Q36834"
+    },
+    {
+        "name": "lantmätare",
+        "count": 17,
+        "q": "Q294126"
+    },
+    {
+        "name": "journalist",
+        "count": 17,
+        "q": "Q1930187"
+    },
+    {
+        "name": "civilingenjörer",
+        "count": 17,
+        "q": "Q13582652"
+    },
+    {
+        "name": "målare (bildkonstnärer)",
+        "count": 16,
+        "q": "Q1028181"
+    },
+    {
+        "name": "pastorer",
+        "count": 16,
+        "q": "Q152002"
+    },
+    {
+        "name": "ingenjörer",
+        "count": 15,
+        "q": "Q81096"
+    },
+    {
+        "name": "kockar",
+        "count": 15,
+        "q": "Q156839"
+    },
+    {
+        "name": "psykoterapeuter",
+        "count": 15,
+        "q": "Q1900167"
+    },
+    {
+        "name": "illustratör",
+        "count": 15,
+        "q": "Q644687"
+    },
+    {
+        "name": "advokater",
+        "count": 15,
+        "q": "Q40348"
+    },
+    {
+        "name": "filosofer",
+        "count": 14,
+        "q": "Q4964182"
+    },
+    {
+        "name": "matematiker",
+        "count": 14,
+        "q": "Q170790"
+    },
+    {
+        "name": "konsthistoriker",
+        "count": 14,
+        "q": "Q1792450"
+    },
+    {
+        "name": "bokförläggare",
+        "count": 13,
+        "q": "Q2516866"
+    },
+    {
+        "name": "sångare",
+        "count": 13,
+        "q": "Q177220"
+    },
+    {
+        "name": "pedagoger",
+        "count": 13,
+        "q": "Q1231865"
+    },
+    {
+        "name": "förskollärare",
+        "count": 13,
+        "q": ""
+    },
+    {
+        "name": "diplomater",
+        "count": 12,
+        "q": ""
+    },
+    {
+        "name": "civilekonomer",
+        "count": 12,
+        "q": ""
+    },
+    {
+        "name": "företagare",
+        "count": 12,
+        "q": ""
+    },
+    {
+        "name": "fysioterapeuter",
+        "count": 12,
+        "q": ""
+    },
+    {
+        "name": "biologer",
+        "count": 11,
+        "q": ""
+    },
+    {
+        "name": "formgivare",
+        "count": 10,
+        "q": ""
+    },
+    {
+        "name": "dramatiker",
+        "count": 10,
+        "q": ""
+    },
+    {
+        "name": "publicister",
+        "count": 10,
+        "q": ""
+    },
+    {
+        "name": "litteraturkritiker",
+        "count": 10,
+        "q": ""
+    },
+    {
+        "name": "stadsingenjörer",
+        "count": 10,
+        "q": ""
+    },
+    {
+        "name": "fotograf",
+        "count": 10,
+        "q": ""
+    },
+    {
+        "name": "grafiska formgivare",
+        "count": 9,
+        "q": ""
+    },
+    {
+        "name": "statsvetare",
+        "count": 9,
+        "q": ""
+    },
+    {
+        "name": "regissörer",
+        "count": 9,
+        "q": ""
+    },
+    {
+        "name": "socionomer",
+        "count": 8,
+        "q": ""
+    },
+    {
+        "name": "psykiatriker",
+        "count": 8,
+        "q": ""
+    },
+    {
+        "name": "romanförfattare",
+        "count": 8,
+        "q": ""
+    },
+    {
+        "name": "programledare",
+        "count": 8,
+        "q": ""
+    },
+    {
+        "name": "konsulter",
+        "count": 8,
+        "q": ""
+    },
+    {
+        "name": "skulptörer",
+        "count": 8,
+        "q": ""
+    },
+    {
+        "name": "kungar",
+        "count": 8,
+        "q": ""
+    },
+    {
+        "name": "sjuksköterskor",
+        "count": 8,
+        "q": ""
+    },
+    {
+        "name": "fysiker",
+        "count": 8,
+        "q": ""
+    },
+    {
+        "name": "copywriter",
+        "count": 8,
+        "q": ""
+    },
+    {
+        "name": "teologer",
+        "count": 8,
+        "q": ""
+    },
+    {
+        "name": "högskolelärare",
+        "count": 7,
+        "q": ""
+    },
+    {
+        "name": "dirigenter",
+        "count": 7,
+        "q": ""
+    },
+    {
+        "name": "detektiver (sao)",
+        "count": 7,
+        "q": ""
+    },
+    {
+        "name": "beteendevetare",
+        "count": 7,
+        "q": ""
+    },
+    {
+        "name": "polis",
+        "count": 7,
+        "q": ""
+    },
+    {
+        "name": "detektiver",
+        "count": 7,
+        "q": ""
+    },
+    {
+        "name": "specialpedagoger",
+        "count": 7,
+        "q": ""
+    },
+    {
+        "name": "textilkonstnärer",
+        "count": 7,
+        "q": ""
+    },
+    {
+        "name": "tecknare",
+        "count": 6,
+        "q": ""
+    },
+    {
+        "name": "landskapsarkitekter",
+        "count": 6,
+        "q": ""
+    },
+    {
+        "name": "bloggare",
+        "count": 6,
+        "q": ""
+    },
+    {
+        "name": "etnologer",
+        "count": 6,
+        "q": ""
+    },
+    {
+        "name": "ekonomer",
+        "count": 6,
+        "q": ""
+    },
+    {
+        "name": "filmregissörer",
+        "count": 6,
+        "q": ""
+    },
+    {
+        "name": "arkivarier",
+        "count": 6,
+        "q": ""
+    },
+    {
+        "name": "krögare",
+        "count": 6,
+        "q": ""
+    },
+    {
+        "name": "officerare",
+        "count": 6,
+        "q": ""
+    },
+    {
+        "name": "redaktör",
+        "count": 6,
+        "q": ""
+    },
+    {
+        "name": "kartografer",
+        "count": 6,
+        "q": ""
+    },
+    {
+        "name": "arkeologer",
+        "count": 6,
+        "q": ""
+    },
+    {
+        "name": "fotbollsspelare",
+        "count": 6,
+        "q": ""
+    },
+    {
+        "name": "skriftställare",
+        "count": 5,
+        "q": ""
+    },
+    {
+        "name": "bönder",
+        "count": 5,
+        "q": ""
+    },
+    {
+        "name": "sociologer",
+        "count": 5,
+        "q": ""
+    },
+    {
+        "name": "antikvarier",
+        "count": 5,
+        "q": ""
+    },
+    {
+        "name": "språkvetare",
+        "count": 5,
+        "q": ""
+    },
+    {
+        "name": "släktforskare",
+        "count": 5,
+        "q": ""
+    },
+    {
+        "name": "rektorer",
+        "count": 5,
+        "q": ""
+    },
+    {
+        "name": "kirurger",
+        "count": 5,
+        "q": ""
+    },
+    {
+        "name": "löpare",
+        "count": 5,
+        "q": ""
+    },
+    {
+        "name": "riddare",
+        "count": 4,
+        "q": ""
+    },
+    {
+        "name": "komiker",
+        "count": 4,
+        "q": ""
+    },
+    {
+        "name": "bibliotekarie",
+        "count": 4,
+        "q": ""
+    },
+    {
+        "name": "diakoner",
+        "count": 4,
+        "q": ""
+    },
+    {
+        "name": "tandläkare",
+        "count": 4,
+        "q": ""
+    },
+    {
+        "name": "missionärer",
+        "count": 4,
+        "q": ""
+    },
+    {
+        "name": "medier (andevärlden)",
+        "count": 4,
+        "q": ""
+    },
+    {
+        "name": "poliser (sao)",
+        "count": 4,
+        "q": ""
+    },
+    {
+        "name": "ambassadörer",
+        "count": 4,
+        "q": ""
+    },
+    {
+        "name": "agronomer",
+        "count": 4,
+        "q": ""
+    },
+    {
+        "name": "konstkritiker",
+        "count": 4,
+        "q": ""
+    },
+    {
+        "name": "kemister",
+        "count": 4,
+        "q": ""
+    },
+    {
+        "name": "drottningar",
+        "count": 4,
+        "q": ""
+    },
+    {
+        "name": "läromedelsförfattare",
+        "count": 4,
+        "q": ""
+    },
+    {
+        "name": "präst",
+        "count": 4,
+        "q": ""
+    },
+    {
+        "name": "grundskollärare",
+        "count": 3,
+        "q": ""
+    },
+    {
+        "name": "dansare",
+        "count": 3,
+        "q": ""
+    },
+    {
+        "name": "läkare (sao)",
+        "count": 3,
+        "q": ""
+    },
+    {
+        "name": "pianister",
+        "count": 3,
+        "q": ""
+    },
+    {
+        "name": "teknologie doktor",
+        "count": 3,
+        "q": ""
+    },
+    {
+        "name": "nationalekonomer",
+        "count": 3,
+        "q": ""
+    },
+    {
+        "name": "kommunalpolitiker",
+        "count": 3,
+        "q": ""
+    },
+    {
+        "name": "affärsman",
+        "count": 3,
+        "q": ""
+    },
+    {
+        "name": "konstnär",
+        "count": 3,
+        "q": ""
+    },
+    {
+        "name": "programledare på tv",
+        "count": 3,
+        "q": ""
+    },
+    {
+        "name": "sångerskor",
+        "count": 3,
+        "q": ""
+    },
+    {
+        "name": "piloter",
+        "count": 3,
+        "q": ""
+    },
+    {
+        "name": "rappare",
+        "count": 3,
+        "q": ""
+    },
+    {
+        "name": "musikkritiker",
+        "count": 3,
+        "q": ""
+    },
+    {
+        "name": "logopeder",
+        "count": 3,
+        "q": ""
+    },
+    {
+        "name": "predikanter",
+        "count": 3,
+        "q": ""
+    },
+    {
+        "name": "antropologer",
+        "count": 3,
+        "q": ""
+    },
+    {
+        "name": "jazzmusiker",
+        "count": 3,
+        "q": ""
+    },
+    {
+        "name": "kriminologer",
+        "count": 3,
+        "q": ""
+    },
+    {
+        "name": "domare",
+        "count": 3,
+        "q": ""
+    },
+    {
+        "name": "skönlitterär författare",
+        "count": 3,
+        "q": ""
+    },
+    {
+        "name": "folkskollärare",
+        "count": 3,
+        "q": ""
+    },
+    {
+        "name": "tidningsredaktörer",
+        "count": 3,
+        "q": ""
+    },
+    {
+        "name": "teaterchefer",
+        "count": 3,
+        "q": ""
+    },
+    {
+        "name": "modedesigner",
+        "count": 3,
+        "q": ""
+    },
+    {
+        "name": "möbelformgivare",
+        "count": 3,
+        "q": ""
+    },
+    {
+        "name": "teaterregissörer",
+        "count": 3,
+        "q": ""
+    },
+    {
+        "name": "affärsmän",
+        "count": 3,
+        "q": ""
+    },
+    {
+        "name": "hembygdsforskare",
+        "count": 3,
+        "q": ""
+    },
+    {
+        "name": "konstnärer (sao)",
+        "count": 2,
+        "q": ""
+    },
+    {
+        "name": "fotomodeller",
+        "count": 2,
+        "q": ""
+    },
+    {
+        "name": "journalister (sao)",
+        "count": 2,
+        "q": ""
+    },
+    {
+        "name": "motorcyklister",
+        "count": 2,
+        "q": ""
+    },
+    {
+        "name": "veterinär",
+        "count": 2,
+        "q": ""
+    },
+    {
+        "name": "rektor",
+        "count": 2,
+        "q": ""
+    },
+    {
+        "name": "idrottstränare",
+        "count": 2,
+        "q": ""
+    },
+    {
+        "name": "förlagsredaktör",
+        "count": 2,
+        "q": ""
+    },
+    {
+        "name": "biskopar",
+        "count": 2,
+        "q": ""
+    },
+    {
+        "name": "keramiker",
+        "count": 2,
+        "q": ""
+    },
+    {
+        "name": "skådespelerska",
+        "count": 2,
+        "q": ""
+    },
+    {
+        "name": "violinister",
+        "count": 2,
+        "q": ""
+    },
+    {
+        "name": "presidenter",
+        "count": 2,
+        "q": ""
+    },
+    {
+        "name": "ornitologer",
+        "count": 2,
+        "q": ""
+    },
+    {
+        "name": "båtbyggare",
+        "count": 2,
+        "q": ""
+    },
+    {
+        "name": "åklagare",
+        "count": 2,
+        "q": ""
+    },
+    {
+        "name": "manusförfattare",
+        "count": 2,
+        "q": ""
+    },
+    {
+        "name": "gravörer",
+        "count": 2,
+        "q": ""
+    },
+    {
+        "name": "filologer",
+        "count": 2,
+        "q": ""
+    },
+    {
+        "name": "idrottsledare",
+        "count": 2,
+        "q": ""
+    },
+    {
+        "name": "språkkonsult",
+        "count": 2,
+        "q": ""
+    },
+    {
+        "name": "entreprenörskap",
+        "count": 2,
+        "q": ""
+    },
+    {
+        "name": "sömmerskor",
+        "count": 2,
+        "q": ""
+    },
+    {
+        "name": "entreprenörer",
+        "count": 2,
+        "q": ""
+    },
+    {
+        "name": "företagsledare",
+        "count": 2,
+        "q": ""
+    },
+    {
+        "name": "etnolog",
+        "count": 2,
+        "q": ""
+    },
+    {
+        "name": "museichef",
+        "count": 2,
+        "q": ""
+    },
+    {
+        "name": "reportrar",
+        "count": 2,
+        "q": ""
+    },
+    {
+        "name": "tekniker",
+        "count": 2,
+        "q": ""
+    },
+    {
+        "name": "psykoanalytiker",
+        "count": 2,
+        "q": ""
+    },
+    {
+        "name": "biokemister",
+        "count": 2,
+        "q": ""
+    },
+    {
+        "name": "arkeolog",
+        "count": 2,
+        "q": ""
+    },
+    {
+        "name": "organisationskonsulter",
+        "count": 2,
+        "q": ""
+    },
+    {
+        "name": "slöjdlärare",
+        "count": 2,
+        "q": ""
+    },
+    {
+        "name": "svensklärare",
+        "count": 2,
+        "q": ""
+    },
+    {
+        "name": "kvinnliga översättare",
+        "count": 2,
+        "q": ""
+    },
+    {
+        "name": "tv-producenter",
+        "count": 2,
+        "q": ""
+    },
+    {
+        "name": "saxofonister",
+        "count": 2,
+        "q": ""
+    },
+    {
+        "name": "konstkuratorer",
+        "count": 2,
+        "q": ""
+    },
+    {
+        "name": "bokhandlare",
+        "count": 2,
+        "q": ""
+    },
+    {
+        "name": "civilingenjör",
+        "count": 2,
+        "q": ""
+    },
+    {
+        "name": "professor",
+        "count": 2,
+        "q": ""
+    },
+    {
+        "name": "superhjältar",
+        "count": 2,
+        "q": ""
+    },
+    {
+        "name": "geologer",
+        "count": 2,
+        "q": ""
+    },
+    {
+        "name": "farmaceuter",
+        "count": 2,
+        "q": ""
+    },
+    {
+        "name": "schackspelare",
+        "count": 2,
+        "q": ""
+    },
+    {
+        "name": "boxare",
+        "count": 2,
+        "q": ""
+    },
+    {
+        "name": "it-konsulter",
+        "count": 2,
+        "q": ""
+    },
+    {
+        "name": "prinsessor",
+        "count": 2,
+        "q": ""
+    },
+    {
+        "name": "marinbiologer",
+        "count": 2,
+        "q": ""
+    },
+    {
+        "name": "ingenjör",
+        "count": 2,
+        "q": ""
+    },
+    {
+        "name": "deckarförfattare",
+        "count": 2,
+        "q": ""
+    },
+    {
+        "name": "barnboksillustratörer",
+        "count": 2,
+        "q": ""
+    },
+    {
+        "name": "poet",
+        "count": 2,
+        "q": ""
+    },
+    {
+        "name": "kyrkoherdar",
+        "count": 2,
+        "q": ""
+    },
+    {
+        "name": "sportjournalister",
+        "count": 2,
+        "q": ""
+    },
+    {
+        "name": "filmproducenter",
+        "count": 2,
+        "q": ""
+    },
+    {
+        "name": "kriminalreportrar",
+        "count": 2,
+        "q": ""
+    },
+    {
+        "name": "präster (sao)",
+        "count": 2,
+        "q": ""
+    },
+    {
+        "name": "veterinärer",
+        "count": 2,
+        "q": ""
+    },
+    {
+        "name": "genusforskare",
+        "count": 2,
+        "q": ""
+    },
+    {
+        "name": "jägmästare",
+        "count": 2,
+        "q": ""
+    },
+    {
+        "name": "bagare",
+        "count": 2,
+        "q": ""
+    },
+    {
+        "name": "skolledare",
+        "count": 2,
+        "q": ""
+    },
+    {
+        "name": "socialdemokrater",
+        "count": 2,
+        "q": ""
+    },
+    {
+        "name": "zoologer",
+        "count": 2,
+        "q": ""
+    },
+    {
+        "name": "möbelsnickare",
+        "count": 2,
+        "q": ""
+    },
+    {
+        "name": "operasångare",
+        "count": 2,
+        "q": ""
+    },
+    {
+        "name": "kvinna",
+        "count": 2,
+        "q": ""
+    },
+    {
+        "name": "filmfotografer",
+        "count": 2,
+        "q": ""
+    },
+    {
+        "name": "biolog",
+        "count": 2,
+        "q": ""
+    },
+    {
+        "name": "museimän",
+        "count": 2,
+        "q": ""
+    },
+    {
+        "name": "kock",
+        "count": 2,
+        "q": ""
+    },
+    {
+        "name": "spioner",
+        "count": 1,
+        "q": ""
+    },
+    {
+        "name": "skogsingenjörer",
+        "count": 1,
+        "q": ""
+    },
+    {
+        "name": "österrikiska kvinnliga författare",
+        "count": 1,
+        "q": ""
+    },
+    {
+        "name": "poeter (sao)",
+        "count": 1,
+        "q": ""
+    },
+    {
+        "name": "läroverkslärare",
+        "count": 1,
+        "q": ""
+    },
+    {
+        "name": "kvinnliga författare (sao)",
+        "count": 1,
+        "q": ""
+    },
+    {
+        "name": "kvinnliga detektiver (sao)",
+        "count": 1,
+        "q": ""
+    },
+    {
+        "name": "arbetsvetenskap",
+        "count": 1,
+        "q": ""
+    },
+    {
+        "name": "kopister",
+        "count": 1,
+        "q": ""
+    },
+    {
+        "name": "skolsköterskor",
+        "count": 1,
+        "q": ""
+    },
+    {
+        "name": "advokat",
+        "count": 1,
+        "q": ""
+    },
+    {
+        "name": "glaskonstnärer",
+        "count": 1,
+        "q": ""
+    },
+    {
+        "name": "etologi",
+        "count": 1,
+        "q": ""
+    },
+    {
+        "name": "regi",
+        "count": 1,
+        "q": ""
+    },
+    {
+        "name": "kvinnliga skådespelare",
+        "count": 1,
+        "q": ""
+    },
+    {
+        "name": "heraldik",
+        "count": 1,
+        "q": ""
+    },
+    {
+        "name": "religionshistoriker",
+        "count": 1,
+        "q": ""
+    },
+    {
+        "name": "matematiklärare",
+        "count": 1,
+        "q": ""
+    },
+    {
+        "name": "legosoldater",
+        "count": 1,
+        "q": ""
+    },
+    {
+        "name": "sport",
+        "count": 1,
+        "q": ""
+    },
+    {
+        "name": "konstvetare",
+        "count": 1,
+        "q": ""
+    },
+    {
+        "name": "paleografi",
+        "count": 1,
+        "q": ""
+    },
+    {
+        "name": "arbetsterapeuter",
+        "count": 1,
+        "q": ""
+    },
+    {
+        "name": "folkhögskolelärare",
+        "count": 1,
+        "q": ""
+    },
+    {
+        "name": "florist",
+        "count": 1,
+        "q": ""
+    },
+    {
+        "name": "barnläkare",
+        "count": 1,
+        "q": ""
+    },
+    {
+        "name": "kvinnliga forskare",
+        "count": 1,
+        "q": ""
+    },
+    {
+        "name": "museimaän",
+        "count": 1,
+        "q": ""
+    },
+    {
+        "name": "aarkeolog",
+        "count": 1,
+        "q": ""
+    },
+    {
+        "name": "kemi",
+        "count": 1,
+        "q": ""
+    },
+    {
+        "name": "munk, starjets",
+        "count": 1,
+        "q": ""
+    },
+    {
+        "name": "munkar",
+        "count": 1,
+        "q": ""
+    },
+    {
+        "name": "ekonomijournalistik",
+        "count": 1,
+        "q": ""
+    },
+    {
+        "name": "skogsinspektör",
+        "count": 1,
+        "q": ""
+    },
+    {
+        "name": "kvinnliga dansare",
+        "count": 1,
+        "q": ""
+    },
+    {
+        "name": "regissör",
+        "count": 1,
+        "q": ""
+    },
+    {
+        "name": "apotekare",
+        "count": 1,
+        "q": ""
+    },
+    {
+        "name": "idrottare",
+        "count": 1,
+        "q": ""
+    },
+    {
+        "name": "barnflickor",
+        "count": 1,
+        "q": ""
+    },
+    {
+        "name": "programledare i tv",
+        "count": 1,
+        "q": ""
+    },
+    {
+        "name": "näringsfysiolog",
+        "count": 1,
+        "q": ""
+    },
+    {
+        "name": "konstfotografer",
+        "count": 1,
+        "q": ""
+    },
+    {
+        "name": "tolkar",
+        "count": 1,
+        "q": ""
+    },
+    {
+        "name": "egyptologer",
+        "count": 1,
+        "q": ""
+    },
+    {
+        "name": "superhjältar (sao)",
+        "count": 1,
+        "q": ""
+    },
+    {
+        "name": "ortopedingenjör",
+        "count": 1,
+        "q": ""
+    },
+    {
+        "name": "socionom",
+        "count": 1,
+        "q": ""
+    },
+    {
+        "name": "föreläsare",
+        "count": 1,
+        "q": ""
+    },
+    {
+        "name": "trädgårdsmästare",
+        "count": 1,
+        "q": ""
+    },
+    {
+        "name": "försäkringsmäklare",
+        "count": 1,
+        "q": ""
+    },
+    {
+        "name": "conquistadorer",
+        "count": 1,
+        "q": ""
+    },
+    {
+        "name": "företagsekonomer",
+        "count": 1,
+        "q": ""
+    },
+    {
+        "name": "revisorer",
+        "count": 1,
+        "q": ""
+    },
+    {
+        "name": "byggmästare",
+        "count": 1,
+        "q": ""
+    },
+    {
+        "name": "kvinnliga psykologer",
+        "count": 1,
+        "q": ""
+    },
+    {
+        "name": "kulturvetare",
+        "count": 1,
+        "q": ""
+    },
+    {
+        "name": "säljare",
+        "count": 1,
+        "q": ""
+    },
+    {
+        "name": "konsthantverkare",
+        "count": 1,
+        "q": ""
+    },
+    {
+        "name": "hetman",
+        "count": 1,
+        "q": ""
+    },
+    {
+        "name": "molekylärbiolog",
+        "count": 1,
+        "q": ""
+    },
+    {
+        "name": "landskapsarkitekt",
+        "count": 1,
+        "q": ""
+    },
+    {
+        "name": "tävlingsförare",
+        "count": 1,
+        "q": ""
+    },
+    {
+        "name": "språklärare",
+        "count": 1,
+        "q": ""
+    },
+    {
+        "name": "yogalärare",
+        "count": 1,
+        "q": ""
+    },
+    {
+        "name": "psykoteurapeut",
+        "count": 1,
+        "q": ""
+    },
+    {
+        "name": "religionsforskare",
+        "count": 1,
+        "q": ""
+    },
+    {
+        "name": "spökskrivare",
+        "count": 1,
+        "q": ""
+    },
+    {
+        "name": "samhällsvetare",
+        "count": 1,
+        "q": ""
+    },
+    {
+        "name": "spanienfrivilliga",
+        "count": 1,
+        "q": ""
+    },
+    {
+        "name": "skyttar (skjutvapen)",
+        "count": 1,
+        "q": ""
+    },
+    {
+        "name": "konsthistoriker (sao)",
+        "count": 1,
+        "q": ""
+    },
+    {
+        "name": "bönder (sao)",
+        "count": 1,
+        "q": ""
+    },
+    {
+        "name": "skräddare",
+        "count": 1,
+        "q": ""
+    },
+    {
+        "name": "taxichaufförer",
+        "count": 1,
+        "q": ""
+    },
+    {
+        "name": "ståuppkomiker",
+        "count": 1,
+        "q": ""
+    },
+    {
+        "name": "italienska författare",
+        "count": 1,
+        "q": ""
+    },
+    {
+        "name": "arkitekt",
+        "count": 1,
+        "q": ""
+    },
+    {
+        "name": "sjöofficerare",
+        "count": 1,
+        "q": ""
+    },
+    {
+        "name": "polis (sao)",
+        "count": 1,
+        "q": ""
+    },
+    {
+        "name": "barn med neuropsykiatrisk funktionsnedsättning",
+        "count": 1,
+        "q": ""
+    },
+    {
+        "name": "finansmän",
+        "count": 1,
+        "q": ""
+    },
+    {
+        "name": "svenska fotbollstränare",
+        "count": 1,
+        "q": ""
+    },
+    {
+        "name": "svenska poeter",
+        "count": 1,
+        "q": ""
+    },
+    {
+        "name": "egenföretagare",
+        "count": 1,
+        "q": ""
+    },
+    {
+        "name": "musikbibliotekarier",
+        "count": 1,
+        "q": ""
+    },
+    {
+        "name": "bruksläkare",
+        "count": 1,
+        "q": ""
+    },
+    {
+        "name": "fältskär",
+        "count": 1,
+        "q": ""
+    },
+    {
+        "name": "psykiska trauman",
+        "count": 1,
+        "q": ""
+    },
+    {
+        "name": "undervattensfotografer",
+        "count": 1,
+        "q": ""
+    },
+    {
+        "name": "fotografer (sao)",
+        "count": 1,
+        "q": ""
+    },
+    {
+        "name": "socialarbetare",
+        "count": 1,
+        "q": ""
+    },
+    {
+        "name": "biståndsarbetare",
+        "count": 1,
+        "q": ""
+    },
+    {
+        "name": "litografer",
+        "count": 1,
+        "q": ""
+    },
+    {
+        "name": "boförläggare",
+        "count": 1,
+        "q": ""
+    },
+    {
+        "name": "astronomer",
+        "count": 1,
+        "q": ""
+    },
+    {
+        "name": "kvinnliga jurister",
+        "count": 1,
+        "q": ""
+    },
+    {
+        "name": "hemmafruar",
+        "count": 1,
+        "q": ""
+    },
+    {
+        "name": "konservatorer",
+        "count": 1,
+        "q": ""
+    },
+    {
+        "name": "kvinnliga fotografer",
+        "count": 1,
+        "q": ""
+    },
+    {
+        "name": "personliga tränare",
+        "count": 1,
+        "q": ""
+    },
+    {
+        "name": "optiker",
+        "count": 1,
+        "q": ""
+    },
+    {
+        "name": "teknologie dr",
+        "count": 1,
+        "q": ""
+    },
+    {
+        "name": "doktorander",
+        "count": 1,
+        "q": ""
+    },
+    {
+        "name": "diplomat",
+        "count": 1,
+        "q": ""
+    },
+    {
+        "name": "industrimän",
+        "count": 1,
+        "q": ""
+    },
+    {
+        "name": "rekrorer",
+        "count": 1,
+        "q": ""
+    },
+    {
+        "name": "fångvaktare",
+        "count": 1,
+        "q": ""
+    },
+    {
+        "name": "hamnarbetare",
+        "count": 1,
+        "q": ""
+    },
+    {
+        "name": "bussförare",
+        "count": 1,
+        "q": ""
+    },
+    {
+        "name": "illustrtörer",
+        "count": 1,
+        "q": ""
+    },
+    {
+        "name": "poesi",
+        "count": 1,
+        "q": ""
+    },
+    {
+        "name": "talangscout",
+        "count": 1,
+        "q": ""
+    },
+    {
+        "name": "avdelningsadministratör",
+        "count": 1,
+        "q": ""
+    },
+    {
+        "name": "travhästar (sao)",
+        "count": 1,
+        "q": ""
+    },
+    {
+        "name": "folkbildare",
+        "count": 1,
+        "q": ""
+    },
+    {
+        "name": "uppfinnare",
+        "count": 1,
+        "q": ""
+    },
+    {
+        "name": "serieteckanre",
+        "count": 1,
+        "q": ""
+    },
+    {
+        "name": "lågstadielärare",
+        "count": 1,
+        "q": ""
+    },
+    {
+        "name": "målare",
+        "count": 1,
+        "q": ""
+    },
+    {
+        "name": "skolbibliotekarier",
+        "count": 1,
+        "q": ""
+    },
+    {
+        "name": "essäist",
+        "count": 1,
+        "q": ""
+    },
+    {
+        "name": "kyrkoherde",
+        "count": 1,
+        "q": ""
+    },
+    {
+        "name": "newspaper editors",
+        "count": 1,
+        "q": ""
+    },
+    {
+        "name": "frisörer",
+        "count": 1,
+        "q": ""
+    },
+    {
+        "name": "svenska kvinnliga poeter",
+        "count": 1,
+        "q": ""
+    },
+    {
+        "name": "coacher",
+        "count": 1,
+        "q": ""
+    },
+    {
+        "name": "svenska sjömän",
+        "count": 1,
+        "q": ""
+    },
+    {
+        "name": "sjökaptener",
+        "count": 1,
+        "q": ""
+    },
+    {
+        "name": "torpare",
+        "count": 1,
+        "q": ""
+    },
+    {
+        "name": "koreanska kvinnliga författare",
+        "count": 1,
+        "q": ""
+    },
+    {
+        "name": "kvinnliga präster",
+        "count": 1,
+        "q": ""
+    },
+    {
+        "name": "fotomodell",
+        "count": 1,
+        "q": ""
+    },
+    {
+        "name": "bokillustratörer (sao)",
+        "count": 1,
+        "q": ""
+    },
+    {
+        "name": "gudinnor",
+        "count": 1,
+        "q": ""
+    },
+    {
+        "name": "filmkritiker",
+        "count": 1,
+        "q": ""
+    },
+    {
+        "name": "sjuksköterska",
+        "count": 1,
+        "q": ""
+    },
+    {
+        "name": "neurologer",
+        "count": 1,
+        "q": ""
+    },
+    {
+        "name": "rättsläkare (sao)",
+        "count": 1,
+        "q": ""
+    },
+    {
+        "name": "adelsmän",
+        "count": 1,
+        "q": ""
+    },
+    {
+        "name": "musikanter",
+        "count": 1,
+        "q": ""
+    },
+    {
+        "name": "cyklister",
+        "count": 1,
+        "q": ""
+    },
+    {
+        "name": "spelmän",
+        "count": 1,
+        "q": ""
+    },
+    {
+        "name": "åklagare (sao)",
+        "count": 1,
+        "q": ""
+    },
+    {
+        "name": "sjukhuskuratorer",
+        "count": 1,
+        "q": ""
+    },
+    {
+        "name": "hundpsykolog",
+        "count": 1,
+        "q": ""
+    },
+    {
+        "name": "hundinstruktör",
+        "count": 1,
+        "q": ""
+    },
+    {
+        "name": "dietist",
+        "count": 1,
+        "q": ""
+    },
+    {
+        "name": "matskribent",
+        "count": 1,
+        "q": ""
+    },
+    {
+        "name": "kärnfysiker",
+        "count": 1,
+        "q": ""
+    },
+    {
+        "name": "svenska kvinnliga författare",
+        "count": 1,
+        "q": ""
+    },
+    {
+        "name": "journaliser",
+        "count": 1,
+        "q": ""
+    },
+    {
+        "name": "informatörer",
+        "count": 1,
+        "q": ""
+    },
+    {
+        "name": "kultur- och fritidschef",
+        "count": 1,
+        "q": ""
+    },
+    {
+        "name": "bokkonstnärer",
+        "count": 1,
+        "q": ""
+    },
+    {
+        "name": "metallarbetare",
+        "count": 1,
+        "q": ""
+    },
+    {
+        "name": "astrologer",
+        "count": 1,
+        "q": ""
+    },
+    {
+        "name": "kvinnliga keramiker",
+        "count": 1,
+        "q": ""
+    },
+    {
+        "name": "filmare",
+        "count": 1,
+        "q": ""
+    },
+    {
+        "name": "konsult",
+        "count": 1,
+        "q": ""
+    },
+    {
+        "name": "scenografer",
+        "count": 1,
+        "q": ""
+    },
+    {
+        "name": "universitetsadjunkt",
+        "count": 1,
+        "q": ""
+    },
+    {
+        "name": "kvinnliga kockar",
+        "count": 1,
+        "q": ""
+    },
+    {
+        "name": "vårdlärare",
+        "count": 1,
+        "q": ""
+    },
+    {
+        "name": "iilustratörer",
+        "count": 1,
+        "q": ""
+    },
+    {
+        "name": "organister",
+        "count": 1,
+        "q": ""
+    },
+    {
+        "name": "genetiker",
+        "count": 1,
+        "q": ""
+    },
+    {
+        "name": "fredlösa",
+        "count": 1,
+        "q": ""
+    },
+    {
+        "name": "rövare (sao)",
+        "count": 1,
+        "q": ""
+    },
+    {
+        "name": "kemist",
+        "count": 1,
+        "q": ""
+    },
+    {
+        "name": "kuratorer (museer)",
+        "count": 1,
+        "q": ""
+    },
+    {
+        "name": "fastighetsmäklare",
+        "count": 1,
+        "q": ""
+    },
+    {
+        "name": "svenska barnboksförfattare",
+        "count": 1,
+        "q": ""
+    },
+    {
+        "name": "musiklärare",
+        "count": 1,
+        "q": ""
+    },
+    {
+        "name": "militärhistoria",
+        "count": 1,
+        "q": ""
+    },
+    {
+        "name": "moderedaktörer",
+        "count": 1,
+        "q": ""
+    },
+    {
+        "name": "stylister",
+        "count": 1,
+        "q": ""
+    },
+    {
+        "name": "människorättsaktivist",
+        "count": 1,
+        "q": ""
+    },
+    {
+        "name": "fenicier",
+        "count": 1,
+        "q": ""
+    },
+    {
+        "name": "biodlare",
+        "count": 1,
+        "q": ""
+    },
+    {
+        "name": "vissångare",
+        "count": 1,
+        "q": ""
+    },
+    {
+        "name": "läroboksförfattare",
+        "count": 1,
+        "q": ""
+    },
+    {
+        "name": "amerikanska kvinnliga författare",
+        "count": 1,
+        "q": ""
+    },
+    {
+        "name": "nederländska författare",
+        "count": 1,
+        "q": ""
+    },
+    {
+        "name": "hästuppfödare",
+        "count": 1,
+        "q": ""
+    },
+    {
+        "name": "basister",
+        "count": 1,
+        "q": ""
+    },
+    {
+        "name": "psykiatriker (sao)",
+        "count": 1,
+        "q": ""
+    },
+    {
+        "name": "distriktssköterskor",
+        "count": 1,
+        "q": ""
+    },
+    {
+        "name": "premiärministrar",
+        "count": 1,
+        "q": ""
+    },
+    {
+        "name": "svenska kvinnliga missionärer",
+        "count": 1,
+        "q": ""
+    },
+    {
+        "name": "statstjänstemän",
+        "count": 1,
+        "q": ""
+    },
+    {
+        "name": "pr-konsult",
+        "count": 1,
+        "q": ""
+    },
+    {
+        "name": "skribent",
+        "count": 1,
+        "q": ""
+    },
+    {
+        "name": "föräldrar till barn med funktionsnedsättning",
+        "count": 1,
+        "q": ""
+    },
+    {
+        "name": "religiös ledare",
+        "count": 1,
+        "q": ""
+    },
+    {
+        "name": "konservator",
+        "count": 1,
+        "q": ""
+    },
+    {
+        "name": "folkmusiker",
+        "count": 1,
+        "q": ""
+    },
+    {
+        "name": "användbarhetsexpert",
+        "count": 1,
+        "q": ""
+    },
+    {
+        "name": "dirigent",
+        "count": 1,
+        "q": ""
+    },
+    {
+        "name": "folklorister",
+        "count": 1,
+        "q": ""
+    },
+    {
+        "name": "kokboksförfattare",
+        "count": 1,
+        "q": ""
+    },
+    {
+        "name": "statistiker",
+        "count": 1,
+        "q": ""
+    },
+    {
+        "name": "trollkarlar",
+        "count": 1,
+        "q": ""
+    },
+    {
+        "name": "yoga",
+        "count": 1,
+        "q": ""
+    },
+    {
+        "name": "civilingengörer",
+        "count": 1,
+        "q": ""
+    },
+    {
+        "name": "jourister",
+        "count": 1,
+        "q": ""
+    },
+    {
+        "name": "militäranalytiker",
+        "count": 1,
+        "q": ""
+    },
+    {
+        "name": "fritidspedagoger",
+        "count": 1,
+        "q": ""
+    },
+    {
+        "name": "sekreterare",
+        "count": 1,
+        "q": ""
+    },
+    {
+        "name": "konditorer",
+        "count": 1,
+        "q": ""
+    },
+    {
+        "name": "kvinnliga piloter",
+        "count": 1,
+        "q": ""
+    },
+    {
+        "name": "fosterföräldrar",
+        "count": 1,
+        "q": ""
+    },
+    {
+        "name": "silversmeder",
+        "count": 1,
+        "q": ""
+    },
+    {
+        "name": "psykologer (sao)",
+        "count": 1,
+        "q": ""
+    },
+    {
+        "name": "god man",
+        "count": 1,
+        "q": ""
+    },
+    {
+        "name": "universitetslärare",
+        "count": 1,
+        "q": ""
+    },
+    {
+        "name": "påvar",
+        "count": 1,
+        "q": ""
+    },
+    {
+        "name": "professor i läkemedelskemi",
+        "count": 1,
+        "q": ""
+    },
+    {
+        "name": "kartritare",
+        "count": 1,
+        "q": ""
+    },
+    {
+        "name": "direktörer",
+        "count": 1,
+        "q": ""
+    },
+    {
+        "name": "bokörläggare",
+        "count": 1,
+        "q": ""
+    },
+    {
+        "name": "musikbibliotekarie",
+        "count": 1,
+        "q": ""
+    },
+    {
+        "name": "katalogiseringschef",
+        "count": 1,
+        "q": ""
+    },
+    {
+        "name": "bibliotekschef",
+        "count": 1,
+        "q": ""
+    },
+    {
+        "name": "bibliografisk expert",
+        "count": 1,
+        "q": ""
+    },
+    {
+        "name": "artister",
+        "count": 1,
+        "q": ""
+    },
+    {
+        "name": "bankirer",
+        "count": 1,
+        "q": ""
+    },
+    {
+        "name": "barn- och ungdomsförfattare",
+        "count": 1,
+        "q": ""
+    },
+    {
+        "name": "kommunaltjänstemän",
+        "count": 1,
+        "q": ""
+    },
+    {
+        "name": "kulturgeografer",
+        "count": 1,
+        "q": ""
+    },
+    {
+        "name": "seglare",
+        "count": 1,
+        "q": ""
+    },
+    {
+        "name": "byggnadschef",
+        "count": 1,
+        "q": ""
+    },
+    {
+        "name": "specialistsjuksköterskor",
+        "count": 1,
+        "q": ""
+    },
+    {
+        "name": "exilförfattare",
+        "count": 1,
+        "q": ""
+    },
+    {
+        "name": "polarforskare",
+        "count": 1,
+        "q": ""
+    },
+    {
+        "name": "hantverkare",
+        "count": 1,
+        "q": ""
+    },
+    {
+        "name": "designers",
+        "count": 1,
+        "q": ""
+    },
+    {
+        "name": "ögonläkare",
+        "count": 1,
+        "q": ""
+    },
+    {
+        "name": "jounalister",
+        "count": 1,
+        "q": ""
+    },
+    {
+        "name": "författare --",
+        "count": 1,
+        "q": ""
+    },
+    {
+        "name": "manliga rockmusiker",
+        "count": 1,
+        "q": ""
+    },
+    {
+        "name": "svenska författare",
+        "count": 1,
+        "q": ""
+    },
+    {
+        "name": "träsnidare",
+        "count": 1,
+        "q": ""
+    },
+    {
+        "name": "osteologer",
+        "count": 1,
+        "q": ""
+    },
+    {
+        "name": "kvinnliga profeter",
+        "count": 1,
+        "q": ""
+    },
+    {
+        "name": "sibyllor",
+        "count": 1,
+        "q": ""
+    },
+    {
+        "name": "textförfattare (musik)",
+        "count": 1,
+        "q": ""
+    },
+    {
+        "name": "musikförläggare",
+        "count": 1,
+        "q": ""
+    },
+    {
+        "name": "glaskonstnärer (sao)",
+        "count": 1,
+        "q": ""
+    },
+    {
+        "name": "cykelsamordnare",
+        "count": 1,
+        "q": ""
+    },
+    {
+        "name": "lantbrevbärare",
+        "count": 1,
+        "q": ""
+    },
+    {
+        "name": "kuratorer",
+        "count": 1,
+        "q": ""
+    },
+    {
+        "name": "svenska dramatiker",
+        "count": 1,
+        "q": ""
+    },
+    {
+        "name": "antikvarie",
+        "count": 1,
+        "q": ""
+    },
+    {
+        "name": "sinologer",
+        "count": 1,
+        "q": ""
+    },
+    {
+        "name": "nationalekonomer (sao)",
+        "count": 1,
+        "q": ""
+    },
+    {
+        "name": "innebandyspelare",
+        "count": 1,
+        "q": ""
+    },
+    {
+        "name": "naturvetare",
+        "count": 1,
+        "q": ""
+    },
+    {
+        "name": "kvinnliga seglare",
+        "count": 1,
+        "q": ""
+    },
+    {
+        "name": "utrikeskommentator",
+        "count": 1,
+        "q": ""
+    },
+    {
+        "name": "filmvetenskap",
+        "count": 1,
+        "q": ""
+    },
+    {
+        "name": "relationscoach",
+        "count": 1,
+        "q": ""
+    },
+    {
+        "name": "gymnastiklärare",
+        "count": 1,
+        "q": ""
+    },
+    {
+        "name": "tapetmakare",
+        "count": 1,
+        "q": ""
+    },
+    {
+        "name": "tulltjänstemän",
+        "count": 1,
+        "q": ""
+    },
+    {
+        "name": "layoutare",
+        "count": 1,
+        "q": ""
+    },
+    {
+        "name": "fotbollstränare",
+        "count": 1,
+        "q": ""
+    },
+    {
+        "name": "arkivarie",
+        "count": 1,
+        "q": ""
+    },
+    {
+        "name": "skidåkare",
+        "count": 1,
+        "q": ""
+    },
+    {
+        "name": "skulptör",
+        "count": 1,
+        "q": ""
+    },
+    {
+        "name": "byggnadsantikvarie",
+        "count": 1,
+        "q": ""
+    },
+    {
+        "name": "högstadielärare",
+        "count": 1,
+        "q": ""
+    },
+    {
+        "name": "psykolog",
+        "count": 1,
+        "q": ""
+    },
+    {
+        "name": "bildredaktör",
+        "count": 1,
+        "q": ""
+    },
+    {
+        "name": "väckelsepredikanter",
+        "count": 1,
+        "q": ""
+    },
+    {
+        "name": "noveller",
+        "count": 1,
+        "q": ""
+    },
+    {
+        "name": "diktsamlingar",
+        "count": 1,
+        "q": ""
+    },
+    {
+        "name": "flyghistoriker",
+        "count": 1,
+        "q": ""
+    },
+    {
+        "name": "videkonstnärer",
+        "count": 1,
+        "q": ""
+    },
+    {
+        "name": "gis-samordnare",
+        "count": 1,
+        "q": ""
+    },
+    {
+        "name": "hackers",
+        "count": 1,
+        "q": ""
+    },
+    {
+        "name": "lokalhistoriker",
+        "count": 1,
+        "q": ""
+    },
+    {
+        "name": "gitarrister",
+        "count": 1,
+        "q": ""
+    },
+    {
+        "name": "musikproducenter",
+        "count": 1,
+        "q": ""
+    },
+    {
+        "name": "språkkonsulent",
+        "count": 1,
+        "q": ""
+    },
+    {
+        "name": "nationalekonomi",
+        "count": 1,
+        "q": ""
+    },
+    {
+        "name": "arbetsterapeut",
+        "count": 1,
+        "q": ""
+    },
+    {
+        "name": "psykoterapeut",
+        "count": 1,
+        "q": ""
+    },
+    {
+        "name": "studierektorer",
+        "count": 1,
+        "q": ""
+    },
+    {
+        "name": "kinesiska författare",
+        "count": 1,
+        "q": ""
+    },
+    {
+        "name": "kinesiska poeter",
+        "count": 1,
+        "q": ""
+    },
+    {
+        "name": "kvinnliga tecknare",
+        "count": 1,
+        "q": ""
+    },
+    {
+        "name": "fackliga ledare",
+        "count": 1,
+        "q": ""
+    },
+    {
+        "name": "man",
+        "count": 1,
+        "q": ""
+    },
+    {
+        "name": "säkerhetsexpert",
+        "count": 1,
+        "q": ""
+    },
+    {
+        "name": "kvinnliga lärare",
+        "count": 1,
+        "q": ""
+    },
+    {
+        "name": "fotografi",
+        "count": 1,
+        "q": ""
+    },
+    {
+        "name": "filmegissör",
+        "count": 1,
+        "q": ""
+    },
+    {
+        "name": "filmproducent",
+        "count": 1,
+        "q": ""
+    },
+    {
+        "name": "animatörer",
+        "count": 1,
+        "q": ""
+    },
+    {
+        "name": "barnmorskor",
+        "count": 1,
+        "q": ""
+    },
+    {
+        "name": "utrikeskorrespondenter",
+        "count": 1,
+        "q": ""
+    },
+    {
+        "name": "arabister",
+        "count": 1,
+        "q": ""
+    },
+    {
+        "name": "doktorand",
+        "count": 1,
+        "q": ""
+    },
+    {
+        "name": "singer/songwriters",
+        "count": 1,
+        "q": ""
+    },
+    {
+        "name": "litteraturkrtiker",
+        "count": 1,
+        "q": ""
+    },
+    {
+        "name": "marknadsförare",
+        "count": 1,
+        "q": ""
+    },
+    {
+        "name": "forskningsresande",
+        "count": 1,
+        "q": ""
+    },
+    {
+        "name": "lektor",
+        "count": 1,
+        "q": ""
+    },
+    {
+        "name": "rättsläkare",
+        "count": 1,
+        "q": ""
+    },
+    {
+        "name": "offentlig upphandling",
+        "count": 1,
+        "q": ""
+    },
+    {
+        "name": "rekorer",
+        "count": 1,
+        "q": ""
+    },
+    {
+        "name": "äventyr och äventyrare",
+        "count": 1,
+        "q": ""
+    },
+    {
+        "name": "revyartister",
+        "count": 1,
+        "q": ""
+    },
+    {
+        "name": "franska författare",
+        "count": 1,
+        "q": ""
+    },
+    {
+        "name": "konståkare",
+        "count": 1,
+        "q": ""
+    },
+    {
+        "name": "satiriker",
+        "count": 1,
+        "q": ""
+    },
+    {
+        "name": "skolmästare",
+        "count": 1,
+        "q": ""
+    },
+    {
+        "name": "psalmdiktare (sao)",
+        "count": 1,
+        "q": ""
+    },
+    {
+        "name": "missionärer (sao)",
+        "count": 1,
+        "q": ""
+    },
+    {
+        "name": "spelaragenter",
+        "count": 1,
+        "q": ""
+    },
+    {
+        "name": "tryckare",
+        "count": 1,
+        "q": ""
+    },
+    {
+        "name": "utgivare",
+        "count": 1,
+        "q": ""
+    },
+    {
+        "name": "barnyogalärare",
+        "count": 1,
+        "q": ""
+    },
+    {
+        "name": "performancekonstnärer",
+        "count": 1,
+        "q": ""
+    },
+    {
+        "name": "organist",
+        "count": 1,
+        "q": ""
+    },
+    {
+        "name": "musikhistoriker",
+        "count": 1,
+        "q": ""
+    },
+    {
+        "name": "rockmusiker",
+        "count": 1,
+        "q": ""
+    },
+    {
+        "name": "civilekonom",
+        "count": 1,
+        "q": ""
+    },
+    {
+        "name": "revisor",
+        "count": 1,
+        "q": ""
+    },
+    {
+        "name": "kommendörer",
+        "count": 1,
+        "q": ""
+    },
+    {
+        "name": "kvinnliga pedagoger",
+        "count": 1,
+        "q": ""
+    },
+    {
+        "name": "kostrådgivare",
+        "count": 1,
+        "q": ""
+    },
+    {
+        "name": "sao",
+        "count": 1,
+        "q": ""
+    },
+    {
+        "name": "teaterpedagog",
+        "count": 1,
+        "q": ""
+    },
+    {
+        "name": "teaterchef",
+        "count": 1,
+        "q": ""
+    },
+    {
+        "name": "teolog",
+        "count": 1,
+        "q": ""
+    },
+    {
+        "name": "skogsarbetare",
+        "count": 1,
+        "q": ""
+    },
+    {
+        "name": "ingengör",
+        "count": 1,
+        "q": ""
+    },
+    {
+        "name": "ombudsman",
+        "count": 1,
+        "q": ""
+    },
+    {
+        "name": "vuxenlärare",
+        "count": 1,
+        "q": ""
+    },
+    {
+        "name": "amerikanska poeter",
+        "count": 1,
+        "q": ""
+    },
+    {
+        "name": "flyplanskonstruktör",
+        "count": 1,
+        "q": ""
+    },
+    {
+        "name": "förtattare",
+        "count": 1,
+        "q": ""
+    },
+    {
+        "name": "sjömän",
+        "count": 1,
+        "q": ""
+    },
+    {
+        "name": "grafiker",
+        "count": 1,
+        "q": ""
+    },
+    {
+        "name": "programledare i radio",
+        "count": 1,
+        "q": ""
+    },
+    {
+        "name": "krukmakare",
+        "count": 1,
+        "q": ""
+    },
+    {
+        "name": "matexpert",
+        "count": 1,
+        "q": ""
+    },
+    {
+        "name": "kantorer",
+        "count": 1,
+        "q": ""
+    }
+]
