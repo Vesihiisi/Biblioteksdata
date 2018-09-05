@@ -17,6 +17,7 @@ import importer_utils as utils
 MAPPINGS = "mappings"
 OUTPUT_NATIONALITIES = "countries"
 OUTPUT_PROFESSIONS = "professions"
+OUTPUT_IDS = "identifiers"
 
 
 def is_person(auth_item):
@@ -44,6 +45,7 @@ def load_data(path):
     """
     all_nationalities = []
     all_professions = []
+    all_identifiers = []
     for fname in os.listdir(path):
         element = utils.load_json(os.path.join(path, fname))
         if not is_person(element):
@@ -51,6 +53,11 @@ def load_data(path):
         element = element["@graph"]
         nationalities = element[1].get("nationality")
         professions = element[1].get("hasOccupation")
+        ids = element[1].get("identifiedBy")
+        if ids:
+            for idn in ids:
+                if idn["@type"] == "Identifier":
+                    all_identifiers.append(idn["typeNote"])
         if professions:
             for p in professions:
                 if p.get("label"):
@@ -62,8 +69,10 @@ def load_data(path):
                     all_nationalities.append(n["@id"])
     commonest_nat = Counter(all_nationalities).most_common()
     commonest_prof = Counter(all_professions).most_common()
+    commonest_ids = Counter(all_identifiers).most_common()
     save_json(commonest_nat, OUTPUT_NATIONALITIES)
     save_json(commonest_prof, OUTPUT_PROFESSIONS)
+    save_json(commonest_ids, OUTPUT_IDS)
 
 
 def main(args):
