@@ -10,6 +10,10 @@ import wikidataStuff.wdqsLookup as lookup
 site_cache = {}
 
 
+def get_current_timestamp():
+    return datetime.datetime.now().strftime('%Y-%m-%d_%H:%M:%S')
+
+
 def string_is_q_item(text):
     """Check if a string looks like a WD ID."""
     pattern = re.compile("^Q[0-9]+$", re.I)
