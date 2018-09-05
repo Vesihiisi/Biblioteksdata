@@ -66,10 +66,17 @@ class Person(WikidataItem):
 
     def set_descriptions(self):
         """Set the Swedish description."""
+        MAX_WORDS = 8
         bio_info = self.raw_data[1].get("hasBiographicalInformation")
         if bio_info and bio_info[0]["@type"] == "BiographicalNote":
             desc = bio_info[0]["label"]
-            self.add_description("sv", desc)
+            if type(desc) is list:
+                desc = desc[0]
+            if len(desc.split(" ")) <= MAX_WORDS:
+                desc = utils.lowercase_first(desc)
+                if desc.startswith("ämne"):
+                    return
+                self.add_description("sv", desc)
 
     def set_profession(self):
         """Set profession of the person."""
@@ -213,5 +220,5 @@ class Person(WikidataItem):
         # self.set_profession()
         # self.set_surname()
         # self.set_first_name()
-        # self.set_descriptions()
+        self.set_descriptions()
         # self.set_labels()
