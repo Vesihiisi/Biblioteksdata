@@ -76,6 +76,8 @@ class Person(WikidataItem):
                 desc = utils.lowercase_first(desc)
                 if desc.startswith("ämne"):
                     return
+                if desc.endswith("."):
+                    desc = desc[:-1]
                 self.add_description("sv", desc)
 
     def set_profession(self):
