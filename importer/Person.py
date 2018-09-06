@@ -206,7 +206,7 @@ class Person(WikidataItem):
         # self.set_selibr()
         self.match_wikidata()
 
-        # self.set_is()
+        self.set_is()
         self.set_uri()
         # self.set_nationality()
         # self.set_lifespan()
