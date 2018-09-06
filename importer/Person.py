@@ -118,14 +118,18 @@ class Person(WikidataItem):
             self.add_statement("dead", dead_pwb, ref=self.source)
 
     def set_nationality(self):
-        """Add country of nationality, converted from MARC code."""
-        has_nationality = self.raw_data[1].get("nationality")
-        if has_nationality:
-            nationality = self.raw_data[1]["nationality"][0]["@id"].split(
-                "/")[-1]
-            country = self.data_files["countries"].get(nationality)
-            if country:
-                self.add_statement("citizenship", country, ref=self.source)
+        """Add countries of nationality, converted from MARC-ish code."""
+        country_map = self.data_files["countries"]
+        nationalities = self.raw_data[1].get("nationality")
+        if not nationalities:
+            return
+        for nat in nationalities:
+            if nat.get("@id"):
+                nat_q = [x.get("q")
+                         for x in
+                         country_map if x["name"] == nat["@id"]]
+                if nat_q:
+                    self.add_statement("citizenship", nat_q, ref=self.source)
 
     def create_sources(self):
         """
@@ -208,7 +212,7 @@ class Person(WikidataItem):
 
         # self.set_is()
         self.set_uri()
-        # self.set_nationality()
+        self.set_nationality()
         # self.set_lifespan()
         # self.set_profession()
         # self.set_surname()
