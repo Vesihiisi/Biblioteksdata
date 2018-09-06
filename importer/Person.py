@@ -46,7 +46,7 @@ class Person(WikidataItem):
 
     def set_ids(self):
         """
-        Set other authority ID's.
+        Set VIAF and ISNI id's.
 
         ISNI numbers are formatted with spaces
         because it's a property constraint.
@@ -62,7 +62,9 @@ class Person(WikidataItem):
                         i["typeNote"] in allowed_types):
                     if i["typeNote"] == "isni":
                         i["value"] = utils.format_isni(i["value"])
-                    self.add_statement(i["typeNote"], i["value"])
+                    self.add_statement(i["typeNote"],
+                                       i["value"],
+                                       ref=self.source)
 
     def set_descriptions(self):
         """Set the Swedish description."""
@@ -213,7 +215,6 @@ class Person(WikidataItem):
         self.data_files = data_files
         self.create_sources()
 
-        # self.set_ids()
         # self.set_selibr()
         self.match_wikidata()
 
@@ -221,6 +222,7 @@ class Person(WikidataItem):
         self.set_uri()
         self.set_profession()
         self.set_nationality()
+        self.set_ids()
         # self.set_lifespan()
         # self.set_surname()
         # self.set_first_name()
