@@ -36,6 +36,19 @@ class Uploader(object):
         self.wdstuff.add_multiple_descriptions(
             descriptions_for_upload, target_item)
 
+    def is_redundant_date(self, claim, wd_item):
+        prop = claim["prop"]
+        value = claim["value"]
+        if prop in ["P569", "P570"]:
+            # Let's check if the target item already has one...
+            dates_in_item = utils.get_value_of_property(wd_item.getID(),
+                                                        prop, self.repo)
+            for date in dates_in_item:
+                if (date.precision > value.itis.precision and
+                   date.year == value.itis.year):
+                    print("Avoiding duplicate timestamp.")
+                    return True
+
     def add_claims(self, wd_item, claims):
         if wd_item:
             for claim in claims:
@@ -43,16 +56,8 @@ class Uploader(object):
                 prop = claim["prop"]
                 value = claim["value"]
                 ref = claim["ref"]
-                if prop in ["P569", "P570"]:
-                    # Let's check if the target item already has one...
-                    dates_in_item = utils.get_value_of_property(
-                        wd_item.getID(), prop, self.repo)
-                    for date in dates_in_item:
-                        if date.precision > value.itis.precision and date.year == value.itis.year:
-                            print("!!! Possible duplicate timestamp.")
-                            print("precision: {}, year: {}".format(
-                                date.precision, date.year))
-                self.wdstuff.addNewClaim(prop, value, wd_item, ref)
+                if not self.is_redundant_date(claim, wd_item):
+                    self.wdstuff.addNewClaim(prop, value, wd_item, ref)
 
     def create_new_item(self):
         return self.wdstuff.make_new_item({}, self.summary)
