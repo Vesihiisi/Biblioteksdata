@@ -72,14 +72,21 @@ class Person(WikidataItem):
             self.add_description("sv", desc)
 
     def set_profession(self):
-        """Set profession of the person."""
+        """Set professions of the person."""
+        prof_map = self.data_files["professions"]
         bio_section = self.raw_data[1]
-        if bio_section.get("hasOccupation"):
-            occs = bio_section.get("hasOccupation")[0].get("label")
-            for prof in [x.lower() for x in occs]:
-                prof_q = self.data_files["professions"].get(prof)
-                self.add_statement("profession", prof_q, ref=self.source)
-            # can we find examples of multiple professions?
+        professions = bio_section.get("hasOccupation")
+        if professions:
+            for p in professions:
+                if p.get("label"):
+                    for l in p["label"]:
+                        prof_to_match = l.lower()
+                        prof_q = [x.get("q")
+                                  for x in
+                                  prof_map if x["name"] == prof_to_match]
+                        if prof_q:
+                            self.add_statement(
+                                "profession", prof_q, ref=self.source)
 
     def set_lifespan(self):
         """
@@ -208,9 +215,9 @@ class Person(WikidataItem):
 
         # self.set_is()
         self.set_uri()
+        self.set_profession()
         # self.set_nationality()
         # self.set_lifespan()
-        # self.set_profession()
         # self.set_surname()
         # self.set_first_name()
         # self.set_descriptions()
