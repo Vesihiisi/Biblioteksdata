@@ -43,6 +43,15 @@ class Uploader(object):
                 prop = claim["prop"]
                 value = claim["value"]
                 ref = claim["ref"]
+                if prop in ["P569", "P570"]:
+                    # Let's check if the target item already has one...
+                    dates_in_item = utils.get_value_of_property(
+                        wd_item.getID(), prop, self.repo)
+                    for date in dates_in_item:
+                        if date.precision > value.itis.precision and date.year == value.itis.year:
+                            print("!!! Possible duplicate timestamp.")
+                            print("precision: {}, year: {}".format(
+                                date.precision, date.year))
                 self.wdstuff.addNewClaim(prop, value, wd_item, ref)
 
     def create_new_item(self):
