@@ -1,30 +1,138 @@
 [
-    "https://id.kb.se/nationality/e-au---",
-    "https://id.kb.se/nationality/e-be---",
-    "https://id.kb.se/nationality/e-dk---",
-    "https://id.kb.se/nationality/e-er---",
-    "https://id.kb.se/nationality/e-fi---",
-    "https://id.kb.se/nationality/e-fr---",
-    "https://id.kb.se/nationality/e-gx---",
-    "https://id.kb.se/nationality/e-ic---",
-    "https://id.kb.se/nationality/e-ie---",
-    "https://id.kb.se/nationality/e-it",
-    "https://id.kb.se/nationality/e-ne---",
-    "https://id.kb.se/nationality/e-no---",
-    "https://id.kb.se/nationality/e-pl---",
-    "https://id.kb.se/nationality/e-po---",
-    "https://id.kb.se/nationality/e-sp---",
-    "https://id.kb.se/nationality/e-sw---",
-    "https://id.kb.se/nationality/e-swe---",
-    "https://id.kb.se/nationality/e-sz---",
-    "https://id.kb.se/nationality/e-uk---",
-    "https://id.kb.se/nationality/f-sa---",
-    "https://id.kb.se/nationality/n-us---",
-    "https://id.kb.se/nationality/n-xxu---",
-    "https://id.kb.se/nationality/s-bl---",
-    "https://id.kb.se/nationality/sw",
-    "https://id.kb.se/nationality/u-at---",
-    "https://id.kb.se/nationality/xxc",
-    "https://id.kb.se/nationality/xxk",
-    "https://id.kb.se/nationality/xxu"
+  {
+    "country": "Q16",
+    "countryLabel": "Canada"
+  },
+  {
+    "country": "Q20",
+    "countryLabel": "Norway"
+  },
+  {
+    "country": "Q27",
+    "countryLabel": "Ireland"
+  },
+  {
+    "country": "Q29",
+    "countryLabel": "Spain"
+  },
+  {
+    "country": "Q30",
+    "countryLabel": "United States of America"
+  },
+  {
+    "country": "Q31",
+    "countryLabel": "Belgium"
+  },
+  {
+    "country": "Q32",
+    "countryLabel": "Luxembourg"
+  },
+  {
+    "country": "Q33",
+    "countryLabel": "Finland"
+  },
+  {
+    "country": "Q34",
+    "countryLabel": "Sweden"
+  },
+  {
+    "country": "Q35",
+    "countryLabel": "Denmark"
+  },
+  {
+    "country": "Q36",
+    "countryLabel": "Poland"
+  },
+  {
+    "country": "Q38",
+    "countryLabel": "Italy"
+  },
+  {
+    "country": "Q39",
+    "countryLabel": "Switzerland"
+  },
+  {
+    "country": "Q40",
+    "countryLabel": "Austria"
+  },
+  {
+    "country": "Q45",
+    "countryLabel": "Portugal"
+  },
+  {
+    "country": "Q77",
+    "countryLabel": "Uruguay"
+  },
+  {
+    "country": "Q96",
+    "countryLabel": "Mexico"
+  },
+  {
+    "country": "Q142",
+    "countryLabel": "France"
+  },
+  {
+    "country": "Q145",
+    "countryLabel": "United Kingdom"
+  },
+  {
+    "country": "Q155",
+    "countryLabel": "Brazil"
+  },
+  {
+    "country": "Q183",
+    "countryLabel": "Germany"
+  },
+  {
+    "country": "Q191",
+    "countryLabel": "Estonia"
+  },
+  {
+    "country": "Q298",
+    "countryLabel": "Chile"
+  },
+  {
+    "country": "Q408",
+    "countryLabel": "Australia"
+  },
+  {
+    "country": "Q414",
+    "countryLabel": "Argentina"
+  },
+  {
+    "country": "Q419",
+    "countryLabel": "Peru"
+  },
+  {
+    "country": "Q664",
+    "countryLabel": "New Zealand"
+  },
+  {
+    "country": "Q717",
+    "countryLabel": "Venezuela"
+  },
+  {
+    "country": "Q730",
+    "countryLabel": "Suriname"
+  },
+  {
+    "country": "Q733",
+    "countryLabel": "Paraguay"
+  },
+  {
+    "country": "Q734",
+    "countryLabel": "Guyana"
+  },
+  {
+    "country": "Q736",
+    "countryLabel": "Ecuador"
+  },
+  {
+    "country": "Q739",
+    "countryLabel": "Colombia"
+  },
+  {
+    "country": "Q750",
+    "countryLabel": "Bolivia"
+  }
 ]
