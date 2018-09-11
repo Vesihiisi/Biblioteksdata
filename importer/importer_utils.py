@@ -100,6 +100,7 @@ def get_wd_items_using_prop(prop):
         key = sanitize_wdqs_result(x['item'])
         value = x['value']
         items[value] = key
+    print("FOUND {} WD ITEMS WITH PROP {}".format(len(items), prop))
     return items
 
 
