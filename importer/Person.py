@@ -23,6 +23,12 @@ class Person(WikidataItem):
         """Get last name from raw data."""
         return self.raw_data[1].get("familyName")
 
+    def nationality_in_latin_country(self):
+        """Check if nationality is in a country with Latin script."""
+        latin_countries = [x["country"] for
+                           x in self.data_files["latin_countries"]]
+        return any(x in self.nationality for x in latin_countries)
+
     def set_labels(self):
         """
         Set labels in different languages.
@@ -33,14 +39,12 @@ class Person(WikidataItem):
         Country with Latin script: label in several
         Latin languages.
         """
-        latin_countries = [x["country"] for
-                           x in self.data_files["latin_countries"]]
         first = self.get_first_name()
         last = self.get_last_name()
 
         if first and last:
             label = "{} {}".format(first, last)
-            if any(x in self.nationality for x in latin_countries):
+            if self.nationality_in_latin_country():
                 languages = self.data_files["latin_languages"]
             else:
                 languages = ["sv"]
