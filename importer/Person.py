@@ -16,13 +16,23 @@ class Person(WikidataItem):
         self.add_statement("is", "Q5", ref=self.source)
 
     def get_first_name(self):
+        """Get first name from raw data."""
         return self.raw_data[1].get("givenName")
 
     def get_last_name(self):
+        """Get last name from raw data."""
         return self.raw_data[1].get("familyName")
 
     def set_labels(self):
-        """Set labels in different languages."""
+        """
+        Set labels in different languages.
+
+        Languages are determined by nationality.
+        No nationality or country with non-Latin
+        script: Label only in sv.
+        Country with Latin script: label in several
+        Latin languages.
+        """
         latin_countries = [x["country"] for
                            x in self.data_files["latin_countries"]]
         first = self.get_first_name()
@@ -227,14 +237,14 @@ class Person(WikidataItem):
         self.create_sources()
 
         # self.set_selibr()
-        # self.match_wikidata()
+        self.match_wikidata()
 
         self.set_is()
         self.set_uri()
         self.set_profession()
         self.set_nationality()
         self.set_labels()
-        # self.set_ids()
+        self.set_ids()
         # self.set_lifespan()
         # self.set_surname()
         # self.set_first_name()
