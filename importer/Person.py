@@ -76,7 +76,8 @@ class Person(WikidataItem):
         if bio_section.get("identifiedBy"):
             for i in bio_section.get("identifiedBy"):
                 if (i["@type"] == "Identifier" and
-                        i["typeNote"] in allowed_types):
+                        i["typeNote"] in allowed_types and
+                        i.get("value")):
                     if i["typeNote"] == "isni":
                         i["value"] = utils.format_isni(i["value"])
                     self.add_statement(i["typeNote"],
