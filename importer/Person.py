@@ -15,24 +15,27 @@ class Person(WikidataItem):
         """Set is as a person."""
         self.add_statement("is", "Q5", ref=self.source)
 
+    def get_first_name(self):
+        return self.raw_data[1].get("givenName")
+
+    def get_last_name(self):
+        return self.raw_data[1].get("familyName")
+
     def set_labels(self):
         """Set labels in different languages."""
-        roman_nationalities = ["e-fi---",
-                               "e-sw---"]
-        languages = ["sv", "en", "fi"]
+        latin_countries = [x["country"] for
+                           x in self.data_files["latin_countries"]]
+        first = self.get_first_name()
+        last = self.get_last_name()
 
-        first_name = self.raw_data[1]["givenName"]
-        last_name = self.raw_data[1]["familyName"]
-        label = "{} {}".format(first_name, last_name)
-        self.add_label("sv", label)
-
-        has_nationality = self.raw_data[1].get("nationality")
-        if has_nationality:
-            nationality = self.raw_data[1]["nationality"][0]["@id"].split(
-                "/")[-1]
-            if nationality in roman_nationalities:
-                for lng in languages:
-                    self.add_label(lng, label)
+        if first and last:
+            label = "{} {}".format(first, last)
+            if any(x in self.nationality for x in latin_countries):
+                languages = self.data_files["latin_languages"]
+            else:
+                languages = ["sv"]
+            for lang in languages:
+                self.add_label(lang, label)
 
     def set_uri(self):
         """Set Libris URI."""
@@ -86,7 +89,7 @@ class Person(WikidataItem):
                         prof_q = [x.get("q")
                                   for x in
                                   prof_map if x["name"] == prof_to_match]
-                        if prof_q:
+                        if prof_q and len(prof_q[0]) > 0:
                             self.add_statement(
                                 "profession", prof_q, ref=self.source)
 
@@ -126,19 +129,27 @@ class Person(WikidataItem):
             dead_pwb = self.make_pywikibot_item({"date_value": dead_dict})
             self.add_statement("dead", dead_pwb, ref=self.source)
 
+    def get_nationalities(self):
+        nationalities = []
+        item_nationalities = self.raw_data[1].get("nationality")
+        if item_nationalities:
+            for nat in item_nationalities:
+                if nat.get("@id"):
+                    nationalities.append(nat["@id"])
+        return nationalities
+
     def set_nationality(self):
         """Add countries of nationality, converted from MARC-ish code."""
+        self.nationality = []
         country_map = self.data_files["countries"]
-        nationalities = self.raw_data[1].get("nationality")
-        if not nationalities:
-            return
+        nationalities = self.get_nationalities()
         for nat in nationalities:
-            if nat.get("@id"):
-                nat_q = [x.get("q")
-                         for x in
-                         country_map if x["name"] == nat["@id"]]
-                if nat_q:
-                    self.add_statement("citizenship", nat_q, ref=self.source)
+            nat_q = [x.get("q")
+                     for x in
+                     country_map if x["name"] == nat]
+            if nat_q and len(nat_q[0]) > 0:
+                self.nationality.append(nat_q[0])
+                self.add_statement("citizenship", nat_q, ref=self.source)
 
     def create_sources(self):
         """
@@ -216,15 +227,15 @@ class Person(WikidataItem):
         self.create_sources()
 
         # self.set_selibr()
-        self.match_wikidata()
+        # self.match_wikidata()
 
         self.set_is()
         self.set_uri()
         self.set_profession()
         self.set_nationality()
-        self.set_ids()
+        self.set_labels()
+        # self.set_ids()
         # self.set_lifespan()
         # self.set_surname()
         # self.set_first_name()
         # self.set_descriptions()
-        # self.set_labels()
