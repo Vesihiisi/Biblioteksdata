@@ -132,3 +132,15 @@ def date_to_dict(datestring, dateformat):
 def format_isni(st):
     """Format ISNI id by inserting space after every 4 chars."""
     return ' '.join(st[i:i + 4] for i in range(0, len(st), 4))
+
+
+def get_value_of_property(q_number, property_id, site):
+    results = []
+    item = pywikibot.ItemPage(site, q_number)
+    if item.exists() and item.claims.get(property_id):
+        for claim in item.claims.get(property_id):
+            target = claim.getTarget()
+            if isinstance(target, pywikibot.ItemPage):
+                target = target.getID()
+            results.append(target)
+    return results

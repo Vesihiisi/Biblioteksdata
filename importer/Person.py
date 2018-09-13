@@ -250,7 +250,7 @@ class Person(WikidataItem):
         self.set_nationality()
         self.set_labels()
         self.set_ids()
-        # self.set_lifespan()
+        self.set_lifespan()
         # self.set_surname()
         # self.set_first_name()
         # self.set_descriptions()
