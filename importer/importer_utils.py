@@ -5,8 +5,8 @@ import json
 import re
 
 import pywikibot
-import wikidataStuff.wdqsLookup as lookup
-
+import pywikibot.data.sparql as sparql
+import wikidataStuff.helpers as helpers
 site_cache = {}
 
 
@@ -48,6 +48,34 @@ def create_site_instance(language, family):
     return site
 
 
+def sanitize_wdqs_result(data):
+    """
+    Strip url component out of wdqs results.
+
+    Source: deprecated wdqsLookup.py.
+    Strip out http://www.wikidata.org/entity/
+    For dicts it is assumed that it is the key which should be sanitized
+    @param data: data to sanitize
+    @type data: str, or list of str or dict
+    @return: sanitized data
+    @rtype: list of str
+    """
+    if helpers.is_str(data):
+        return data.split('/')[-1]
+    elif isinstance(data, list):
+        for i, d in enumerate(data):
+            data[i] = d.split('/')[-1]
+        return data
+    if isinstance(data, dict):
+        new_data = dict()
+        for k, v in data.items():
+            new_data[k.split('/')[-1]] = v
+        return new_data
+    else:
+        raise pywikibot.Error('sanitize_wdqs_result() requires a string, dict '
+                              'or a list of strings. Not a %s' % type(data))
+
+
 def get_wd_items_using_prop(prop):
     """
     Get WD items that already have some value of a unique ID.
@@ -66,9 +94,10 @@ def get_wd_items_using_prop(prop):
     print("WILL NOW DOWNLOAD WD ITEMS THAT USE " + prop)
     query = "SELECT DISTINCT ?item ?value  WHERE {?item p:" + \
         prop + "?statement. OPTIONAL { ?item wdt:" + prop + " ?value. }}"
-    data = lookup.make_simple_wdqs_query(query, verbose=False)
+    sparql_query = sparql.SparqlQuery()
+    data = sparql_query.select(query)
     for x in data:
-        key = lookup.sanitize_wdqs_result(x['item'])
+        key = sanitize_wdqs_result(x['item'])
         value = x['value']
         items[value] = key
     print("FOUND {} WD ITEMS WITH PROP {}".format(len(items), prop))

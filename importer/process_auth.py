@@ -28,7 +28,8 @@ MAPPINGS = "mappings"
 def load_mapping_files():
     """Load local and remote mapping files."""
     mappings = {}
-    local = ["properties", "countries", "professions"]
+    local = ["properties", "countries", "professions",
+             "latin_countries", "latin_languages"]
     remote = ["selibr"]
     for title in local:
         f = os.path.join(MAPPINGS, '{}.json'.format(title))
