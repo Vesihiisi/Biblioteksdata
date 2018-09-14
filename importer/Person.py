@@ -25,7 +25,12 @@ class Person(WikidataItem):
 
     def set_surname(self):
         raw_surname = self.get_last_name()
-        print(raw_surname)
+        if (not raw_surname or
+                not self.nationality_in_latin_country()):
+            return
+        surname = utils.get_name("last", raw_surname)
+        if surname:
+            self.add_statement("last_name", surname, ref=self.source)
 
     def nationality_in_latin_country(self):
         """Check if nationality is in a country with Latin script."""
@@ -248,10 +253,10 @@ class Person(WikidataItem):
         # self.set_selibr()
         self.match_wikidata()
 
-        self.set_is()
+        # self.set_is()
         self.set_uri()
         # self.set_profession()
-        # self.set_nationality()
+        self.set_nationality()
         # self.set_labels()
         # self.set_ids()
         # self.set_lifespan()

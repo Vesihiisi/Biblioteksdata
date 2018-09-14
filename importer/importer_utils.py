@@ -104,6 +104,21 @@ def get_wd_items_using_prop(prop):
     return items
 
 
+def get_name(which, namevalue):
+    if which == "first":
+        name_item = "Q202444"
+    elif which == "last":
+        name_item = "Q101352"
+    query = "SELECT DISTINCT ?item WHERE {?item wdt:P31 wd:" + \
+        name_item + ". ?item wdt:P1705 ?value. FILTER(str(?value) = '" + \
+        namevalue + "')}"
+    print("Querying WD for {} name {}.".format(which, namevalue))
+    sparql_query = sparql.SparqlQuery()
+    data = sparql_query.select(query)
+    if len(data) == 1:
+        return sanitize_wdqs_result(data[0]['item'])
+
+
 def date_to_dict(datestring, dateformat):
     """
     Convert a date to a pwb-friendly dictionary.
