@@ -23,6 +23,10 @@ class Person(WikidataItem):
         """Get last name from raw data."""
         return self.raw_data[1].get("familyName")
 
+    def set_surname(self):
+        raw_surname = self.get_last_name()
+        print(raw_surname)
+
     def nationality_in_latin_country(self):
         """Check if nationality is in a country with Latin script."""
         latin_countries = [x["country"] for
@@ -246,11 +250,11 @@ class Person(WikidataItem):
 
         self.set_is()
         self.set_uri()
-        self.set_profession()
-        self.set_nationality()
-        self.set_labels()
-        self.set_ids()
-        self.set_lifespan()
-        # self.set_surname()
+        # self.set_profession()
+        # self.set_nationality()
+        # self.set_labels()
+        # self.set_ids()
+        # self.set_lifespan()
+        self.set_surname()
         # self.set_first_name()
         # self.set_descriptions()
