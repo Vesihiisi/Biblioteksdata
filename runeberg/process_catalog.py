@@ -3,9 +3,17 @@
 """
 Process the Runeberg.org catalog
 """
+import json
 from bs4 import BeautifulSoup
 
 CATALOG = "runeberg_catalog_2018-09-18.html"
+OUTPUT = "runeberg_catalog.json"
+
+
+def save_json(content, fname):
+    with open(OUTPUT, 'w') as f:
+        json.dump(content, f, indent=4,
+                  ensure_ascii=False,)
 
 
 def process_material(raw):
@@ -69,15 +77,20 @@ def process_work(row):
     return work
 
 
-def main():
+def process_toc(toc):
+    works = []
+    rows = toc.find_all('tr')
+    for row in rows[1:]:
+        works.append(process_work(row))
+    return works
+
+
+def process_all():
     f = open(CATALOG, "r")
     soup = BeautifulSoup(f.read(), "html.parser")
-    table_of_contents = soup.findAll("table")[0]
-    rows = table_of_contents.find_all('tr')
-    for row in rows:
-        work = process_work(row)
-        print(work)
+    works = process_toc(soup.findAll("table")[0])
+    save_json(works, OUTPUT)
 
 
 if __name__ == "__main__":
-    main()
+    process_all()
