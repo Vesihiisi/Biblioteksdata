@@ -11,6 +11,8 @@ from bs4 import BeautifulSoup
 CATALOG = "runeberg_catalog_2018-09-18.html"
 OUTPUT = "runeberg_catalog.json"
 RUNEBERG_AUTHOR = "P3154"
+RUNEBERG_BOOK = "P3155"
+LIBRIS = "P1182"
 
 
 def save_json(content, fname):
@@ -30,7 +32,8 @@ def process_title(raw):
     if len(tags) == 1:
         title_dict = {}
         href = tags[0].get("href")
-        title_dict["work_id"] = href.replace("/", "")
+        work_id = href.replace("/", "")
+        title_dict["work_id"] = work_id
         title_dict["work_title"] = tags[0].contents[0]
         return title_dict
 
@@ -69,17 +72,28 @@ def process_date(raw):
     return raw.text
 
 
+def find_wikidata(work, existing):
+    try_runeberg = existing["runeberg_books"].get(work["title"]["work_id"])
+    try_libris = existing["libris_books"].get(work["libris"])
+    if try_runeberg:
+        return try_runeberg
+    elif try_libris:
+        return try_libris
+    else:
+        return None
+
+
 def process_work(row, existing):
     cells = row.findAll('td')
-    authors = existing["authors"]
     work = {
         "material": process_material(cells[0]),
         "libris": process_marc(cells[2]),
         "title": process_title(cells[4]),
-        "authors": process_authors(cells[6], authors),
+        "authors": process_authors(cells[6], existing["authors"]),
         "date": process_date(cells[8]),
         "language": process_language(cells[10])
     }
+    work["wikidata"] = find_wikidata(work, existing)
     return work
 
 
@@ -93,7 +107,10 @@ def process_toc(toc, existing):
 
 def process_all():
     f = open(CATALOG, "r")
-    wikidata = {"authors": utils.get_wd_items_using_prop(RUNEBERG_AUTHOR)}
+    wikidata = {"authors": utils.get_wd_items_using_prop(
+        RUNEBERG_AUTHOR),
+        "runeberg_books": utils.get_wd_items_using_prop(RUNEBERG_BOOK),
+        "libris_books": utils.get_wd_items_using_prop(LIBRIS)}
     soup = BeautifulSoup(f.read(), "html.parser")
     works = process_toc(soup.findAll("table")[0], wikidata)
     save_json(works, OUTPUT)
