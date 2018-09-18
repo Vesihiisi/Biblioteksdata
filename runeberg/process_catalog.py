@@ -3,11 +3,14 @@
 """
 Process the Runeberg.org catalog
 """
+import utils
+
 import json
 from bs4 import BeautifulSoup
 
 CATALOG = "runeberg_catalog_2018-09-18.html"
 OUTPUT = "runeberg_catalog.json"
+RUNEBERG_AUTHOR = "P3154"
 
 
 def save_json(content, fname):
@@ -41,15 +44,17 @@ def process_marc(raw):
                 return href.split("/")[-1]
 
 
-def process_authors(raw):
+def process_authors(raw, existing):
     authors = []
     tags = raw.find_all('a')
     if len(tags) > 0:
         for tag in tags:
             author_dict = {}
-            author_dict["author_id"] = tag.get(
+            author_id = tag.get(
                 'href').split("/")[-1].split(".")[0]
+            author_dict["author_id"] = author_id
             author_dict["author_name"] = tag.contents[0]
+            author_dict["wikidata"] = existing.get(author_id)
             authors.append(author_dict)
     return authors
 
@@ -64,31 +69,33 @@ def process_date(raw):
     return raw.text
 
 
-def process_work(row):
+def process_work(row, existing):
     cells = row.findAll('td')
+    authors = existing["authors"]
     work = {
         "material": process_material(cells[0]),
         "libris": process_marc(cells[2]),
         "title": process_title(cells[4]),
-        "authors": process_authors(cells[6]),
+        "authors": process_authors(cells[6], authors),
         "date": process_date(cells[8]),
         "language": process_language(cells[10])
     }
     return work
 
 
-def process_toc(toc):
+def process_toc(toc, existing):
     works = []
     rows = toc.find_all('tr')
     for row in rows[1:]:
-        works.append(process_work(row))
+        works.append(process_work(row, existing))
     return works
 
 
 def process_all():
     f = open(CATALOG, "r")
+    wikidata = {"authors": utils.get_wd_items_using_prop(RUNEBERG_AUTHOR)}
     soup = BeautifulSoup(f.read(), "html.parser")
-    works = process_toc(soup.findAll("table")[0])
+    works = process_toc(soup.findAll("table")[0], wikidata)
     save_json(works, OUTPUT)
 
 
