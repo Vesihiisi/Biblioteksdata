@@ -6,9 +6,10 @@ Process the Runeberg.org catalog
 import utils
 
 import json
+import requests
 from bs4 import BeautifulSoup
 
-CATALOG = "runeberg_catalog_2018-09-18.html"
+CATALOG = "http://runeberg.org/katalog.html"
 OUTPUT = "runeberg_catalog.json"
 RUNEBERG_AUTHOR = "P3154"
 RUNEBERG_BOOK = "P3155"
@@ -105,14 +106,29 @@ def process_toc(toc, existing):
     return works
 
 
-def process_all():
-    f = open(CATALOG, "r")
-    wikidata = {"authors": utils.get_wd_items_using_prop(
+def get_existing():
+    existing = {"authors": utils.get_wd_items_using_prop(
         RUNEBERG_AUTHOR),
         "runeberg_books": utils.get_wd_items_using_prop(RUNEBERG_BOOK),
         "libris_books": utils.get_wd_items_using_prop(LIBRIS)}
-    soup = BeautifulSoup(f.read(), "html.parser")
-    works = process_toc(soup.findAll("table")[0], wikidata)
+    return existing
+
+
+def get_runeberg_data(url):
+    page = requests.get(url)
+    return page.text
+
+
+def get_catalog_from_page(page):
+    soup = BeautifulSoup(page, "html.parser")
+    return soup.findAll("table")[1]
+
+
+def process_all():
+    wikidata = get_existing()
+    runeberg_data = get_runeberg_data(CATALOG)
+    toc = get_catalog_from_page(runeberg_data)
+    works = process_toc(toc, wikidata)
     save_json(works, OUTPUT)
 
 
