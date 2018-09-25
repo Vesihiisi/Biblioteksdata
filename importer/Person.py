@@ -130,7 +130,7 @@ class Person(WikidataItem):
         bio_section = self.raw_data[1]
         if not bio_section.get("lifeSpan"):
             return
-        life = bio_section["lifeSpan"].split("-")
+        life = bio_section["lifeSpan"].replace("–", "-").split("-")
         born_raw = life[0]
         dead_raw = life[1]
         if len(born_raw) == 4:
