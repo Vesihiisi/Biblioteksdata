@@ -130,6 +130,10 @@ class Person(WikidataItem):
         bio_section = self.raw_data[1]
         if not bio_section.get("lifeSpan"):
             return
+        if bio_section["lifeSpan"].isdigit():
+            #  Exclude lifespans that are digits only, no
+            #  delimiter
+            return
         life = bio_section["lifeSpan"].replace("–", "-").split("-")
         born_raw = life[0]
         dead_raw = life[1]
