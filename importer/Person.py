@@ -130,11 +130,17 @@ class Person(WikidataItem):
         bio_section = self.raw_data[1]
         if not bio_section.get("lifeSpan"):
             return
-        life = bio_section["lifeSpan"].replace("–", "-").split("-")
-        born_raw = life[0]
-        dead_raw = life[1]
-        if len(born_raw) == 4:
-            born_dict = utils.date_to_dict(born_raw, "%Y")
+        if not bio_section["lifeSpan"].isdigit():
+            #  Exclude lifespans that are digits only, no
+            #  delimiter
+            life = bio_section["lifeSpan"].replace("–", "-").split("-")
+            born_raw = life[0]
+            dead_raw = life[1]
+            if len(born_raw) == 4:
+                born_dict = utils.date_to_dict(born_raw, "%Y")
+            if len(dead_raw) == 4:
+                dead_dict = utils.date_to_dict(dead_raw, "%Y")
+
         if "birthDate" in bio_section.keys():
             born_long_raw = bio_section["birthDate"]
             if len(born_long_raw) == 8:
@@ -142,9 +148,6 @@ class Person(WikidataItem):
         if born_dict:
             born_pwb = self.make_pywikibot_item({"date_value": born_dict})
             self.add_statement("born", born_pwb, ref=self.source)
-
-        if len(dead_raw) == 4:
-            dead_dict = utils.date_to_dict(dead_raw, "%Y")
         if "deathDate" in bio_section.keys():
             dead_long_raw = bio_section["deathDate"]
             if len(dead_long_raw) == 8:
