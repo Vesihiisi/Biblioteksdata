@@ -117,6 +117,18 @@ class Person(WikidataItem):
                             self.add_statement(
                                 "profession", prof_q, ref=self.source)
 
+    def is_valid_lifespan(self, lifespan):
+        if lifespan.isdigit():
+            return False
+        if "eller" in lifespan or "el." in lifespan:
+            return False
+        return True
+
+    def clean_up_lifespan(self, lifespan):
+        lifespan = lifespan.replace("–", "-")
+        lifespan = lifespan.replace("d.", "-")
+        return lifespan.split("-")
+
     def set_lifespan(self):
         """
         Add birth and death dates.
@@ -133,7 +145,7 @@ class Person(WikidataItem):
         if not bio_section["lifeSpan"].isdigit():
             #  Exclude lifespans that are digits only, no
             #  delimiter
-            life = bio_section["lifeSpan"].replace("–", "-").split("-")
+            life = self.clean_up_lifespan(bio_section["lifeSpan"])
             born_raw = life[0]
             dead_raw = life[1]
             if len(born_raw) == 4:
