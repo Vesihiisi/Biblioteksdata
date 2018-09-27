@@ -127,6 +127,8 @@ class Person(WikidataItem):
     def clean_up_lifespan(self, lifespan):
         lifespan = lifespan.replace("–", "-")
         lifespan = lifespan.replace("d.", "-")
+        if "f." in lifespan:
+            lifespan = lifespan.replace("f.", "") + "-"
         return lifespan.split("-")
 
     def set_lifespan(self):
@@ -142,12 +144,12 @@ class Person(WikidataItem):
         bio_section = self.raw_data[1]
         if not bio_section.get("lifeSpan"):
             return
-        if not bio_section["lifeSpan"].isdigit():
+        if self.is_valid_lifespan(bio_section["lifeSpan"]):
             #  Exclude lifespans that are digits only, no
             #  delimiter
             life = self.clean_up_lifespan(bio_section["lifeSpan"])
-            born_raw = life[0]
-            dead_raw = life[1]
+            born_raw = life[0].strip()
+            dead_raw = life[1].strip()
             if len(born_raw) == 4:
                 born_dict = utils.date_to_dict(born_raw, "%Y")
             if len(dead_raw) == 4:
