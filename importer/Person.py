@@ -152,9 +152,7 @@ class Person(WikidataItem):
         if not bio_section.get("lifeSpan"):
             return
         if self.is_valid_lifespan(bio_section["lifeSpan"]):
-            print(bio_section["lifeSpan"])
             life = self.clean_up_lifespan(bio_section["lifeSpan"])
-            print(life)
             born_raw = life[0].strip()
             dead_raw = life[1].strip()
             if len(born_raw) == 4:
