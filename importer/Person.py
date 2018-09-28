@@ -118,9 +118,10 @@ class Person(WikidataItem):
                                 "profession", prof_q, ref=self.source)
 
     def is_valid_lifespan(self, lifespan):
+        bad_keywords = ["eller", "el.", "fl.", "..", "ca"]
         if lifespan.isdigit():
             return False
-        if "eller" in lifespan or "el." in lifespan:
+        if any(keyword in lifespan for keyword in bad_keywords):
             return False
         return True
 
@@ -145,8 +146,6 @@ class Person(WikidataItem):
         if not bio_section.get("lifeSpan"):
             return
         if self.is_valid_lifespan(bio_section["lifeSpan"]):
-            #  Exclude lifespans that are digits only, no
-            #  delimiter
             life = self.clean_up_lifespan(bio_section["lifeSpan"])
             born_raw = life[0].strip()
             dead_raw = life[1].strip()
