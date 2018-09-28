@@ -123,6 +123,8 @@ class Person(WikidataItem):
             return False
         if any(keyword in lifespan for keyword in bad_keywords):
             return False
+        if not any(char.isdigit() for char in lifespan):
+            return False
         return True
 
     def clean_up_lifespan(self, lifespan):
