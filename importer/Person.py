@@ -132,6 +132,8 @@ class Person(WikidataItem):
     def clean_up_lifespan(self, lifespan):
         lifespan = lifespan.replace("–", "-")
         lifespan = lifespan.replace("d.", "-")
+        if "b." in lifespan:
+            lifespan = lifespan.replace("b.", "f.")
         if "f." in lifespan:
             lifespan = lifespan.replace("f.", "") + "-"
         return lifespan.split("-")
