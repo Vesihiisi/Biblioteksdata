@@ -118,7 +118,9 @@ class Person(WikidataItem):
                                 "profession", prof_q, ref=self.source)
 
     def is_valid_lifespan(self, lifespan):
-        bad_keywords = ["eller", "el.", "fl.", "..", "ca"]
+        bad_keywords = ["eller", "el.",
+                        "fl.", "..",
+                        "ca", "?"]
         if lifespan.isdigit():
             return False
         if any(keyword in lifespan for keyword in bad_keywords):
