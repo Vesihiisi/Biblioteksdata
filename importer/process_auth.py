@@ -23,6 +23,7 @@ from Uploader import Uploader
 
 EDIT_SUMMARY = "#WMSE #LibraryData_KB"
 MAPPINGS = "mappings"
+REPORTING_DIR = "reports"
 
 
 def load_mapping_files():
