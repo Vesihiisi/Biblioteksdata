@@ -10,6 +10,11 @@ import wikidataStuff.helpers as helpers
 site_cache = {}
 
 
+def lowercase_first(text):
+    """Convert 1st character of string to lowercase."""
+    return text[0].lower() + text[1:]
+
+
 def get_current_timestamp():
     return datetime.datetime.now().strftime('%Y-%m-%d_%H:%M:%S')
 
