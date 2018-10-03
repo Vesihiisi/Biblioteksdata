@@ -66,18 +66,28 @@ class Person(WikidataItem):
 
     def set_descriptions(self):
         """Set the Swedish description."""
-        MAX_WORDS = 8
+        MAX_WORDS = 5
+        bad_words = ["birthday.se", "lc auth", "ämne"]
+        bad_initial = ["NE:", "DB:"]
         bio_info = self.raw_data[1].get("hasBiographicalInformation")
         if bio_info and bio_info[0]["@type"] == "BiographicalNote":
             desc = bio_info[0]["label"]
             if type(desc) is list:
                 desc = desc[0]
+
+            if any(word in desc.lower() for word in bad_words):
+                return
+            if not desc.lower()[0].isalpha():
+                return
+            if desc.startswith(tuple(bad_initial)):
+                desc = desc.split(":")[0].strip()
             if len(desc.split(" ")) <= MAX_WORDS:
                 desc = utils.lowercase_first(desc)
                 if desc.startswith("ämne"):
                     return
                 if desc.endswith("."):
                     desc = desc[:-1]
+                print(desc)
                 self.add_description("sv", desc)
 
     def set_profession(self):
