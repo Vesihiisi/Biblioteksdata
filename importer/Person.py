@@ -171,7 +171,6 @@ class Person(WikidataItem):
             return
         if self.is_valid_lifespan(bio_section["lifeSpan"]):
             life = self.clean_up_lifespan(bio_section["lifeSpan"])
-            print(life)
             if len(life) == 2:
                 born_raw = life[0].strip()
                 dead_raw = life[1].strip()
@@ -304,7 +303,7 @@ class Person(WikidataItem):
         self.set_labels()
         self.set_ids()
         self.set_lifespan()
-        # self.set_surname()
+        self.set_surname()
         # self.set_first_name()
         self.set_descriptions()
         # self.set_labels()
