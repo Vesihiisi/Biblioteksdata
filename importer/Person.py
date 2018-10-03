@@ -171,12 +171,14 @@ class Person(WikidataItem):
             return
         if self.is_valid_lifespan(bio_section["lifeSpan"]):
             life = self.clean_up_lifespan(bio_section["lifeSpan"])
-            born_raw = life[0].strip()
-            dead_raw = life[1].strip()
-            if len(born_raw) == 4:
-                born_dict = utils.date_to_dict(born_raw, "%Y")
-            if len(dead_raw) == 4:
-                dead_dict = utils.date_to_dict(dead_raw, "%Y")
+            print(life)
+            if len(life) == 2:
+                born_raw = life[0].strip()
+                dead_raw = life[1].strip()
+                if len(born_raw) == 4 and born_raw.isdigit():
+                    born_dict = utils.date_to_dict(born_raw, "%Y")
+                if len(dead_raw) == 4 and dead_raw.isdigit():
+                    dead_dict = utils.date_to_dict(dead_raw, "%Y")
 
         if "birthDate" in bio_section.keys():
             born_long_raw = bio_section["birthDate"]
