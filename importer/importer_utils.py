@@ -164,3 +164,8 @@ def get_value_of_property(q_number, property_id, site):
                 target = target.getID()
             results.append(target)
     return results
+
+
+def datetime_convert(dt_object):
+    if isinstance(dt_object, datetime.datetime):
+        return dt_object.__str__()
