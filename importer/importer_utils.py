@@ -5,8 +5,8 @@ import json
 import re
 
 import pywikibot
-import wikidataStuff.wdqsLookup as lookup
-
+import pywikibot.data.sparql as sparql
+import wikidataStuff.helpers as helpers
 site_cache = {}
 
 
@@ -53,6 +53,34 @@ def create_site_instance(language, family):
     return site
 
 
+def sanitize_wdqs_result(data):
+    """
+    Strip url component out of wdqs results.
+
+    Source: deprecated wdqsLookup.py.
+    Strip out http://www.wikidata.org/entity/
+    For dicts it is assumed that it is the key which should be sanitized
+    @param data: data to sanitize
+    @type data: str, or list of str or dict
+    @return: sanitized data
+    @rtype: list of str
+    """
+    if helpers.is_str(data):
+        return data.split('/')[-1]
+    elif isinstance(data, list):
+        for i, d in enumerate(data):
+            data[i] = d.split('/')[-1]
+        return data
+    if isinstance(data, dict):
+        new_data = dict()
+        for k, v in data.items():
+            new_data[k.split('/')[-1]] = v
+        return new_data
+    else:
+        raise pywikibot.Error('sanitize_wdqs_result() requires a string, dict '
+                              'or a list of strings. Not a %s' % type(data))
+
+
 def get_wd_items_using_prop(prop):
     """
     Get WD items that already have some value of a unique ID.
@@ -71,13 +99,29 @@ def get_wd_items_using_prop(prop):
     print("WILL NOW DOWNLOAD WD ITEMS THAT USE " + prop)
     query = "SELECT DISTINCT ?item ?value  WHERE {?item p:" + \
         prop + "?statement. OPTIONAL { ?item wdt:" + prop + " ?value. }}"
-    data = lookup.make_simple_wdqs_query(query, verbose=False)
+    sparql_query = sparql.SparqlQuery()
+    data = sparql_query.select(query)
     for x in data:
-        key = lookup.sanitize_wdqs_result(x['item'])
+        key = sanitize_wdqs_result(x['item'])
         value = x['value']
         items[value] = key
     print("FOUND {} WD ITEMS WITH PROP {}".format(len(items), prop))
     return items
+
+
+def get_name(which, namevalue):
+    if which == "first":
+        name_item = "Q202444"
+    elif which == "last":
+        name_item = "Q101352"
+    query = "SELECT DISTINCT ?item WHERE {?item wdt:P31 wd:" + \
+        name_item + ". ?item wdt:P1705 ?value. FILTER(str(?value) = '" + \
+        namevalue + "')}"
+    print("Querying WD for {} name {}.".format(which, namevalue))
+    sparql_query = sparql.SparqlQuery()
+    data = sparql_query.select(query)
+    if len(data) == 1:
+        return sanitize_wdqs_result(data[0]['item'])
 
 
 def date_to_dict(datestring, dateformat):
@@ -108,3 +152,15 @@ def date_to_dict(datestring, dateformat):
 def format_isni(st):
     """Format ISNI id by inserting space after every 4 chars."""
     return ' '.join(st[i:i + 4] for i in range(0, len(st), 4))
+
+
+def get_value_of_property(q_number, property_id, site):
+    results = []
+    item = pywikibot.ItemPage(site, q_number)
+    if item.exists() and item.claims.get(property_id):
+        for claim in item.claims.get(property_id):
+            target = claim.getTarget()
+            if isinstance(target, pywikibot.ItemPage):
+                target = target.getID()
+            results.append(target)
+    return results
