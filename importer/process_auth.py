@@ -26,6 +26,16 @@ MAPPINGS = "mappings"
 REPORTING_DIR = "reports"
 
 
+def make_filenames(timestamp):
+    """Construct the problem and preview filenames."""
+    filenames = {}
+    utils.create_dir(REPORTING_DIR)
+    filenames['reports'] = os.path.join(
+        REPORTING_DIR, "report_auth_{}.json".format(timestamp))
+
+    return filenames
+
+
 def load_mapping_files():
     """Load local and remote mapping files."""
     mappings = {}
@@ -80,24 +90,41 @@ def main(arguments):
     libris_files = list_available_files(arguments.get("dir"),
                                         arguments.get("limit"),
                                         arguments.get("uri"))
+    filenames = make_filenames(utils.get_current_timestamp())
 
     wikidata_site = utils.create_site_instance("wikidata", "wikidata")
     data_files = load_mapping_files()
     existing_people = utils.get_wd_items_using_prop(
         data_files["properties"]["libris_uri"])
+    problem_reports = []
 
     for fname in libris_files:
         data = utils.load_json(fname)
         if is_person(data):
             person = Person(data, wikidata_site, data_files, existing_people)
+            problem_report = person.get_report()
             if arguments.get("upload"):
                 live = True if arguments["upload"] == "live" else False
                 uploader = Uploader(person, repo=wikidata_site,
                                     live=live, edit_summary=EDIT_SUMMARY)
+                if "Q" in problem_report and problem_report["Q"] == "":
+                    """
+                    If the Person didn't have an associated Qid,
+                    this means the Uploader has now created a new Item
+                    for it -- insert that id into the problem report.
+                    """
+                    problem_report["Q"] = uploader.wd_item_q
                 try:
                     uploader.upload()
                 except pywikibot.data.api.APIError as e:
                     print(e)
+
+            if problem_report:
+                problem_reports.append(problem_report)
+                utils.json_to_file(
+                    filenames['reports'], problem_reports, silent=True)
+    if problem_reports:
+        print("SAVED PROBLEM REPORTS TO {}".format(filenames['reports']))
 
 
 if __name__ == "__main__":

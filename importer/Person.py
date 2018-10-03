@@ -164,6 +164,7 @@ class Person(WikidataItem):
         and separate birth/deathDate dates, the
         latter one will be selected if more precise.
         """
+        bad_lifespan = True
         born_dict, dead_dict = None, None
         self.lifespan = {"born": None, "dead": None}
         bio_section = self.raw_data[1]
@@ -175,9 +176,16 @@ class Person(WikidataItem):
                 born_raw = life[0].strip()
                 dead_raw = life[1].strip()
                 if len(born_raw) == 4 and born_raw.isdigit():
+                    bad_lifespan = False
                     born_dict = utils.date_to_dict(born_raw, "%Y")
                 if len(dead_raw) == 4 and dead_raw.isdigit():
+                    bad_lifespan = False
                     dead_dict = utils.date_to_dict(dead_raw, "%Y")
+
+        if bad_lifespan:
+            self.add_to_report("lifeSpan",
+                               bio_section.get("lifeSpan"),
+                               self.url)
 
         if "birthDate" in bio_section.keys():
             born_long_raw = bio_section["birthDate"]
@@ -231,6 +239,7 @@ class Person(WikidataItem):
         """
         uri = self.raw_data[0]["@id"].split("/")[-1]
         url = self.URL_BASE.format(uri)
+        self.url = url
 
         publication_date = None
         modified = self.raw_data[0].get("modified")
@@ -303,7 +312,7 @@ class Person(WikidataItem):
         self.set_labels()
         self.set_ids()
         self.set_lifespan()
-        self.set_surname()
+        # self.set_surname()
         # self.set_first_name()
         self.set_descriptions()
         # self.set_labels()

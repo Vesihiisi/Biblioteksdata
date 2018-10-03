@@ -138,7 +138,7 @@ class WikidataItem(object):
         base = self.wd_item["descriptions"]
         base.append({"language": language, "value": text})
 
-    def add_to_report(self, key_name, raw_data, prop_name=None):
+    def add_to_report(self, key_name, raw_data, id_no, prop_name=None):
         """
         Add data to problem report json.
 
@@ -146,7 +146,7 @@ class WikidataItem(object):
         and if that's the case and it's missing
         in the report,
         add it to the report automatically.
-        Add direct URL to item in WLM API.
+
         Optionally, assign a Property ID that the data
         should have been used as a value for.
 
@@ -155,6 +155,8 @@ class WikidataItem(object):
         :type key_name: string
         :param raw_data: the data that we failed to process
         :type raw_data: string
+        :param id_no: unique id assigned to item, e.g. url
+        :type id_no: string
         :param prop_name: name of the property,
                           as stated in the props library file
         :type prop_name: string
@@ -172,8 +174,7 @@ class WikidataItem(object):
                 self.problem_report["Q"] = self.wd_item["wd-item"]
             else:
                 self.problem_report["Q"] = ""
-        if "url" not in self.problem_report:
-            self.problem_report["url"] = self.wlm_url
+        self.problem_report["url"] = id_no
 
     def print_report(self):
         """Print the problem report on screen."""
