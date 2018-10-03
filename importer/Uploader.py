@@ -36,14 +36,43 @@ class Uploader(object):
         self.wdstuff.add_multiple_descriptions(
             descriptions_for_upload, target_item)
 
+    def is_redundant_date(self, claim, wd_item):
+        """
+        Check if birth/death date is redundant.
+
+        If target WD item has birth/death dates,
+        check if they're more precise than those
+        in the data being uploaded. If they are both
+        more precise and in the same year, do not upload
+        the less precise new date. E.g.
+
+        item has 1999-12-01 → do not upload 1999,
+                              same point in time, different precision;
+                              do upload 1998,
+                              different point in time
+        """
+        prop = claim["prop"]
+        value = claim["value"]
+        if prop in [PROPS["born"], PROPS["dead"]]:
+            # Let's check if the target item already has one...
+            dates_in_item = utils.get_value_of_property(wd_item.getID(),
+                                                        prop, self.repo)
+            for date in dates_in_item:
+                if (date.precision > value.itis.precision and
+                        date.year == value.itis.year):
+                    print("Avoiding duplicate timestamp.")
+                    return True
+        return False
+
     def add_claims(self, wd_item, claims):
         if wd_item:
             for claim in claims:
                 wd_item.get()
-                prop = claim["prop"]
-                value = claim["value"]
-                ref = claim["ref"]
-                self.wdstuff.addNewClaim(prop, value, wd_item, ref)
+                if not self.is_redundant_date(claim, wd_item):
+                    self.wdstuff.addNewClaim(claim["prop"],
+                                             claim["value"],
+                                             wd_item,
+                                             claim["ref"])
 
     def create_new_item(self):
         return self.wdstuff.make_new_item({}, self.summary)

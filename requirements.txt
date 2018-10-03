@@ -1,2 +1,3 @@
 git+https://github.com/wikimedia/pywikibot-core.git
 git+https://github.com/lokal-profil/wikidata-stuff.git@0.3.8
+beautifulsoup4

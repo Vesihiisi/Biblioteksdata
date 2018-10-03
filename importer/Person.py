@@ -15,24 +15,50 @@ class Person(WikidataItem):
         """Set is as a person."""
         self.add_statement("is", "Q5", ref=self.source)
 
+    def get_first_name(self):
+        """Get first name from raw data."""
+        return self.raw_data[1].get("givenName")
+
+    def get_last_name(self):
+        """Get last name from raw data."""
+        return self.raw_data[1].get("familyName")
+
+    def set_surname(self):
+        raw_surname = self.get_last_name()
+        if (not raw_surname or
+                not self.nationality_in_latin_country()):
+            return
+        surname = utils.get_name("last", raw_surname)
+        if surname:
+            self.add_statement("last_name", surname, ref=self.source)
+
+    def nationality_in_latin_country(self):
+        """Check if nationality is in a country with Latin script."""
+        latin_countries = [x["country"] for
+                           x in self.data_files["latin_countries"]]
+        return any(x in self.nationality for x in latin_countries)
+
     def set_labels(self):
-        """Set labels in different languages."""
-        roman_nationalities = ["e-fi---",
-                               "e-sw---"]
-        languages = ["sv", "en", "fi"]
+        """
+        Set labels in different languages.
 
-        first_name = self.raw_data[1]["givenName"]
-        last_name = self.raw_data[1]["familyName"]
-        label = "{} {}".format(first_name, last_name)
-        self.add_label("sv", label)
+        Languages are determined by nationality.
+        No nationality or country with non-Latin
+        script: Label only in sv.
+        Country with Latin script: label in several
+        Latin languages.
+        """
+        first = self.get_first_name()
+        last = self.get_last_name()
 
-        has_nationality = self.raw_data[1].get("nationality")
-        if has_nationality:
-            nationality = self.raw_data[1]["nationality"][0]["@id"].split(
-                "/")[-1]
-            if nationality in roman_nationalities:
-                for lng in languages:
-                    self.add_label(lng, label)
+        if first and last:
+            label = "{} {}".format(first, last)
+            if self.nationality_in_latin_country():
+                languages = self.data_files["latin_languages"]
+            else:
+                languages = ["sv"]
+            for lang in languages:
+                self.add_label(lang, label)
 
     def set_uri(self):
         """Set Libris URI."""
@@ -46,7 +72,7 @@ class Person(WikidataItem):
 
     def set_ids(self):
         """
-        Set other authority ID's.
+        Set VIAF and ISNI id's.
 
         ISNI numbers are formatted with spaces
         because it's a property constraint.
@@ -59,10 +85,13 @@ class Person(WikidataItem):
         if bio_section.get("identifiedBy"):
             for i in bio_section.get("identifiedBy"):
                 if (i["@type"] == "Identifier" and
-                        i["typeNote"] in allowed_types):
+                        i["typeNote"] in allowed_types and
+                        i.get("value")):
                     if i["typeNote"] == "isni":
                         i["value"] = utils.format_isni(i["value"])
-                    self.add_statement(i["typeNote"], i["value"])
+                    self.add_statement(i["typeNote"],
+                                       i["value"],
+                                       ref=self.source)
 
     def set_descriptions(self):
         """Set the Swedish description."""
@@ -81,14 +110,42 @@ class Person(WikidataItem):
                 self.add_description("sv", desc)
 
     def set_profession(self):
-        """Set profession of the person."""
+        """Set professions of the person."""
+        prof_map = self.data_files["professions"]
         bio_section = self.raw_data[1]
-        if bio_section.get("hasOccupation"):
-            occs = bio_section.get("hasOccupation")[0].get("label")
-            for prof in [x.lower() for x in occs]:
-                prof_q = self.data_files["professions"].get(prof)
-                self.add_statement("profession", prof_q, ref=self.source)
-            # can we find examples of multiple professions?
+        professions = bio_section.get("hasOccupation")
+        if professions:
+            for p in professions:
+                if p.get("label"):
+                    for l in p["label"]:
+                        prof_to_match = l.lower()
+                        prof_q = [x.get("q")
+                                  for x in
+                                  prof_map if x["name"] == prof_to_match]
+                        if prof_q and len(prof_q[0]) > 0:
+                            self.add_statement(
+                                "profession", prof_q, ref=self.source)
+
+    def is_valid_lifespan(self, lifespan):
+        bad_keywords = ["eller", "el.",
+                        "fl.", "..",
+                        "ca", "?", "verksam"]
+        if lifespan.isdigit():
+            return False
+        if any(keyword in lifespan for keyword in bad_keywords):
+            return False
+        if not any(char.isdigit() for char in lifespan):
+            return False
+        return True
+
+    def clean_up_lifespan(self, lifespan):
+        lifespan = lifespan.replace("–", "-")
+        lifespan = lifespan.replace("d.", "-")
+        if "b." in lifespan:
+            lifespan = lifespan.replace("b.", "f.")
+        if "f." in lifespan:
+            lifespan = lifespan.replace("f.", "") + "-"
+        return lifespan.split("-")
 
     def set_lifespan(self):
         """
@@ -103,11 +160,15 @@ class Person(WikidataItem):
         bio_section = self.raw_data[1]
         if not bio_section.get("lifeSpan"):
             return
-        life = bio_section["lifeSpan"].split("-")
-        born_raw = life[0]
-        dead_raw = life[1]
-        if len(born_raw) == 4:
-            born_dict = utils.date_to_dict(born_raw, "%Y")
+        if self.is_valid_lifespan(bio_section["lifeSpan"]):
+            life = self.clean_up_lifespan(bio_section["lifeSpan"])
+            born_raw = life[0].strip()
+            dead_raw = life[1].strip()
+            if len(born_raw) == 4:
+                born_dict = utils.date_to_dict(born_raw, "%Y")
+            if len(dead_raw) == 4:
+                dead_dict = utils.date_to_dict(dead_raw, "%Y")
+
         if "birthDate" in bio_section.keys():
             born_long_raw = bio_section["birthDate"]
             if len(born_long_raw) == 8:
@@ -115,9 +176,6 @@ class Person(WikidataItem):
         if born_dict:
             born_pwb = self.make_pywikibot_item({"date_value": born_dict})
             self.add_statement("born", born_pwb, ref=self.source)
-
-        if len(dead_raw) == 4:
-            dead_dict = utils.date_to_dict(dead_raw, "%Y")
         if "deathDate" in bio_section.keys():
             dead_long_raw = bio_section["deathDate"]
             if len(dead_long_raw) == 8:
@@ -126,15 +184,27 @@ class Person(WikidataItem):
             dead_pwb = self.make_pywikibot_item({"date_value": dead_dict})
             self.add_statement("dead", dead_pwb, ref=self.source)
 
+    def get_nationalities(self):
+        nationalities = []
+        item_nationalities = self.raw_data[1].get("nationality")
+        if item_nationalities:
+            for nat in item_nationalities:
+                if nat.get("@id"):
+                    nationalities.append(nat["@id"])
+        return nationalities
+
     def set_nationality(self):
-        """Add country of nationality, converted from MARC code."""
-        has_nationality = self.raw_data[1].get("nationality")
-        if has_nationality:
-            nationality = self.raw_data[1]["nationality"][0]["@id"].split(
-                "/")[-1]
-            country = self.data_files["countries"].get(nationality)
-            if country:
-                self.add_statement("citizenship", country, ref=self.source)
+        """Add countries of nationality, converted from MARC-ish code."""
+        self.nationality = []
+        country_map = self.data_files["countries"]
+        nationalities = self.get_nationalities()
+        for nat in nationalities:
+            nat_q = [x.get("q")
+                     for x in
+                     country_map if x["name"] == nat]
+            if nat_q and len(nat_q[0]) > 0:
+                self.nationality.append(nat_q[0])
+                self.add_statement("citizenship", nat_q, ref=self.source)
 
     def create_sources(self):
         """
@@ -211,16 +281,17 @@ class Person(WikidataItem):
         self.data_files = data_files
         self.create_sources()
 
-        # self.set_ids()
         # self.set_selibr()
         self.match_wikidata()
 
-        # self.set_is()
+        self.set_is()
         self.set_uri()
-        # self.set_nationality()
-        # self.set_lifespan()
-        # self.set_profession()
-        # self.set_surname()
+        self.set_profession()
+        self.set_nationality()
+        self.set_labels()
+        self.set_ids()
+        self.set_lifespan()
+        self.set_surname()
         # self.set_first_name()
         self.set_descriptions()
         # self.set_labels()
