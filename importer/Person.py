@@ -116,7 +116,6 @@ class Person(WikidataItem):
                     return
                 if desc.endswith("."):
                     desc = desc[:-1]
-                print(desc)
                 self.add_description("sv", desc)
 
     def set_profession(self):
