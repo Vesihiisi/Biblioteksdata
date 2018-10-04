@@ -1,5 +1,6 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
+import json
 from wikidataStuff.WikidataStuff import WikidataStuff as WDS
 from wikidataStuff import helpers as helpers
 import pywikibot
@@ -16,6 +17,7 @@ class WikidataItem(object):
         self.existing = existing
         self.wdstuff = WDS(self.repo)
         self.raw_data = db_row_dict
+        self.problem_report = {}
         self.props = data_files["properties"]
         self.construct_wd_item()
 
@@ -135,6 +137,58 @@ class WikidataItem(object):
     def add_description(self, language, text):
         base = self.wd_item["descriptions"]
         base.append({"language": language, "value": text})
+
+    def add_to_report(self, key_name, raw_data, id_no, prop_name=None):
+        """
+        Add data to problem report json.
+
+        Check if item has an associated Q-number,
+        and if that's the case and it's missing
+        in the report,
+        add it to the report automatically.
+
+        Optionally, assign a Property ID that the data
+        should have been used as a value for.
+
+        :param key_name: name of the field containing
+                         the problematic data, e.g. the header of the column
+        :type key_name: string
+        :param raw_data: the data that we failed to process
+        :type raw_data: string
+        :param id_no: unique id assigned to item, e.g. url
+        :type id_no: string
+        :param prop_name: name of the property,
+                          as stated in the props library file
+        :type prop_name: string
+        """
+        prop = None
+        if prop_name:
+            if prop_name.startswith('_'):
+                prop = prop_name
+            else:
+                prop = self.props.get(prop_name)
+        self.problem_report[key_name] = {"value": raw_data,
+                                         "target": prop}
+        if "wd-item" not in self.problem_report:
+            if self.wd_item["wd-item"] is not None:
+                self.problem_report["Q"] = self.wd_item["wd-item"]
+            else:
+                self.problem_report["Q"] = ""
+        self.problem_report["url"] = id_no
+
+    def print_report(self):
+        """Print the problem report on screen."""
+        print(
+            json.dumps(self.problem_report,
+                       sort_keys=True,
+                       indent=4,
+                       ensure_ascii=False,
+                       default=utils.datetime_convert)
+        )
+
+    def get_report(self):
+        """Retrieve the problem report."""
+        return self.problem_report
 
     def construct_wd_item(self):
         self.wd_item = {}

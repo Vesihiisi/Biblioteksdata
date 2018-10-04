@@ -2,6 +2,7 @@
 # -*- coding: utf-8  -*-
 import datetime
 import json
+import os
 import re
 
 import pywikibot
@@ -164,3 +165,33 @@ def get_value_of_property(q_number, property_id, site):
                 target = target.getID()
             results.append(target)
     return results
+
+
+def datetime_convert(dt_object):
+    if isinstance(dt_object, datetime.datetime):
+        return dt_object.__str__()
+
+
+def create_dir(out_path):
+    """
+    Create a directory if it doesn't exist.
+    @param out_path: directory to create
+    """
+    if not out_path:
+        raise ValueError('Cannot a create directory without a name.')
+    if not os.path.exists(out_path):
+        os.mkdir(out_path)
+    elif os.path.isfile(out_path):
+        raise ValueError(
+            'Cannot create the directory "{}" as a file with that name '
+            'already exists.'.format(out_path))
+
+
+def json_to_file(filename, json_content, silent=False):
+    with open(filename, 'w', encoding="utf-8") as f:
+        json.dump(json_content, f, sort_keys=True,
+                  indent=4,
+                  ensure_ascii=False,
+                  default=datetime_convert)
+        if not silent:
+            print("SAVED FILE " + filename)
