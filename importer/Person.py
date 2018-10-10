@@ -38,19 +38,24 @@ class Person(WikidataItem):
                 not self.nationality_in_latin_country()):
             return
 
-        if raw_first_name in self.caches["first_name"]:
-            print("{} found in cache.".format(raw_first_name))
-            first_name = self.caches["first_name"].get(raw_first_name)
-        else:
-            first_name = utils.get_name("first", raw_first_name)
-            self.add_to_cache("first_name", raw_first_name, first_name)
+        multiple_names = raw_first_name.split(" ")
+        for raw_part in multiple_names:
+            if "." in raw_part:
+                # ignore initials like "D."
+                continue
+            if raw_part in self.caches["first_name"]:
+                print("{} found in cache.".format(raw_part))
+                first_name = self.caches["first_name"].get(raw_part)
+            else:
+                first_name = utils.get_name("first", raw_part)
+                self.add_to_cache("first_name", raw_part, first_name)
 
-        if first_name:
-            print("First name {} matched: {}.".format(
-                raw_first_name, first_name))
-            self.add_statement("first_name", first_name, ref=self.source)
-        else:
-            print("First name {} not matched.".format(raw_first_name))
+            if first_name:
+                print("First name {} matched: {}.".format(
+                    raw_part, first_name))
+                self.add_statement("first_name", first_name, ref=self.source)
+            else:
+                print("First name {} not matched.".format(raw_part))
 
     def set_surname(self):
         """
