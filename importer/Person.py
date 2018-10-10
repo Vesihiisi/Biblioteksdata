@@ -24,9 +24,15 @@ class Person(WikidataItem):
         return self.raw_data[1].get("familyName")
 
     def add_to_cache(self, cache_name, raw_data, match):
+        """Add a raw_data : match pair to cache."""
         self.caches[cache_name][raw_data] = match
 
     def set_surname(self):
+        """
+        Set surname.
+
+        Use the cache if possible, otherwise query Wikidata.
+        """
         raw_surname = self.get_last_name()
         if (not raw_surname or
                 not self.nationality_in_latin_country()):
