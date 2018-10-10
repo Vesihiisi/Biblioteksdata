@@ -87,6 +87,7 @@ def list_available_files(path, limit=None, uri=None):
 
 def main(arguments):
     """Get arguments and process data."""
+    cache = {"surname": {}}
     libris_files = list_available_files(arguments.get("dir"),
                                         arguments.get("limit"),
                                         arguments.get("uri"))
@@ -101,7 +102,11 @@ def main(arguments):
     for fname in libris_files:
         data = utils.load_json(fname)
         if is_person(data):
-            person = Person(data, wikidata_site, data_files, existing_people)
+            person = Person(data,
+                            wikidata_site,
+                            data_files,
+                            existing_people,
+                            cache)
             problem_report = person.get_report()
             if arguments.get("upload"):
                 live = True if arguments["upload"] == "live" else False
