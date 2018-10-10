@@ -57,7 +57,7 @@ class Person(WikidataItem):
             else:
                 print("First name {} not matched.".format(raw_part))
                 self.add_to_report(
-                                "givenName", raw_part, self.url, "first_name")
+                    "givenName", raw_part, self.url, "first_name")
 
     def set_surname(self):
         """
@@ -83,7 +83,7 @@ class Person(WikidataItem):
         else:
             print("Surname {} not matched.".format(raw_surname))
             self.add_to_report(
-                                "familyName", raw_surname, self.url, "last_name")
+                "familyName", raw_surname, self.url, "last_name")
 
     def nationality_in_latin_country(self):
         """Check if nationality is in a country with Latin script."""
