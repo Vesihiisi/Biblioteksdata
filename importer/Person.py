@@ -56,6 +56,8 @@ class Person(WikidataItem):
                 self.add_statement("first_name", first_name, ref=self.source)
             else:
                 print("First name {} not matched.".format(raw_part))
+                self.add_to_report(
+                    "givenName", raw_part, self.url, "first_name")
 
     def set_surname(self):
         """
@@ -80,6 +82,8 @@ class Person(WikidataItem):
             self.add_statement("last_name", surname, ref=self.source)
         else:
             print("Surname {} not matched.".format(raw_surname))
+            self.add_to_report(
+                "familyName", raw_surname, self.url, "last_name")
 
     def nationality_in_latin_country(self):
         """Check if nationality is in a country with Latin script."""
@@ -183,6 +187,9 @@ class Person(WikidataItem):
                         if prof_q and len(prof_q[0]) > 0:
                             self.add_statement(
                                 "profession", prof_q, ref=self.source)
+                        else:
+                            self.add_to_report(
+                                "hasOccupation", l, self.url, "profession")
 
     def is_valid_lifespan(self, lifespan):
         bad_keywords = ["eller", "el.",
@@ -274,6 +281,9 @@ class Person(WikidataItem):
             if nat_q and len(nat_q[0]) > 0:
                 self.nationality.append(nat_q[0])
                 self.add_statement("citizenship", nat_q, ref=self.source)
+            else:
+                self.add_to_report(
+                    "nationality", nat, self.url, "citizenship")
 
     def create_sources(self):
         """
