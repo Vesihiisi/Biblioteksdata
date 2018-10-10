@@ -115,7 +115,7 @@ def get_name(which, namevalue):
         name_item = "Q202444"
     elif which == "last":
         name_item = "Q101352"
-    query = "SELECT DISTINCT ?item WHERE {?item wdt:P31 wd:" + \
+    query = "SELECT DISTINCT ?item WHERE {?item wdt:P31/wdt:P279* wd:" + \
         name_item + ". ?item wdt:P1705 ?value. FILTER(str(?value) = '" + \
         namevalue + "')}"
     print("Querying WD for {} name {}.".format(which, namevalue))

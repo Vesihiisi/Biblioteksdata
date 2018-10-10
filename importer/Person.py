@@ -27,6 +27,31 @@ class Person(WikidataItem):
         """Add a raw_data : match pair to cache."""
         self.caches[cache_name][raw_data] = match
 
+    def set_first_name(self):
+        """
+        Set first name.
+
+        Use the cache if possible, otherwise query Wikidata.
+        """
+        raw_first_name = self.get_first_name()
+        if (not raw_first_name or
+                not self.nationality_in_latin_country()):
+            return
+
+        if raw_first_name in self.caches["first_name"]:
+            print("{} found in cache.".format(raw_first_name))
+            first_name = self.caches["first_name"].get(raw_first_name)
+        else:
+            first_name = utils.get_name("first", raw_first_name)
+            self.add_to_cache("first_name", raw_first_name, first_name)
+
+        if first_name:
+            print("First name {} matched: {}.".format(
+                raw_first_name, first_name))
+            self.add_statement("first_name", first_name, ref=self.source)
+        else:
+            print("First name {} not matched.".format(raw_first_name))
+
     def set_surname(self):
         """
         Set surname.
@@ -336,6 +361,6 @@ class Person(WikidataItem):
         self.set_labels()
         self.set_ids()
         self.set_lifespan()
-        self.set_surname()
-        # self.set_first_name()
+        # self.set_surname()
+        self.set_first_name()
         self.set_descriptions()
