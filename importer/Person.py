@@ -23,14 +23,27 @@ class Person(WikidataItem):
         """Get last name from raw data."""
         return self.raw_data[1].get("familyName")
 
+    def add_to_cache(self, cache_name, raw_data, match):
+        self.caches[cache_name][raw_data] = match
+
     def set_surname(self):
         raw_surname = self.get_last_name()
         if (not raw_surname or
                 not self.nationality_in_latin_country()):
             return
-        surname = utils.get_name("last", raw_surname)
+
+        if raw_surname in self.caches["surname"]:
+            print("{} found in cache.".format(raw_surname))
+            surname = self.caches["surname"].get(raw_surname)
+        else:
+            surname = utils.get_name("last", raw_surname)
+            self.add_to_cache("surname", raw_surname, surname)
+
         if surname:
+            print("Surname {} matched: {}.".format(raw_surname, surname))
             self.add_statement("last_name", surname, ref=self.source)
+        else:
+            print("Surname {} not matched.".format(raw_surname))
 
     def nationality_in_latin_country(self):
         """Check if nationality is in a country with Latin script."""
@@ -295,9 +308,14 @@ class Person(WikidataItem):
         """Get timestamp of last change of post."""
         self.timestamp = self.raw_data[0].get("modified").split("T")[0]
 
-    def __init__(self, raw_data, repository, data_files, existing):
+    def __init__(self, raw_data, repository, data_files, existing, cache):
         """Initialize an empty object."""
-        WikidataItem.__init__(self, raw_data, repository, data_files, existing)
+        WikidataItem.__init__(self,
+                              raw_data,
+                              repository,
+                              data_files,
+                              existing,
+                              cache)
         self.raw_data = raw_data["@graph"]
         self.data_files = data_files
         self.create_sources()

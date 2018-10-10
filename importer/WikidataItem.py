@@ -24,6 +24,9 @@ class WikidataItem(object):
 
         self.problem_report = {}
 
+    def get_caches(self):
+        return self.caches
+
     def make_q_item(self, qnumber):
         return self.wdstuff.QtoItemPage(qnumber)
 

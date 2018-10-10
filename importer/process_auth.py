@@ -107,6 +107,7 @@ def main(arguments):
                             data_files,
                             existing_people,
                             cache)
+            cache = person.get_caches()
             problem_report = person.get_report()
             if arguments.get("upload"):
                 live = True if arguments["upload"] == "live" else False
