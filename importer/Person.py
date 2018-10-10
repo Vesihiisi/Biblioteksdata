@@ -25,6 +25,7 @@ class Person(WikidataItem):
 
     def add_to_cache(self, cache_name, raw_data, match):
         """Add a raw_data : match pair to cache."""
+        print(self.caches[cache_name])
         self.caches[cache_name][raw_data] = match
 
     def set_surname(self):
