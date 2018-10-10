@@ -118,7 +118,7 @@ def main(arguments):
 
     for fname in libris_files:
         data = utils.load_json(fname)
-        cache = load_caches(["surname"])
+        cache = load_caches(["surname", "first_name"])
         if is_person(data):
             person = Person(data,
                             wikidata_site,
