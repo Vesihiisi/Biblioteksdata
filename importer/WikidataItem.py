@@ -12,16 +12,20 @@ DATA_DIR = "data"
 
 class WikidataItem(object):
 
-    def __init__(self, db_row_dict, repository, data_files, existing):
+    def __init__(self, db_row_dict, repository, data_files, existing, caches):
         self.repo = repository
         self.existing = existing
         self.wdstuff = WDS(self.repo)
         self.raw_data = db_row_dict
+        self.caches = caches
         self.problem_report = {}
         self.props = data_files["properties"]
         self.construct_wd_item()
 
         self.problem_report = {}
+
+    def get_caches(self):
+        return self.caches
 
     def make_q_item(self, qnumber):
         return self.wdstuff.QtoItemPage(qnumber)

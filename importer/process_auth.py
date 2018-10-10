@@ -24,6 +24,7 @@ from Uploader import Uploader
 EDIT_SUMMARY = "#WMSE #LibraryData_KB"
 MAPPINGS = "mappings"
 REPORTING_DIR = "reports"
+CACHE = "cache"
 
 
 def make_filenames(timestamp):
@@ -85,6 +86,23 @@ def list_available_files(path, limit=None, uri=None):
     return files
 
 
+def load_caches(keys):
+    cache = {}
+    for k in keys:
+        fpath = os.path.join(CACHE, "{}.json".format(k))
+        if os.path.exists(fpath):
+            cache[k] = utils.load_json(fpath)
+        else:
+            cache[k] = {}
+    return cache
+
+
+def dump_caches(wditem_caches):
+    for cache in wditem_caches:
+        fname = os.path.join(CACHE, "{}.json".format(cache))
+        utils.json_to_file(fname, wditem_caches[cache])
+
+
 def main(arguments):
     """Get arguments and process data."""
     libris_files = list_available_files(arguments.get("dir"),
@@ -100,8 +118,14 @@ def main(arguments):
 
     for fname in libris_files:
         data = utils.load_json(fname)
+        cache = load_caches(["surname"])
         if is_person(data):
-            person = Person(data, wikidata_site, data_files, existing_people)
+            person = Person(data,
+                            wikidata_site,
+                            data_files,
+                            existing_people,
+                            cache)
+            dump_caches(person.get_caches())
             problem_report = person.get_report()
             if arguments.get("upload"):
                 live = True if arguments["upload"] == "live" else False
