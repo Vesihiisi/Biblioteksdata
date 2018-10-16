@@ -29,7 +29,16 @@ class Edition(WikidataItem):
 
     def set_title(self):
         raw_title = self.raw_data[1].get("hasTitle")
-        print(raw_title)
+        if not raw_title:
+            return
+        if len(raw_title) != 1:
+            return
+        if raw_title[0].get("@type") == "Title":
+            main_title = raw_title[0].get("mainTitle")
+            if main_title:
+                wd_title = utils.package_monolingual(
+                    main_title, self.lang_wikidata)
+                self.add_statement("title", wd_title)
 
     def set_language(self):
         """
@@ -51,8 +60,15 @@ class Edition(WikidataItem):
             lang_q = [x.get("q")
                       for x in
                       lang_map if x["name"] == edition_lang]
+            lang_wikidata = [x.get("wikidata")
+                             for x in
+                             lang_map if x["name"] == edition_lang]
             if lang_q:
                 self.add_statement("language", lang_q[0])
+            if lang_wikidata:
+                self.lang_wikidata = lang_wikidata[0]
+            else:
+                self.lang_wikidata = "und"
 
     def set_pages(self):
         """

@@ -1,10 +1,12 @@
 [
   {
     "name": "swe",
-    "q": "Q9027"
+    "q": "Q9027",
+    "wikidata": "sv"
   },
   {
     "name": "eng",
-    "q": "Q1860"
+    "q": "Q1860",
+    "wikidata": "en"
   }
 ]
