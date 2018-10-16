@@ -121,6 +121,18 @@ class Edition(WikidataItem):
                 no_pages = utils.package_quantity(number_strings[0])
                 self.add_statement("pages", no_pages)
 
+    def set_publication_date(self):
+        """Set year of publication."""
+        raw_publ = self.raw_data[1].get("publication")
+        if not raw_publ:
+            return
+        for el in raw_publ:
+            if el.get('@type') == "PrimaryPublication":
+                raw_year = el.get("year")
+                if raw_year and utils.legit_year(raw_year):
+                    year_dict = {"date_value": {"year": raw_year}}
+                    self.add_statement("publication_date", year_dict)
+
     def __init__(self, raw_data, repository, data_files, existing, cache):
         """Initialize an empty object."""
         WikidataItem.__init__(self,
@@ -138,4 +150,5 @@ class Edition(WikidataItem):
         self.set_language()
         self.set_title()
         self.set_subtitle()
+        self.set_publication_date()
         self.set_pages()
