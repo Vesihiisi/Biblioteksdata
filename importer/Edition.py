@@ -2,7 +2,7 @@
 # -*- coding: utf-8  -*-
 """An object representing a Libris edition item."""
 from WikidataItem import WikidataItem
-import importer_utils as utils
+# import importer_utils as utils
 
 
 class Edition(WikidataItem):
@@ -10,6 +10,16 @@ class Edition(WikidataItem):
 
     URL_BASE = "https://libris.kb.se/katalogisering/{}"
     DUMP_DATE = "2018-08-24"  # update when dump
+
+    def match_wikidata(self):
+        uri = self.raw_data[0]["@id"].split("/")[-1]
+        uri_match = self.existing.get(uri)
+        if uri_match:
+            self.associate_wd_item(uri_match)
+
+    def set_uri(self):
+        uri = self.raw_data[0]["@id"].split("/")[-1]
+        self.add_statement("libris_uri", uri)
 
     def __init__(self, raw_data, repository, data_files, existing, cache):
         """Initialize an empty object."""
@@ -21,3 +31,6 @@ class Edition(WikidataItem):
                               cache)
         self.raw_data = raw_data["@graph"]
         self.data_files = data_files
+
+        self.match_wikidata()
+        self.set_uri()
