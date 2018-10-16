@@ -38,6 +38,11 @@ class WikidataItem(object):
             val_item = self.make_q_item(value)
         elif value == "novalue":
             val_item = value
+        elif isinstance(value, dict) and 'monolingual_value' in value:
+            text = value['monolingual_value']
+            language = value['lang']
+            val_item = pywikibot.WbMonolingualText(text=text,
+                                                   language=language)
         elif isinstance(value, dict) and 'quantity_value' in value:
             number = value['quantity_value']
             if 'unit' in value:

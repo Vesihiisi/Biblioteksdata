@@ -27,6 +27,26 @@ class Edition(WikidataItem):
         uri = self.raw_data[0]["@id"].split("/")[-1]
         self.add_statement("libris_uri", uri)
 
+    def set_title(self):
+        """
+        Set title of edition.
+
+        Use language code from set_language();
+        if it couldn't be extracted there, it will
+        default to 'undefined'.
+        """
+        raw_title = self.raw_data[1].get("hasTitle")
+        if not raw_title:
+            return
+        if len(raw_title) != 1:
+            return
+        if raw_title[0].get("@type") == "Title":
+            main_title = raw_title[0].get("mainTitle")
+            if main_title:
+                wd_title = utils.package_monolingual(
+                    main_title, self.lang_wikidata)
+                self.add_statement("title", wd_title)
+
     def set_language(self):
         """
         Set language of edition.
@@ -34,6 +54,11 @@ class Edition(WikidataItem):
         Because this information does not seem to
         have same position in every entry,
         we have to traverse the json for it.
+        Save Wikidata-compatible language code
+        in self to be re-used for setting
+        title/subtitle properties. If no language
+        is extracted here, set self.lang_wikidata
+        to undefined.
         """
         lang_map = self.data_files["languages"]
         for el in self.raw_data:
@@ -47,8 +72,15 @@ class Edition(WikidataItem):
             lang_q = [x.get("q")
                       for x in
                       lang_map if x["name"] == edition_lang]
+            lang_wikidata = [x.get("wikidata")
+                             for x in
+                             lang_map if x["name"] == edition_lang]
             if lang_q:
                 self.add_statement("language", lang_q[0])
+            if lang_wikidata:
+                self.lang_wikidata = lang_wikidata[0]
+            else:
+                self.lang_wikidata = "und"
 
     def set_pages(self):
         """
@@ -85,4 +117,5 @@ class Edition(WikidataItem):
         self.set_uri()
         self.set_is()
         self.set_language()
+        self.set_title()
         self.set_pages()
