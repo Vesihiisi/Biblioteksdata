@@ -28,7 +28,13 @@ class Edition(WikidataItem):
         self.add_statement("libris_uri", uri)
 
     def set_pages(self):
-        """Set number of pages."""
+        """
+        Set number of pages.
+
+        Only works if there's exactly one
+        'extent' statement that contains
+        exactly one numeric content.
+        """
         extent = self.raw_data[1].get("extent")
         if len(extent) != 1:
             return
