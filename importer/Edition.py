@@ -123,12 +123,14 @@ class Edition(WikidataItem):
 
     def set_publication_date(self):
         raw_publ = self.raw_data[1].get("publication")
-        if len(raw_publ) != 1:
+        if not raw_publ:
             return
-        raw_year = raw_publ[0].get("year")
-        if raw_year and utils.legit_year(raw_year):
-            year_dict = {"date_value": {"year": raw_year}}
-            self.add_statement("publication_date", year_dict)
+        for el in raw_publ:
+            if el.get('@type') == "PrimaryPublication":
+                raw_year = el.get("year")
+                if raw_year and utils.legit_year(raw_year):
+                    year_dict = {"date_value": {"year": raw_year}}
+                    self.add_statement("publication_date", year_dict)
 
     def __init__(self, raw_data, repository, data_files, existing, cache):
         """Initialize an empty object."""
