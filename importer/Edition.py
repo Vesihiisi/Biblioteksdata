@@ -28,8 +28,21 @@ class Edition(WikidataItem):
         self.add_statement("libris_uri", uri)
 
     def set_language(self):
+        """
+        Set language of edition.
+
+        Because this information does not seem to
+        have same position in every entry,
+        we have to traverse the json for it.
+        """
         lang_map = self.data_files["languages"]
-        edition_lang = self.raw_data[4]["@graph"][1].get("langCode")
+        for el in self.raw_data:
+            graph = el.get("@graph")
+            if graph and len(graph) > 1:
+                for el in graph[1]:
+                    if graph[1][el] == "Language":
+                        edition_lang = graph[1].get("langCode")
+                        
         if edition_lang:
             lang_q = [x.get("q")
                       for x in
