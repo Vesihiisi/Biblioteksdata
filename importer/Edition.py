@@ -11,6 +11,10 @@ class Edition(WikidataItem):
     URL_BASE = "https://libris.kb.se/katalogisering/{}"
     DUMP_DATE = "2018-08-24"  # update when dump
 
+    def set_is(self):
+        edition = "Q3331189"
+        self.add_statement("is", edition)
+
     def match_wikidata(self):
         uri = self.raw_data[0]["@id"].split("/")[-1]
         uri_match = self.existing.get(uri)
@@ -34,3 +38,4 @@ class Edition(WikidataItem):
 
         self.match_wikidata()
         self.set_uri()
+        self.set_is()

@@ -54,7 +54,6 @@ def main(arguments):
         if "Q" in problem_report and problem_report["Q"] == "":
             problem_report["Q"] = uploader.wd_item_q
         try:
-            print("Gonna upload")
             uploader.upload()
         except pywikibot.data.api.APIError as e:
             print(e)
