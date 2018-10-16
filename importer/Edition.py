@@ -121,6 +121,10 @@ class Edition(WikidataItem):
                 no_pages = utils.package_quantity(number_strings[0])
                 self.add_statement("pages", no_pages)
 
+    def add_labels():
+        """Add labels – title + subtitle?"""
+        return
+
     def __init__(self, raw_data, repository, data_files, existing, cache):
         """Initialize an empty object."""
         WikidataItem.__init__(self,
@@ -139,3 +143,4 @@ class Edition(WikidataItem):
         self.set_title()
         self.set_subtitle()
         self.set_pages()
+        self.add_labels()
