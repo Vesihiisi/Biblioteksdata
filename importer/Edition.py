@@ -28,6 +28,13 @@ class Edition(WikidataItem):
         self.add_statement("libris_uri", uri)
 
     def set_title(self):
+        """
+        Set title of edition.
+
+        Use language code from set_language();
+        if it couldn't be extracted there, it will
+        default to 'undefined'.
+        """
         raw_title = self.raw_data[1].get("hasTitle")
         if not raw_title:
             return
@@ -47,6 +54,11 @@ class Edition(WikidataItem):
         Because this information does not seem to
         have same position in every entry,
         we have to traverse the json for it.
+        Save Wikidata-compatible language code
+        in self to be re-used for setting
+        title/subtitle properties. If no language
+        is extracted here, set self.lang_wikidata
+        to undefined.
         """
         lang_map = self.data_files["languages"]
         for el in self.raw_data:
