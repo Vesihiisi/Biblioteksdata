@@ -16,6 +16,10 @@ def lowercase_first(text):
     return text[0].lower() + text[1:]
 
 
+def get_current_date():
+    return datetime.datetime.now().strftime('%Y-%m-%d')
+
+
 def get_current_timestamp():
     return datetime.datetime.now().strftime('%Y-%m-%d_%H:%M:%S')
 
