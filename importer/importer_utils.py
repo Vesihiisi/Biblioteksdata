@@ -195,3 +195,11 @@ def json_to_file(filename, json_content, silent=False):
                   default=datetime_convert)
         if not silent:
             print("SAVED FILE " + filename)
+
+
+def package_quantity(value, unit=None):
+    """Package a quantity value in a standardised form."""
+    quantity = {"quantity_value": value}
+    if unit:
+        quantity["unit"] = unit
+    return quantity
