@@ -27,6 +27,29 @@ class Edition(WikidataItem):
         uri = self.raw_data[0]["@id"].split("/")[-1]
         self.add_statement("libris_uri", uri)
 
+    def set_language(self):
+        """
+        Set language of edition.
+
+        Because this information does not seem to
+        have same position in every entry,
+        we have to traverse the json for it.
+        """
+        lang_map = self.data_files["languages"]
+        for el in self.raw_data:
+            graph = el.get("@graph")
+            if graph and len(graph) > 1:
+                for el in graph[1]:
+                    if graph[1][el] == "Language":
+                        edition_lang = graph[1].get("langCode")
+
+        if edition_lang:
+            lang_q = [x.get("q")
+                      for x in
+                      lang_map if x["name"] == edition_lang]
+            if lang_q:
+                self.add_statement("language", lang_q[0])
+
     def set_pages(self):
         """
         Set number of pages.
@@ -61,4 +84,5 @@ class Edition(WikidataItem):
         self.match_wikidata()
         self.set_uri()
         self.set_is()
+        self.set_language()
         self.set_pages()
