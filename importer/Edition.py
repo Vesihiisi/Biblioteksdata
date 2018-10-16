@@ -122,6 +122,7 @@ class Edition(WikidataItem):
                 self.add_statement("pages", no_pages)
 
     def set_publication_date(self):
+        """Set year of publication."""
         raw_publ = self.raw_data[1].get("publication")
         if not raw_publ:
             return
