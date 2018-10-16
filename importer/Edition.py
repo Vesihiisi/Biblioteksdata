@@ -42,7 +42,7 @@ class Edition(WikidataItem):
                 for el in graph[1]:
                     if graph[1][el] == "Language":
                         edition_lang = graph[1].get("langCode")
-                        
+
         if edition_lang:
             lang_q = [x.get("q")
                       for x in
