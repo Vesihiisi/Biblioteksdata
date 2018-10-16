@@ -47,6 +47,25 @@ class Edition(WikidataItem):
                     main_title, self.lang_wikidata)
                 self.add_statement("title", wd_title)
 
+    def set_subtitle(self):
+        """
+        Set subtitle.
+
+        Use language code from set_language();
+        if it couldn't be extracted there, it will
+        default to 'undefined'.
+        """
+        raw_subtitle = self.raw_data[1].get("hasTitle")
+        if not raw_subtitle:
+            return
+        if len(raw_subtitle) != 1:
+            return
+        if raw_subtitle[0].get("subtitle"):
+            subtitle = raw_subtitle[0].get("subtitle")
+            wd_subtitle = utils.package_monolingual(
+                subtitle, self.lang_wikidata)
+            self.add_statement("subtitle", wd_subtitle)
+
     def set_language(self):
         """
         Set language of edition.
@@ -118,4 +137,5 @@ class Edition(WikidataItem):
         self.set_is()
         self.set_language()
         self.set_title()
+        self.set_subtitle()
         self.set_pages()
