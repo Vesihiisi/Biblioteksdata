@@ -27,6 +27,12 @@ class Edition(WikidataItem):
         uri = self.raw_data[0]["@id"].split("/")[-1]
         self.add_statement("libris_uri", uri)
 
+    def set_author(self):
+        author_role = "author"
+        raw_contribs = self.raw_data[2].get("contribution")
+        for contrib in raw_contribs:
+            print(contrib)
+
     def set_title(self):
         """
         Set title of edition.
@@ -148,6 +154,7 @@ class Edition(WikidataItem):
         self.set_uri()
         self.set_is()
         self.set_language()
+        self.set_author()
         self.set_title()
         self.set_subtitle()
         self.set_publication_date()
