@@ -27,6 +27,10 @@ class Edition(WikidataItem):
         uri = self.raw_data[0]["@id"].split("/")[-1]
         self.add_statement("libris_uri", uri)
 
+    def set_title(self):
+        raw_title = self.raw_data[1].get("hasTitle")
+        print(raw_title)
+
     def set_language(self):
         """
         Set language of edition.
@@ -85,4 +89,5 @@ class Edition(WikidataItem):
         self.set_uri()
         self.set_is()
         self.set_language()
+        self.set_title()
         self.set_pages()
