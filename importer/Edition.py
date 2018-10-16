@@ -48,7 +48,13 @@ class Edition(WikidataItem):
                 self.add_statement("title", wd_title)
 
     def set_subtitle(self):
-        """Set subtitle."""
+        """
+        Set subtitle.
+
+        Use language code from set_language();
+        if it couldn't be extracted there, it will
+        default to 'undefined'.
+        """
         raw_subtitle = self.raw_data[1].get("hasTitle")
         if not raw_subtitle:
             return
