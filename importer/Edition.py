@@ -2,6 +2,7 @@
 # -*- coding: utf-8  -*-
 """An object representing a Libris edition item."""
 import re
+from stdnum import isbn as isbn_tool
 
 from WikidataItem import WikidataItem
 import importer_utils as utils
@@ -28,7 +29,20 @@ class Edition(WikidataItem):
         self.add_statement("libris_uri", uri)
 
     def set_isbn(self):
-        return
+        raw_ids = self.raw_data[1].get("identifiedBy")
+        for r_id in raw_ids:
+            if r_id.get("@type").lower() == "isbn":
+                raw_isbn = r_id.get("value")
+                isbn_type = isbn_tool.isbn_type(raw_isbn)
+                if isbn_type == "ISBN13":
+                    prop = "isbn_13"
+                elif isbn_type == "ISBN10":
+                    prop = "isbn_10"
+
+                if isbn_type:
+                    formatted = isbn_tool.format(raw_isbn)
+                    print(formatted)
+                    self.add_statement(prop, formatted, ref=self.source)
 
     def agent_to_wikidata(self, agent_tag):
         """
