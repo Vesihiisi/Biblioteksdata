@@ -57,6 +57,7 @@ class Edition(WikidataItem):
         raw_contribs = self.raw_data[2].get("contribution")
         for contrib in raw_contribs:
             wd_match = None
+            print(contrib)
             roles = contrib.get("role")
             if not roles:
                 if contrib.get("@type") == "PrimaryContribution":
@@ -69,6 +70,7 @@ class Edition(WikidataItem):
                     if role.get("@id") == "https://id.kb.se/relator/author":
                         agent = contrib.get("agent")
                         wd_match = self.agent_to_wikidata(agent)
+            print("-----------------------------")
             if wd_match:
                 self.add_statement("author", wd_match, ref=self.source)
 
