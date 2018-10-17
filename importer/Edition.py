@@ -44,9 +44,9 @@ class Edition(WikidataItem):
             if match:
                 return match
 
-    def set_author(self):
+    def set_contributors(self):
         """
-        Set the author property.
+        Set contributor properties: author & editor.
 
         There are two ways (found so far…) in which author
         can be indicated:
@@ -57,7 +57,6 @@ class Edition(WikidataItem):
         raw_contribs = self.raw_data[2].get("contribution")
         for contrib in raw_contribs:
             wd_match = None
-            print(contrib)
             roles = contrib.get("role")
             if not roles:
                 if contrib.get("@type") == "PrimaryContribution":
@@ -75,7 +74,6 @@ class Edition(WikidataItem):
                     elif role.get("@id") == "https://id.kb.se/relator/editor":
                         wd_match = self.agent_to_wikidata(contrib.get("agent"))
                         role_prop = "editor"
-            print("-----------------------------")
             if wd_match:
                 self.add_statement(role_prop, wd_match, ref=self.source)
 
@@ -229,7 +227,7 @@ class Edition(WikidataItem):
         self.set_uri()
         self.set_is()
         self.set_language()
-        self.set_author()
+        self.set_contributors()
         self.set_title()
         self.set_subtitle()
         self.set_publication_date()
