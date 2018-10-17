@@ -27,6 +27,51 @@ class Edition(WikidataItem):
         uri = self.raw_data[0]["@id"].split("/")[-1]
         self.add_statement("libris_uri", uri)
 
+    def agent_to_wikidata(self, agent_tag):
+        """
+        Convert agent description to WD match.
+
+        Checks if there's an @id (URI). If there isn't
+        one, it means the person is only described
+        with strings. If there's an URI, we extract it
+        and check if it's on our list of existing
+        Libris URI Wikidata items.
+        """
+        if agent_tag.get("@id"):
+            agent_id = agent_tag.get("@id")
+            agent_uri = agent_id.split("/")[-1].split("#")[0]
+            match = self.existing.get(agent_uri)
+            if match:
+                return match
+
+    def set_author(self):
+        """
+        Set the author property.
+
+        There are two ways (found so far…) in which author
+        can be indicated:
+        * contribution with @type = PrimaryContribution,
+          no role
+        * contribution with role 'author'
+        """
+        raw_contribs = self.raw_data[2].get("contribution")
+        for contrib in raw_contribs:
+            wd_match = None
+            roles = contrib.get("role")
+            if not roles:
+                if contrib.get("@type") == "PrimaryContribution":
+                    agent = contrib.get("agent")
+                    wd_match = self.agent_to_wikidata(agent)
+                else:
+                    return
+            else:
+                for role in roles:
+                    if role.get("@id") == "https://id.kb.se/relator/author":
+                        agent = contrib.get("agent")
+                        wd_match = self.agent_to_wikidata(agent)
+            if wd_match:
+                self.add_statement("author", wd_match, ref=self.source)
+
     def set_title(self):
         """
         Set title of edition.
@@ -177,6 +222,7 @@ class Edition(WikidataItem):
         self.set_uri()
         self.set_is()
         self.set_language()
+        self.set_author()
         self.set_title()
         self.set_subtitle()
         self.set_publication_date()
