@@ -35,12 +35,12 @@ class Edition(WikidataItem):
             if r_id.get("@type").lower() == "isbn":
                 raw_isbn = r_id.get("value")
                 isbn_type = isbn_tool.isbn_type(raw_isbn)
-                if isbn_type == "ISBN13":
-                    prop = "isbn_13"
-                elif isbn_type == "ISBN10":
-                    prop = "isbn_10"
 
                 if isbn_type:
+                    if isbn_type == "ISBN13":
+                        prop = "isbn_13"
+                    elif isbn_type == "ISBN10":
+                        prop = "isbn_10"
                     formatted = isbn_tool.format(raw_isbn)
                     self.add_statement(prop, formatted, ref=self.source)
 
