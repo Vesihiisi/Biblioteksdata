@@ -45,7 +45,7 @@ class Edition(WikidataItem):
             if main_title:
                 wd_title = utils.package_monolingual(
                     main_title, self.lang_wikidata)
-                self.add_statement("title", wd_title)
+                self.add_statement("title", wd_title, ref=self.source)
 
     def set_subtitle(self):
         """
@@ -64,7 +64,7 @@ class Edition(WikidataItem):
             subtitle = raw_subtitle[0].get("subtitle")
             wd_subtitle = utils.package_monolingual(
                 subtitle, self.lang_wikidata)
-            self.add_statement("subtitle", wd_subtitle)
+            self.add_statement("subtitle", wd_subtitle, ref=self.source)
 
     def set_language(self):
         """
@@ -95,7 +95,7 @@ class Edition(WikidataItem):
                              for x in
                              lang_map if x["name"] == edition_lang]
             if lang_q:
-                self.add_statement("language", lang_q[0])
+                self.add_statement("language", lang_q[0], ref=self.source)
             if lang_wikidata:
                 self.lang_wikidata = lang_wikidata[0]
             else:
@@ -119,7 +119,7 @@ class Edition(WikidataItem):
             number_strings = re.findall(r"\d+", extent_labels[0])
             if len(number_strings) == 1:
                 no_pages = utils.package_quantity(number_strings[0])
-                self.add_statement("pages", no_pages)
+                self.add_statement("pages", no_pages, ref=self.source)
 
     def set_publication_date(self):
         """Set year of publication."""
@@ -131,7 +131,35 @@ class Edition(WikidataItem):
                 raw_year = el.get("year")
                 if raw_year and utils.legit_year(raw_year):
                     year_dict = {"date_value": {"year": raw_year}}
-                    self.add_statement("publication_date", year_dict)
+                    self.add_statement("publication_date",
+                                       year_dict,
+                                       ref=self.source)
+
+    def create_sources(self):
+        """
+        Create a stated in reference.
+
+        Note that some objects do not have last
+        modification date, or any other date,
+        in the dump. These seem to be recently created
+        items, from summer 2018 onwards, i.e. probably
+        native "new Libris" objects, not imported.
+        For these we only add retrieval date.
+        """
+        uri = self.raw_data[0]["@id"].split("/")[-1]
+        url = self.URL_BASE.format(uri)
+        self.url = url
+
+        retrieval_date = utils.get_current_date()
+
+        publication_date = None
+        modified = self.raw_data[0].get("modified")
+        if modified:
+            publication_date = modified.split("T")[0]
+
+        self.source = self.make_stated_in_ref("Q1798125",
+                                              publication_date,
+                                              url, retrieval_date)
 
     def __init__(self, raw_data, repository, data_files, existing, cache):
         """Initialize an empty object."""
@@ -143,6 +171,7 @@ class Edition(WikidataItem):
                               cache)
         self.raw_data = raw_data["@graph"]
         self.data_files = data_files
+        self.create_sources()
 
         self.match_wikidata()
         self.set_uri()
