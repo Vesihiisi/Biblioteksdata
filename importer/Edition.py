@@ -29,6 +29,7 @@ class Edition(WikidataItem):
         self.add_statement("libris_uri", uri)
 
     def set_isbn(self):
+        """Add ISBN's, both 10 and 13 char long."""
         raw_ids = self.raw_data[1].get("identifiedBy")
         for r_id in raw_ids:
             if r_id.get("@type").lower() == "isbn":
@@ -41,7 +42,6 @@ class Edition(WikidataItem):
 
                 if isbn_type:
                     formatted = isbn_tool.format(raw_isbn)
-                    print(formatted)
                     self.add_statement(prop, formatted, ref=self.source)
 
     def agent_to_wikidata(self, agent_tag):
