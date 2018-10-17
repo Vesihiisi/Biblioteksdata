@@ -28,6 +28,15 @@ class Edition(WikidataItem):
         self.add_statement("libris_uri", uri)
 
     def agent_to_wikidata(self, agent_tag):
+        """
+        Convert agent description to WD match.
+
+        Checks if there's an @id (URI). If there isn't
+        one, it means the person is only described
+        with strings. If there's an URI, we extract it
+        and check if it's on our list of existing
+        Libris URI Wikidata items.
+        """
         if agent_tag.get("@id"):
             agent_id = agent_tag.get("@id")
             agent_uri = agent_id.split("/")[-1].split("#")[0]
@@ -36,6 +45,15 @@ class Edition(WikidataItem):
                 return match
 
     def set_author(self):
+        """
+        Set the author property.
+
+        There are two ways (found so far…) in which author
+        can be indicated:
+        * contribution with @type = PrimaryContribution,
+          no role
+        * contribution with role 'author'
+        """
         raw_contribs = self.raw_data[2].get("contribution")
         for contrib in raw_contribs:
             wd_match = None
