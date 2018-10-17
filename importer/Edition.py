@@ -102,6 +102,7 @@ class Edition(WikidataItem):
         if it couldn't be extracted there, it will
         default to 'undefined'.
         """
+        self.title = None
         raw_title = self.raw_data[1].get("hasTitle")
         if not raw_title:
             return
@@ -110,6 +111,7 @@ class Edition(WikidataItem):
         if raw_title[0].get("@type") == "Title":
             main_title = raw_title[0].get("mainTitle")
             if main_title:
+                self.title = main_title
                 wd_title = utils.package_monolingual(
                     main_title, self.lang_wikidata)
                 self.add_statement("title", wd_title, ref=self.source)
@@ -122,6 +124,7 @@ class Edition(WikidataItem):
         if it couldn't be extracted there, it will
         default to 'undefined'.
         """
+        self.subtitle = None
         raw_subtitle = self.raw_data[1].get("hasTitle")
         if not raw_subtitle:
             return
@@ -129,6 +132,7 @@ class Edition(WikidataItem):
             return
         if raw_subtitle[0].get("subtitle"):
             subtitle = raw_subtitle[0].get("subtitle")
+            self.subtitle = subtitle
             wd_subtitle = utils.package_monolingual(
                 subtitle, self.lang_wikidata)
             self.add_statement("subtitle", wd_subtitle, ref=self.source)
@@ -228,6 +232,12 @@ class Edition(WikidataItem):
                                               publication_date,
                                               url, retrieval_date)
 
+    def add_labels(self):
+        label = self.title
+        if self.subtitle:
+            label = "{} : {}".format(label, self.subtitle)
+        self.add_label(self.lang_wikidata, label)
+
     def __init__(self, raw_data, repository, data_files, existing, cache):
         """Initialize an empty object."""
         WikidataItem.__init__(self,
@@ -250,3 +260,4 @@ class Edition(WikidataItem):
         self.set_subtitle()
         self.set_publication_date()
         self.set_pages()
+        self.add_labels()
