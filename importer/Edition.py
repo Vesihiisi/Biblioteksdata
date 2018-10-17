@@ -72,7 +72,6 @@ class Edition(WikidataItem):
             if main_title:
                 wd_title = utils.package_monolingual(
                     main_title, self.lang_wikidata)
-                print(wd_title)
                 self.add_statement("title", wd_title)
 
     def set_subtitle(self):
