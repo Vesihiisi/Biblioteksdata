@@ -27,11 +27,32 @@ class Edition(WikidataItem):
         uri = self.raw_data[0]["@id"].split("/")[-1]
         self.add_statement("libris_uri", uri)
 
+    def agent_to_wikidata(self, agent_tag):
+        if agent_tag.get("@id"):
+            agent_id = agent_tag.get("@id")
+            agent_uri = agent_id.split("/")[-1].split("#")[0]
+            match = self.existing.get(agent_uri)
+            if match:
+                return match
+
     def set_author(self):
-        author_role = "author"
         raw_contribs = self.raw_data[2].get("contribution")
         for contrib in raw_contribs:
-            print(contrib)
+            wd_match = None
+            roles = contrib.get("role")
+            if not roles:
+                if contrib.get("@type") == "PrimaryContribution":
+                    agent = contrib.get("agent")
+                    wd_match = self.agent_to_wikidata(agent)
+                else:
+                    return
+            else:
+                for role in roles:
+                    if role.get("@id") == "https://id.kb.se/relator/author":
+                        agent = contrib.get("agent")
+                        wd_match = self.agent_to_wikidata(agent)
+            if wd_match:
+                self.add_statement("author", wd_match)
 
     def set_title(self):
         """
@@ -51,6 +72,7 @@ class Edition(WikidataItem):
             if main_title:
                 wd_title = utils.package_monolingual(
                     main_title, self.lang_wikidata)
+                print(wd_title)
                 self.add_statement("title", wd_title)
 
     def set_subtitle(self):
