@@ -70,7 +70,7 @@ class Edition(WikidataItem):
                         agent = contrib.get("agent")
                         wd_match = self.agent_to_wikidata(agent)
             if wd_match:
-                self.add_statement("author", wd_match)
+                self.add_statement("author", wd_match, ref=self.source)
 
     def set_title(self):
         """
