@@ -16,6 +16,10 @@ def lowercase_first(text):
     return text[0].lower() + text[1:]
 
 
+def get_current_date():
+    return datetime.datetime.now().strftime('%Y-%m-%d')
+
+
 def get_current_timestamp():
     return datetime.datetime.now().strftime('%Y-%m-%d_%H:%M:%S')
 
@@ -98,7 +102,7 @@ def get_wd_items_using_prop(prop):
     """
     items = {}
     print("WILL NOW DOWNLOAD WD ITEMS THAT USE " + prop)
-    query = "SELECT  DISTINCT ?item ?value  WHERE {?item p:" + \
+    query = "SELECT DISTINCT ?item ?value  WHERE {?item p:" + \
         prop + "?statement. OPTIONAL { ?item wdt:" + prop + " ?value. }}"
     sparql_query = sparql.SparqlQuery()
     data = sparql_query.select(query)
@@ -208,3 +212,11 @@ def package_quantity(value, unit=None):
 def package_monolingual(text, lang):
     """Package a monolingual statement in a standardised form."""
     return {"monolingual_value": text, "lang": lang}
+
+
+def legit_year(text):
+    year = None
+    if text and text.isdigit():
+        if int(text) >= 1 and int(text) <= 2020:
+            year = int(text)
+    return year
