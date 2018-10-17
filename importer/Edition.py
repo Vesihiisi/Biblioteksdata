@@ -27,6 +27,9 @@ class Edition(WikidataItem):
         uri = self.raw_data[0]["@id"].split("/")[-1]
         self.add_statement("libris_uri", uri)
 
+    def set_isbn(self):
+        return
+
     def agent_to_wikidata(self, agent_tag):
         """
         Convert agent description to WD match.
@@ -220,6 +223,7 @@ class Edition(WikidataItem):
 
         self.match_wikidata()
         self.set_uri()
+        self.set_isbn()
         self.set_is()
         self.set_language()
         self.set_author()
