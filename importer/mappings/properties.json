@@ -5,6 +5,7 @@
   "dead": "P570",
   "first_name": "P735",
   "gender": "P21",
+  "editor": "P98",
   "is": "P31",
   "isni": "P213",
   "language": "P407",
