@@ -31,6 +31,8 @@ class Edition(WikidataItem):
     def set_isbn(self):
         """Add ISBN's, both 10 and 13 char long."""
         raw_ids = self.raw_data[1].get("identifiedBy")
+        if not raw_ids:
+            return
         for r_id in raw_ids:
             if r_id.get("@type").lower() == "isbn":
                 raw_isbn = r_id.get("value")
