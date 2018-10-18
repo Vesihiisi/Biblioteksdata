@@ -65,7 +65,14 @@ class Edition(WikidataItem):
 
     def set_contributors(self):
         """
-        Set contributor properties: author & editor.
+        Set contributor properties.
+
+        Supported roles:
+        * author
+        * editor
+        * illustrator
+
+        TODO: translator
 
         There are two ways (found so far…) in which author
         can be indicated:
@@ -86,14 +93,14 @@ class Edition(WikidataItem):
                     return
             else:
                 for role in roles:
-                    if role.get("@id") == "https://id.kb.se/relator/author":
-                        agent = contrib.get("agent")
-                        wd_match = self.agent_to_wikidata(agent)
+                    person_role = role.get("@id").split("/")[-1]
+                    if person_role == "author":
+                        wd_match = self.agent_to_wikidata(contrib.get("agent"))
                         role_prop = "author"
-                    elif role.get("@id") == "https://id.kb.se/relator/editor":
+                    elif person_role == "editor":
                         wd_match = self.agent_to_wikidata(contrib.get("agent"))
                         role_prop = "editor"
-                    elif role.get("@id") == "https://id.kb.se/relator/illustrator":
+                    elif person_role == "illustrator":
                         wd_match = self.agent_to_wikidata(contrib.get("agent"))
                         role_prop = "illustrator"
             if wd_match:
