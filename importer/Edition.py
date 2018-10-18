@@ -93,6 +93,9 @@ class Edition(WikidataItem):
                     elif role.get("@id") == "https://id.kb.se/relator/editor":
                         wd_match = self.agent_to_wikidata(contrib.get("agent"))
                         role_prop = "editor"
+                    elif role.get("@id") == "https://id.kb.se/relator/illustrator":
+                        wd_match = self.agent_to_wikidata(contrib.get("agent"))
+                        role_prop = "illustrator"
             if wd_match:
                 self.add_statement(role_prop, wd_match, ref=self.source)
 
@@ -256,10 +259,10 @@ class Edition(WikidataItem):
         self.set_uri()
         self.set_isbn()
         self.set_is()
-        self.set_language()
+        # self.set_language()
         self.set_contributors()
-        self.set_title()
-        self.set_subtitle()
+        # self.set_title()
+        # self.set_subtitle()
         self.set_publication_date()
         self.set_pages()
-        self.add_labels()
+        # self.add_labels()
