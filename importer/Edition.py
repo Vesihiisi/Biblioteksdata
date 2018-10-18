@@ -219,6 +219,8 @@ class Edition(WikidataItem):
                     if x.get("@type").lower() == "place":
                         place_labels = x.get("label")
                         for label in place_labels:
+                            label = label.replace("[", "")
+                            label = label.replace("]", "")
                             wd_match = [x.get("wikidata")
                                         for x in
                                         place_map if x["name"] == label]
