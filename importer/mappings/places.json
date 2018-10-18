@@ -2,7 +2,11 @@
   {
     "name": "Stockholm",
     "wikidata": "Q1754"
-  }, {"name": "Lund", "wikidata": "Q2167"},
+  },
+  {
+    "name": "Lund",
+    "wikidata": "Q2167"
+  },
   {
     "name": "Uddevalla",
     "wikidata": "Q27447"
