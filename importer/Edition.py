@@ -206,6 +206,31 @@ class Edition(WikidataItem):
                 no_pages = utils.package_quantity(number_strings[0])
                 self.add_statement("pages", no_pages, ref=self.source)
 
+    def set_publication_place(self):
+        """Add place of publication."""
+        place_map = self.data_files["places"]
+        raw_publ = self.raw_data[1].get("publication")
+        if not raw_publ:
+            return
+        for el in raw_publ:
+            if el.get('@type') in ["PrimaryPublication", "Publication"]:
+                raw_place = el.get("place")
+                if not raw_place:
+                    continue
+                for x in raw_place:
+                    if x.get("@type").lower() == "place":
+                        place_labels = x.get("label")
+                        for label in place_labels:
+                            label = label.replace("[", "")
+                            label = label.replace("]", "")
+                            wd_match = [x.get("wikidata")
+                                        for x in
+                                        place_map if x["name"] == label]
+                            if wd_match:
+                                self.add_statement(
+                                    "publication_place", wd_match,
+                                    ref=self.source)
+
     def set_publication_date(self):
         """Set year of publication."""
         raw_publ = self.raw_data[1].get("publication")
@@ -272,6 +297,7 @@ class Edition(WikidataItem):
         self.set_contributors()
         self.set_title()
         self.set_subtitle()
+        self.set_publication_place()
         self.set_publication_date()
         self.set_pages()
         self.add_labels()
