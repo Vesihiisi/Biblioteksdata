@@ -219,7 +219,6 @@ class Edition(WikidataItem):
                 if raw_agent.get("@type").lower() == "agent":
                     agent_labels = raw_agent.get("label")
                     for label in agent_labels:
-                        print(label)
                         wd_match = [x.get("wikidata")
                                     for x in
                                     publishers if x["name"] == label]
