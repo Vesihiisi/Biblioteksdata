@@ -71,8 +71,7 @@ class Edition(WikidataItem):
         * author
         * editor
         * illustrator
-
-        TODO: translator
+        * translator
 
         There are two ways (found so far…) in which author
         can be indicated:
@@ -103,6 +102,9 @@ class Edition(WikidataItem):
                     elif person_role == "illustrator":
                         wd_match = self.agent_to_wikidata(contrib.get("agent"))
                         role_prop = "illustrator"
+                    elif person_role == "translator":
+                        wd_match = self.agent_to_wikidata(contrib.get("agent"))
+                        role_prop = "translator"
             if wd_match:
                 self.add_statement(role_prop, wd_match, ref=self.source)
 
