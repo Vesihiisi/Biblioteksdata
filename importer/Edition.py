@@ -3,6 +3,7 @@
 """An object representing a Libris edition item."""
 import re
 from stdnum import isbn as isbn_tool
+import validators
 
 from WikidataItem import WikidataItem
 import importer_utils as utils
@@ -32,6 +33,16 @@ class Edition(WikidataItem):
     def set_uri(self):
         uri = self.raw_data[0]["@id"].split("/")[-1]
         self.add_statement("libris_uri", uri)
+
+    def set_online(self):
+        assoc_media = self.raw_data[1].get("associatedMedia")
+        if not assoc_media:
+            return
+        for el in assoc_media:
+            if el.get("@type") == "MediaObject" and el.get("uri"):
+                for url in el.get("uri"):
+                    if validators.url(url):
+                        self.add_statement("full_work", url, ref=self.source)
 
     def set_isbn(self):
         """Add ISBN's, both 10 and 13 char long."""
@@ -326,13 +337,14 @@ class Edition(WikidataItem):
         self.set_uri()
         self.set_libris()
         self.set_isbn()
-        self.set_is()
-        self.set_language()
-        self.set_contributors()
-        self.set_title()
-        self.set_subtitle()
-        self.set_publisher()
-        self.set_publication_place()
-        self.set_publication_date()
-        self.set_pages()
-        self.add_labels()
+        # self.set_is()
+        # self.set_language()
+        # self.set_contributors()
+        # self.set_title()
+        # self.set_subtitle()
+        # self.set_publisher()
+        # self.set_publication_place()
+        # self.set_publication_date()
+        # self.set_pages()
+        # self.add_labels()
+        self.set_online()
