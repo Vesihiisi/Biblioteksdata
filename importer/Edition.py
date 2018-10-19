@@ -80,6 +80,8 @@ class Edition(WikidataItem):
         * contribution with role 'author'
         """
         raw_contribs = self.raw_data[2].get("contribution")
+        if not raw_contribs:
+            return
         for contrib in raw_contribs:
             wd_match = None
             roles = contrib.get("role")
