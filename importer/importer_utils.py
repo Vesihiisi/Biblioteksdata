@@ -102,7 +102,7 @@ def get_wd_items_using_prop(prop):
     """
     items = {}
     print("WILL NOW DOWNLOAD WD ITEMS THAT USE " + prop)
-    query = "SELECT DISTINCT ?item ?value  WHERE {?item p:" + \
+    query = "SELECT   DISTINCT ?item ?value  WHERE {?item p:" + \
         prop + "?statement. OPTIONAL { ?item wdt:" + prop + " ?value. }}"
     sparql_query = sparql.SparqlQuery()
     data = sparql_query.select(query)
