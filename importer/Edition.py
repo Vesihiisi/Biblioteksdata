@@ -165,6 +165,9 @@ class Edition(WikidataItem):
         title/subtitle properties. If no language
         is extracted here, set self.lang_wikidata
         to undefined.
+
+        If multiple languages are found
+        (translated book), use the first one.
         """
         lang_map = self.data_files["languages"]
         found_languages = []
@@ -177,7 +180,6 @@ class Edition(WikidataItem):
 
         if found_languages:
             edition_lang = found_languages[0]
-            print(edition_lang)
             lang_q = [x.get("q")
                       for x in
                       lang_map if x["name"] == edition_lang]
