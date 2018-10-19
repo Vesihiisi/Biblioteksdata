@@ -167,14 +167,17 @@ class Edition(WikidataItem):
         to undefined.
         """
         lang_map = self.data_files["languages"]
+        found_languages = []
         for el in self.raw_data:
             graph = el.get("@graph")
             if graph and len(graph) > 1:
                 for el in graph[1]:
                     if graph[1][el] == "Language":
-                        edition_lang = graph[1].get("langCode")
+                        found_languages.append(graph[1].get("langCode"))
 
-        if edition_lang:
+        if found_languages:
+            edition_lang = found_languages[0]
+            print(edition_lang)
             lang_q = [x.get("q")
                       for x in
                       lang_map if x["name"] == edition_lang]
