@@ -18,7 +18,8 @@ EDIT_SUMMARY = "#WMSE #LibraryData_KB"
 def load_mapping_files():
     """Load local and remote mapping files."""
     mappings = {}
-    local = ["properties", "languages", "places"]
+    local = ["properties", "languages",
+             "places", "publishers"]
     remote = []
     for title in local:
         f = os.path.join(MAPPINGS, '{}.json'.format(title))
