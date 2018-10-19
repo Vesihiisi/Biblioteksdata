@@ -24,6 +24,11 @@ class Edition(WikidataItem):
         if uri_match:
             self.associate_wd_item(uri_match)
 
+    def set_libris(self):
+        """Set Libris Editions property."""
+        libris = self.raw_data[0].get("controlNumber")
+        self.add_statement("libris_edition", libris, ref=self.source)
+
     def set_uri(self):
         uri = self.raw_data[0]["@id"].split("/")[-1]
         self.add_statement("libris_uri", uri)
@@ -314,6 +319,7 @@ class Edition(WikidataItem):
 
         self.match_wikidata()
         self.set_uri()
+        self.set_libris()
         self.set_isbn()
         self.set_is()
         self.set_language()
