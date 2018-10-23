@@ -3,6 +3,7 @@
 """An object representing a Libris edition item."""
 import re
 from stdnum import isbn as isbn_tool
+import validators
 
 from WikidataItem import WikidataItem
 import importer_utils as utils
@@ -24,13 +25,30 @@ class Edition(WikidataItem):
         if uri_match:
             self.associate_wd_item(uri_match)
 
+    def set_libris(self):
+        """Set Libris Editions property."""
+        libris = self.raw_data[0].get("controlNumber")
+        self.add_statement("libris_edition", libris, ref=self.source)
+
     def set_uri(self):
         uri = self.raw_data[0]["@id"].split("/")[-1]
         self.add_statement("libris_uri", uri)
 
+    def set_online(self):
+        assoc_media = self.raw_data[1].get("associatedMedia")
+        if not assoc_media:
+            return
+        for el in assoc_media:
+            if el.get("@type") == "MediaObject" and el.get("uri"):
+                for url in el.get("uri"):
+                    if validators.url(url):
+                        self.add_statement("full_work", url, ref=self.source)
+
     def set_isbn(self):
         """Add ISBN's, both 10 and 13 char long."""
         raw_ids = self.raw_data[1].get("identifiedBy")
+        if not raw_ids:
+            return
         for r_id in raw_ids:
             if r_id.get("@type").lower() == "isbn":
                 raw_isbn = r_id.get("value")
@@ -61,9 +79,15 @@ class Edition(WikidataItem):
             if match:
                 return match
 
-    def set_author(self):
+    def set_contributors(self):
         """
-        Set the author property.
+        Set contributor properties.
+
+        Supported roles:
+        * author
+        * editor
+        * illustrator
+        * translator
 
         There are two ways (found so far…) in which author
         can be indicated:
@@ -72,6 +96,8 @@ class Edition(WikidataItem):
         * contribution with role 'author'
         """
         raw_contribs = self.raw_data[2].get("contribution")
+        if not raw_contribs:
+            return
         for contrib in raw_contribs:
             wd_match = None
             roles = contrib.get("role")
@@ -79,15 +105,26 @@ class Edition(WikidataItem):
                 if contrib.get("@type") == "PrimaryContribution":
                     agent = contrib.get("agent")
                     wd_match = self.agent_to_wikidata(agent)
+                    role_prop = "author"
                 else:
                     return
             else:
                 for role in roles:
-                    if role.get("@id") == "https://id.kb.se/relator/author":
-                        agent = contrib.get("agent")
-                        wd_match = self.agent_to_wikidata(agent)
+                    person_role = role.get("@id").split("/")[-1]
+                    if person_role == "author":
+                        wd_match = self.agent_to_wikidata(contrib.get("agent"))
+                        role_prop = "author"
+                    elif person_role == "editor":
+                        wd_match = self.agent_to_wikidata(contrib.get("agent"))
+                        role_prop = "editor"
+                    elif person_role == "illustrator":
+                        wd_match = self.agent_to_wikidata(contrib.get("agent"))
+                        role_prop = "illustrator"
+                    elif person_role == "translator":
+                        wd_match = self.agent_to_wikidata(contrib.get("agent"))
+                        role_prop = "translator"
             if wd_match:
-                self.add_statement("author", wd_match, ref=self.source)
+                self.add_statement(role_prop, wd_match, ref=self.source)
 
     def set_title(self):
         """
@@ -97,6 +134,7 @@ class Edition(WikidataItem):
         if it couldn't be extracted there, it will
         default to 'undefined'.
         """
+        self.title = None
         raw_title = self.raw_data[1].get("hasTitle")
         if not raw_title:
             return
@@ -105,6 +143,7 @@ class Edition(WikidataItem):
         if raw_title[0].get("@type") == "Title":
             main_title = raw_title[0].get("mainTitle")
             if main_title:
+                self.title = main_title
                 wd_title = utils.package_monolingual(
                     main_title, self.lang_wikidata)
                 self.add_statement("title", wd_title, ref=self.source)
@@ -117,6 +156,7 @@ class Edition(WikidataItem):
         if it couldn't be extracted there, it will
         default to 'undefined'.
         """
+        self.subtitle = None
         raw_subtitle = self.raw_data[1].get("hasTitle")
         if not raw_subtitle:
             return
@@ -124,6 +164,7 @@ class Edition(WikidataItem):
             return
         if raw_subtitle[0].get("subtitle"):
             subtitle = raw_subtitle[0].get("subtitle")
+            self.subtitle = subtitle
             wd_subtitle = utils.package_monolingual(
                 subtitle, self.lang_wikidata)
             self.add_statement("subtitle", wd_subtitle, ref=self.source)
@@ -140,16 +181,21 @@ class Edition(WikidataItem):
         title/subtitle properties. If no language
         is extracted here, set self.lang_wikidata
         to undefined.
+
+        If multiple languages are found
+        (translated book), use the first one.
         """
         lang_map = self.data_files["languages"]
+        found_languages = []
         for el in self.raw_data:
             graph = el.get("@graph")
             if graph and len(graph) > 1:
                 for el in graph[1]:
                     if graph[1][el] == "Language":
-                        edition_lang = graph[1].get("langCode")
+                        found_languages.append(graph[1].get("langCode"))
 
-        if edition_lang:
+        if found_languages:
+            edition_lang = found_languages[0]
             lang_q = [x.get("q")
                       for x in
                       lang_map if x["name"] == edition_lang]
@@ -182,6 +228,52 @@ class Edition(WikidataItem):
             if len(number_strings) == 1:
                 no_pages = utils.package_quantity(number_strings[0])
                 self.add_statement("pages", no_pages, ref=self.source)
+
+    def set_publisher(self):
+        publishers = self.data_files["publishers"]
+        raw_publ = self.raw_data[1].get("publication")
+        if not raw_publ:
+            return
+        for el in raw_publ:
+            if el.get('@type') in ["PrimaryPublication", "Publication"]:
+                raw_agent = el.get("agent")
+                if not raw_agent:
+                    continue
+                if raw_agent.get("@type").lower() == "agent":
+                    agent_labels = raw_agent.get("label")
+                    for label in agent_labels:
+                        wd_match = [x.get("wikidata")
+                                    for x in
+                                    publishers if x["name"] == label]
+                        if wd_match:
+                            self.add_statement(
+                                "publisher", wd_match,
+                                ref=self.source)
+
+    def set_publication_place(self):
+        """Add place of publication."""
+        place_map = self.data_files["places"]
+        raw_publ = self.raw_data[1].get("publication")
+        if not raw_publ:
+            return
+        for el in raw_publ:
+            if el.get('@type') in ["PrimaryPublication", "Publication"]:
+                raw_place = el.get("place")
+                if not raw_place:
+                    continue
+                for x in raw_place:
+                    if x.get("@type").lower() == "place":
+                        place_labels = x.get("label")
+                        for label in place_labels:
+                            label = label.replace("[", "")
+                            label = label.replace("]", "")
+                            wd_match = [x.get("wikidata")
+                                        for x in
+                                        place_map if x["name"] == label]
+                            if wd_match:
+                                self.add_statement(
+                                    "publication_place", wd_match,
+                                    ref=self.source)
 
     def set_publication_date(self):
         """Set year of publication."""
@@ -223,6 +315,12 @@ class Edition(WikidataItem):
                                               publication_date,
                                               url, retrieval_date)
 
+    def add_labels(self):
+        label = self.title
+        if self.subtitle:
+            label = "{} : {}".format(label, self.subtitle)
+        self.add_label(self.lang_wikidata, label)
+
     def __init__(self, raw_data, repository, data_files, existing, cache):
         """Initialize an empty object."""
         WikidataItem.__init__(self,
@@ -237,11 +335,16 @@ class Edition(WikidataItem):
 
         self.match_wikidata()
         self.set_uri()
+        self.set_libris()
         self.set_isbn()
         self.set_is()
         self.set_language()
-        self.set_author()
+        self.set_contributors()
         self.set_title()
         self.set_subtitle()
+        self.set_publisher()
+        self.set_publication_place()
         self.set_publication_date()
         self.set_pages()
+        self.add_labels()
+        self.set_online()
