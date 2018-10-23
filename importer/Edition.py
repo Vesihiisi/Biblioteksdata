@@ -22,10 +22,18 @@ class Edition(WikidataItem):
     def match_wikidata(self):
         match_found = False
         uri = self.raw_data[0]["@id"].split("/")[-1]
+        libris_id = self.raw_data[0].get("controlNumber")
         uri_match = self.existing.get(uri)
         if uri_match:
+            match_found = True
             self.associate_wd_item(uri_match)
         else:
+            libris_match = self.data_files["libris_edition"].get(libris_id)
+            if libris_match:
+                match_found = True
+                self.associate_wd_item(libris_match)
+
+        if not match_found:
             if self.isbn_13:
                 isbn_match = self.data_files["isbn_13"].get(self.isbn_13)
                 if isbn_match:

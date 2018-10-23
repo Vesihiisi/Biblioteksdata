@@ -30,7 +30,7 @@ def load_mapping_files():
     mappings = {}
     local = ["properties", "languages",
              "places", "publishers"]
-    remote = ["isbn_10", "isbn_13"]
+    remote = ["isbn_10", "isbn_13", "libris_edition"]
     for title in local:
         f = os.path.join(MAPPINGS, '{}.json'.format(title))
         mappings[title] = utils.load_json(f)
