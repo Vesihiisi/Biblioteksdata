@@ -161,15 +161,21 @@ class Edition(WikidataItem):
         raw_title = self.raw_data[1].get("hasTitle")
         if not raw_title:
             return
-        if len(raw_title) != 1:
-            return
-        if raw_title[0].get("@type") == "Title":
-            main_title = raw_title[0].get("mainTitle")
-            if main_title:
-                self.title = main_title
-                wd_title = utils.package_monolingual(
-                    main_title, self.lang_wikidata)
-                self.add_statement("title", wd_title, ref=self.source)
+        print(raw_title)
+        if len(raw_title) > 1:
+            for title in raw_title:
+                if title.get("@type") == "CoverTitle":
+                    self.title = title.get("mainTitle")
+        else:
+            if raw_title[0].get("@type") == "Title":
+                self.title = raw_title[0].get("mainTitle")
+
+        print(self.title)
+
+        if self.title:
+            wd_title = utils.package_monolingual(
+                self.title, self.lang_wikidata)
+            self.add_statement("title", wd_title, ref=self.source)
 
     def set_subtitle(self):
         """
