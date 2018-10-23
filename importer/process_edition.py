@@ -5,6 +5,7 @@ import json
 import os
 import pywikibot
 import requests
+from stdnum import isbn as isbn_tool
 import importer_utils as utils
 
 
@@ -15,18 +16,30 @@ MAPPINGS = "mappings"
 EDIT_SUMMARY = "#WMSE #LibraryData_KB"
 
 
+def normalize_isbn_map(data):
+    normalized = {}
+    for k, v in data.items():
+        if isbn_tool.is_valid(k):
+            compact_isbn = isbn_tool.compact(k)
+            normalized[compact_isbn] = v
+    return normalized
+
+
 def load_mapping_files():
     """Load local and remote mapping files."""
     mappings = {}
     local = ["properties", "languages",
              "places", "publishers"]
-    remote = []
+    remote = ["isbn_10", "isbn_13"]
     for title in local:
         f = os.path.join(MAPPINGS, '{}.json'.format(title))
         mappings[title] = utils.load_json(f)
     for title in remote:
-        mappings[title] = utils.get_wd_items_using_prop(
+        data = utils.get_wd_items_using_prop(
             mappings["properties"][title])
+        if title in ["isbn_10", "isbn_13"]:
+            data = normalize_isbn_map(data)
+        mappings[title] = data
     print("Loaded local mappings: {}.".format(", ".join(local)))
     print("Loaded remote mappings: {}.".format(", ".join(remote)))
     return mappings

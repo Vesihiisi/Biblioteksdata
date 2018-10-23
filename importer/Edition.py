@@ -20,10 +20,21 @@ class Edition(WikidataItem):
         self.add_statement("is", edition)
 
     def match_wikidata(self):
+        match_found = False
         uri = self.raw_data[0]["@id"].split("/")[-1]
         uri_match = self.existing.get(uri)
         if uri_match:
             self.associate_wd_item(uri_match)
+        else:
+            if self.isbn_13:
+                isbn_match = self.data_files["isbn_13"].get(self.isbn_13)
+                if isbn_match:
+                    match_found = True
+                    self.associate_wd_item(isbn_match)
+            if self.isbn_10 and not match_found:
+                isbn_match = self.data_files["isbn_10"].get(self.isbn_10)
+                if isbn_match:
+                    self.associate_wd_item(isbn_match)
 
     def set_libris(self):
         """Set Libris Editions property."""
@@ -46,6 +57,8 @@ class Edition(WikidataItem):
 
     def set_isbn(self):
         """Add ISBN's, both 10 and 13 char long."""
+        self.isbn_13 = None
+        self.isbn_10 = None
         raw_ids = self.raw_data[1].get("identifiedBy")
         if not raw_ids:
             return
@@ -55,11 +68,13 @@ class Edition(WikidataItem):
                 isbn_type = isbn_tool.isbn_type(raw_isbn)
 
                 if isbn_type:
+                    formatted = isbn_tool.format(raw_isbn)
                     if isbn_type == "ISBN13":
                         prop = "isbn_13"
+                        self.isbn_13 = isbn_tool.compact(formatted)
                     elif isbn_type == "ISBN10":
                         prop = "isbn_10"
-                    formatted = isbn_tool.format(raw_isbn)
+                        self.isbn_10 = isbn_tool.compact(formatted)
                     self.add_statement(prop, formatted, ref=self.source)
 
     def agent_to_wikidata(self, agent_tag):
@@ -333,7 +348,6 @@ class Edition(WikidataItem):
         self.data_files = data_files
         self.create_sources()
 
-        self.match_wikidata()
         self.set_uri()
         self.set_libris()
         self.set_isbn()
@@ -348,3 +362,4 @@ class Edition(WikidataItem):
         self.set_pages()
         self.add_labels()
         self.set_online()
+        self.match_wikidata()
