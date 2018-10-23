@@ -147,7 +147,18 @@ class Edition(WikidataItem):
             if wd_match:
                 self.add_statement(role_prop, wd_match, ref=self.source)
             else:
-                print(contrib)
+                if role_prop == "author":
+                    if contrib.get("agent") and contrib["agent"].get("@type"):
+                        agent = contrib["agent"]
+                        if agent["@type"] == "Person":
+                            if (agent.get("familyName") and
+                                    agent.get("givenName")):
+                                auth_string = "{} {}".format(
+                                    agent["givenName"], agent["familyName"])
+                                print(auth_string)
+                                self.add_statement("author_name_string",
+                                                   auth_string,
+                                                   ref=self.source)
 
     def set_title(self):
         """
