@@ -241,6 +241,7 @@ class Edition(WikidataItem):
         exactly one numeric content.
         """
         extent = self.raw_data[1].get("extent")
+        required = ["s.", "s", "sidor", "sid", "sid."]
         if len(extent) != 1:
             return
         if extent[0].get("label"):
@@ -248,7 +249,8 @@ class Edition(WikidataItem):
             if len(extent_labels) != 1:
                 return
             number_strings = re.findall(r"\d+", extent_labels[0])
-            if len(number_strings) == 1:
+            if (len(number_strings) == 1 and
+                    any(x in number_strings[0] for x in required)):
                 no_pages = utils.package_quantity(number_strings[0])
                 self.add_statement("pages", no_pages, ref=self.source)
 
