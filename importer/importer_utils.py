@@ -211,7 +211,7 @@ def package_quantity(value, unit=None):
 
 def package_monolingual(text, lang):
     """Package a monolingual statement in a standardised form."""
-    return {"monolingual_value": text, "lang": lang}
+    return {"monolingual_value": text.strip(), "lang": lang}
 
 
 def legit_year(text):
