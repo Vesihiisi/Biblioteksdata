@@ -56,7 +56,6 @@ class Edition(WikidataItem):
     def set_libris(self):
         """Set Libris Editions property."""
         libris = self.get_libris_id()
-        print(libris)
         if libris:
             self.add_statement("libris_edition", libris, ref=self.source)
 
