@@ -161,8 +161,6 @@ class Edition(WikidataItem):
         raw_title = self.raw_data[1].get("hasTitle")
         if not raw_title:
             return
-        if len(raw_title) != 1:
-            return
         if raw_title[0].get("@type") == "Title":
             main_title = raw_title[0].get("mainTitle")
             if main_title:
@@ -182,8 +180,6 @@ class Edition(WikidataItem):
         self.subtitle = None
         raw_subtitle = self.raw_data[1].get("hasTitle")
         if not raw_subtitle:
-            return
-        if len(raw_subtitle) != 1:
             return
         if raw_subtitle[0].get("subtitle"):
             subtitle = raw_subtitle[0].get("subtitle")
@@ -206,7 +202,8 @@ class Edition(WikidataItem):
         to undefined.
 
         If multiple languages are found
-        (translated book), use the first one.
+        (translated book), use the first one
+        for self.lang_wikidata.
         """
         lang_map = self.data_files["languages"]
         found_languages = []
@@ -218,19 +215,17 @@ class Edition(WikidataItem):
                         found_languages.append(graph[1].get("langCode"))
 
         if found_languages:
-            edition_lang = found_languages[0]
-            lang_q = [x.get("q")
-                      for x in
-                      lang_map if x["name"] == edition_lang]
-            lang_wikidata = [x.get("wikidata")
-                             for x in
-                             lang_map if x["name"] == edition_lang]
-            if lang_q:
-                self.add_statement("language", lang_q[0], ref=self.source)
-            if lang_wikidata:
-                self.lang_wikidata = lang_wikidata[0]
-            else:
-                self.lang_wikidata = "und"
+            for lang in found_languages:
+                lang_q = [x.get("q")
+                          for x in
+                          lang_map if x["name"] == lang]
+                if lang_q:
+                    self.add_statement("language", lang_q[0], ref=self.source)
+        self.lang_wikidata = [x.get("wikidata")
+                              for x in
+                              lang_map if x["name"] == found_languages[0]]
+        if self.lang_wikidata:
+            self.lang_wikidata = self.lang_wikidata[0]
 
     def set_pages(self):
         """
