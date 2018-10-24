@@ -22,16 +22,17 @@ class Edition(WikidataItem):
     def match_wikidata(self):
         match_found = False
         uri = self.raw_data[0]["@id"].split("/")[-1]
-        libris_id = self.raw_data[0].get("controlNumber")
+        libris_id = self.get_libris_id()
         uri_match = self.existing.get(uri)
         if uri_match:
             match_found = True
             self.associate_wd_item(uri_match)
         else:
-            libris_match = self.data_files["libris_edition"].get(libris_id)
-            if libris_match:
-                match_found = True
-                self.associate_wd_item(libris_match)
+            if libris_id:
+                libris_match = self.data_files["libris_edition"].get(libris_id)
+                if libris_match:
+                    match_found = True
+                    self.associate_wd_item(libris_match)
 
         if not match_found:
             if self.isbn_13:
@@ -44,10 +45,19 @@ class Edition(WikidataItem):
                 if isbn_match:
                     self.associate_wd_item(isbn_match)
 
+    def get_libris_id(self):
+        same_as = self.raw_data[0].get("sameAs")
+        if not same_as:
+            return
+        for sa in same_as:
+            if sa["@id"].startswith("http://libris.kb.se/bib/"):
+                return sa["@id"].split("/")[-1]
+
     def set_libris(self):
         """Set Libris Editions property."""
-        libris = self.raw_data[0].get("controlNumber")
-        self.add_statement("libris_edition", libris, ref=self.source)
+        libris = self.get_libris_id()
+        if libris:
+            self.add_statement("libris_edition", libris, ref=self.source)
 
     def set_uri(self):
         uri = self.raw_data[0]["@id"].split("/")[-1]
