@@ -155,7 +155,6 @@ class Edition(WikidataItem):
                                     agent.get("givenName")):
                                 auth_string = "{} {}".format(
                                     agent["givenName"], agent["familyName"])
-                                print(auth_string)
                                 self.add_statement("author_name_string",
                                                    auth_string,
                                                    ref=self.source)
