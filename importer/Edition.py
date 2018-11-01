@@ -139,8 +139,6 @@ class Edition(WikidataItem):
                     agent = contrib.get("agent")
                     wd_match = self.agent_to_wikidata(agent)
                     role_prop = "author"
-                else:
-                    return
             else:
                 for role in roles:
                     person_role = role.get("@id").split("/")[-1]
@@ -158,6 +156,18 @@ class Edition(WikidataItem):
                         role_prop = "translator"
             if wd_match:
                 self.add_statement(role_prop, wd_match, ref=self.source)
+            else:
+                if role_prop == "author":
+                    if contrib.get("agent") and contrib["agent"].get("@type"):
+                        agent = contrib["agent"]
+                        if agent["@type"] == "Person":
+                            if (agent.get("familyName") and
+                                    agent.get("givenName")):
+                                auth_string = "{} {}".format(
+                                    agent["givenName"], agent["familyName"])
+                                self.add_statement("author_name_string",
+                                                   auth_string,
+                                                   ref=self.source)
 
     def set_title(self):
         """
