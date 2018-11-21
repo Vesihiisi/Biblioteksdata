@@ -23,13 +23,11 @@ class Edition(WikidataItem):
         """Only upload if entry belongs to National Bibliography."""
         self.set_upload(False)
         bibliography = self.raw_data[0].get("bibliography")
-        print(bibliography)
-        if bibliography:
-            for el in bibliography:
-                print(el)
-                if el.get("@type") == "Library" and el.get("sigel") == "NB":
-                    print("Book is in NB.")
-                    self.set_upload(True)
+        if not bibliography:
+            return
+        for el in bibliography:
+            if el.get("@type") == "Library" and el.get("sigel") == "NB":
+                self.set_upload(True)
 
     def match_wikidata(self):
         match_found = False
