@@ -19,6 +19,16 @@ class Edition(WikidataItem):
         edition = "Q3331189"
         self.add_statement("is", edition)
 
+    def upload_if_nb(self):
+        """Only upload if entry belongs to National Bibliography."""
+        self.set_upload(False)
+        bibliography = self.raw_data[0].get("bibliography")
+        if not bibliography:
+            return
+        for el in bibliography:
+            if el.get("@type") == "Library" and el.get("sigel") == "NB":
+                self.set_upload(True)
+
     def match_wikidata(self):
         match_found = False
         uri = self.raw_data[0]["@id"].split("/")[-1]
@@ -381,6 +391,7 @@ class Edition(WikidataItem):
         self.set_uri()
         self.set_libris()
         self.set_isbn()
+        self.upload_if_nb()
         self.set_is()
         self.set_language()
         self.set_contributors()
