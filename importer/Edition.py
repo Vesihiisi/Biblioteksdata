@@ -199,9 +199,13 @@ class Edition(WikidataItem):
             if raw_title[0].get("@type") == "Title":
                 self.title = raw_title[0].get("mainTitle")
 
+        if not self.lang_wikidata:
+            language = "und"
+        else:
+            language = self.lang_wikidata
         if self.title:
             wd_title = utils.package_monolingual(
-                self.title, self.lang_wikidata)
+                self.title, language)
             self.add_statement("title", wd_title, ref=self.source)
 
     def set_subtitle(self):
