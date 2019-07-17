@@ -16,6 +16,27 @@ MAPPINGS = "mappings"
 EDIT_SUMMARY = "#WMSE #LibraryData_KB"
 
 
+def list_available_files(path, limit=None, uri=None):
+    """
+    Load a list of files in directory.
+
+    :param limit: return the first x files."
+    """
+    files = []
+    for fname in os.listdir(path):
+        files.append(os.path.join(path, fname))
+        if uri:
+            data = utils.load_json(os.path.join(path, fname))
+            file_uri = data["@graph"][0]["@id"].split("/")[-1]
+            if file_uri == uri:
+                print("Ready to process file with URI {}.".format(uri))
+                return [os.path.join(path, fname)]
+    if limit:
+        files = files[:limit]
+    print("Ready to process {} files.".format(len(files)))
+    return files
+
+
 def normalize_isbn_map(data):
     normalized = {}
     for k, v in data.items():
@@ -52,31 +73,35 @@ def get_from_uri(uri):
 
 
 def main(arguments):
-    data = get_from_uri(arguments.get("uri"))
+    wikidata_site = utils.create_site_instance("wikidata", "wikidata")
     data_files = load_mapping_files()
     cache = {}
     existing_editions = utils.get_wd_items_using_prop(
         data_files["properties"]["libris_uri"])
-    wikidata_site = utils.create_site_instance("wikidata", "wikidata")
-    edition = Edition(data, wikidata_site, data_files,
-                      existing_editions, cache)
-    problem_report = edition.get_report()
-    if arguments.get("upload"):
-        live = True if arguments["upload"] == "live" else False
-        uploader = Uploader(edition, repo=wikidata_site,
-                            live=live, edit_summary=EDIT_SUMMARY)
-        if "Q" in problem_report and problem_report["Q"] == "":
-            problem_report["Q"] = uploader.wd_item_q
-        try:
-            uploader.upload()
-        except pywikibot.data.api.APIError as e:
-            print(e)
+    if arguments.get("uri"):
+        data = get_from_uri(arguments.get("uri"))
+        edition = Edition(data, wikidata_site, data_files,
+                          existing_editions, cache)
+        problem_report = edition.get_report()
+        if arguments.get("upload"):
+            live = True if arguments["upload"] == "live" else False
+            uploader = Uploader(edition, repo=wikidata_site,
+                                live=live, edit_summary=EDIT_SUMMARY)
+            if "Q" in problem_report and problem_report["Q"] == "":
+                problem_report["Q"] = uploader.wd_item_q
+            try:
+                uploader.upload()
+            except pywikibot.data.api.APIError as e:
+                print(e)
+    elif arguments.get("dir"):
+        available_files = list_available_files(arguments.get("dir"))
 
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
-    # parser.add_argument("--dir", required=True)
+    parser.add_argument("--dir")
     parser.add_argument("--uri")
+    parser.add_argument("--libris_list")
     parser.add_argument("--upload", action='store')
     parser.add_argument("--limit",
                         nargs='?',
