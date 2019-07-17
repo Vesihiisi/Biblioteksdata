@@ -8,5 +8,25 @@
     "name": "eng",
     "q": "Q1860",
     "wikidata": "en"
+  },
+  {
+    "name": "fre",
+    "q": "Q150",
+    "wikidata": "fr"
+  },
+  {
+    "name": "nor",
+    "q": "Q9043",
+    "wikidata": "no"
+  },
+  {
+    "name": "dan",
+    "q": "Q9035",
+    "wikidata": "da"
+  },
+  {
+    "name": "ger",
+    "q": "Q188)",
+    "wikidata": "de"
   }
 ]
