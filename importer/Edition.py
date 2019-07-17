@@ -20,9 +20,20 @@ class Edition(WikidataItem):
         self.add_statement("is", edition)
 
     def upload_if_nb(self):
-        """Only upload if entry belongs to National Bibliography."""
+        """
+        Only upload if entry belongs to National Bibliography.
+
+        Determined either by "bibliography" == "NB"
+        or "descriptionCreator" == "NBR" / Nationalbibliografin
+        Retrospektivt.
+        """
         self.set_upload(False)
         bibliography = self.raw_data[0].get("bibliography")
+        description_creator = self.raw_data[0].get("descriptionCreator")
+        if description_creator:
+            if description_creator["@id"].split("/")[-1] == "NBR":
+                self.set_upload(True)
+                return
         if not bibliography:
             return
         for el in bibliography:
@@ -199,9 +210,13 @@ class Edition(WikidataItem):
             if raw_title[0].get("@type") == "Title":
                 self.title = raw_title[0].get("mainTitle")
 
+        if not self.lang_wikidata:
+            language = "und"
+        else:
+            language = self.lang_wikidata
         if self.title:
             wd_title = utils.package_monolingual(
-                self.title, self.lang_wikidata)
+                self.title, language)
             self.add_statement("title", wd_title, ref=self.source)
 
     def set_subtitle(self):
