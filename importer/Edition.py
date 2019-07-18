@@ -426,6 +426,7 @@ class Edition(WikidataItem):
         if self.subtitle:
             label = "{} : {}".format(label, self.subtitle)
         self.add_label("sv", label)
+        self.add_label("en", label)
 
     def __init__(self, raw_data, repository,
                  data_files, existing, cache, mode):
