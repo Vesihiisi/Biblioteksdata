@@ -367,18 +367,19 @@ class Edition(WikidataItem):
                 if not raw_place:
                     continue
                 for x in raw_place:
-                    if x.get("@type").lower() == "place":
-                        place_labels = x.get("label")
-                        for label in place_labels:
-                            label = label.replace("[", "")
-                            label = label.replace("]", "")
-                            wd_match = [x.get("wikidata")
-                                        for x in
-                                        place_map if x["name"] == label]
-                            if wd_match:
-                                self.add_statement(
-                                    "publication_place", wd_match,
-                                    ref=self.source)
+                    if isinstance(x, dict):
+                        if x.get("@type").lower() == "place":
+                            place_labels = x.get("label")
+                            for label in place_labels:
+                                label = label.replace("[", "")
+                                label = label.replace("]", "")
+                                wd_match = [x.get("wikidata")
+                                            for x in
+                                            place_map if x["name"] == label]
+                                if wd_match:
+                                    self.add_statement(
+                                        "publication_place", wd_match,
+                                        ref=self.source)
 
     def set_publication_date(self):
         """Set year of publication."""
@@ -443,7 +444,7 @@ class Edition(WikidataItem):
         self.set_uri()
         self.set_libris()
         self.set_isbn()
-        self.upload_if_nb()
+        # self.upload_if_nb()
         self.set_is()
         self.set_language()
         self.set_contributors()
