@@ -154,6 +154,7 @@ class Edition(WikidataItem):
             return
         for contrib in raw_contribs:
             wd_match = None
+            role_prop = None
             roles = contrib.get("role")
             if not roles:
                 if contrib.get("@type") == "PrimaryContribution":
@@ -164,21 +165,29 @@ class Edition(WikidataItem):
                 for role in roles:
                     person_role = role.get("@id").split("/")[-1]
                     if person_role == "author":
-                        wd_match = self.agent_to_wikidata(contrib.get("agent"))
+                        wd_match = self.agent_to_wikidata(
+                            contrib.get("agent"))
                         role_prop = "author"
                     elif person_role == "editor":
-                        wd_match = self.agent_to_wikidata(contrib.get("agent"))
+                        wd_match = self.agent_to_wikidata(
+                            contrib.get("agent"))
                         role_prop = "editor"
                     elif person_role == "illustrator":
-                        wd_match = self.agent_to_wikidata(contrib.get("agent"))
+                        wd_match = self.agent_to_wikidata(
+                            contrib.get("agent"))
                         role_prop = "illustrator"
                     elif person_role == "translator":
-                        wd_match = self.agent_to_wikidata(contrib.get("agent"))
+                        wd_match = self.agent_to_wikidata(
+                            contrib.get("agent"))
                         role_prop = "translator"
+                    elif person_role == "publisher":
+                        wd_match = self.agent_to_wikidata(
+                            contrib.get("agent"))
+                        role_prop = "publisher"
             if wd_match:
                 self.add_statement(role_prop, wd_match, ref=self.source)
             else:
-                if role_prop == "author":
+                if role_prop and role_prop == "author":
                     if contrib.get("agent") and contrib["agent"].get("@type"):
                         agent = contrib["agent"]
                         if agent["@type"] == "Person":
@@ -204,7 +213,7 @@ class Edition(WikidataItem):
             return
         if len(raw_title) > 1:
             for title in raw_title:
-                if title.get("@type") == "CoverTitle":
+                if title.get("@type") in ["Title", "CoverTitle"]:
                     self.title = title.get("mainTitle")
         else:
             if raw_title[0].get("@type") == "Title":
@@ -256,24 +265,48 @@ class Edition(WikidataItem):
         for self.lang_wikidata.
         """
         lang_map = self.data_files["languages"]
-        found_languages = []
-        for el in self.raw_data:
-            graph = el.get("@graph")
-            if graph and len(graph) > 1:
-                for el in graph[1]:
-                    if graph[1][el] == "Language":
-                        found_languages.append(graph[1].get("langCode"))
+        if self.mode == "uri":
+            found_languages = []
+            for el in self.raw_data:
+                graph = el.get("@graph")
+                if graph and len(graph) > 1:
+                    for el in graph[1]:
+                        if graph[1][el] == "Language":
+                            found_languages.append(graph[1].get("langCode"))
 
-        if found_languages:
-            for lang in found_languages:
-                lang_q = [x.get("q")
-                          for x in
-                          lang_map if x["name"] == lang]
-                if lang_q:
-                    self.add_statement("language", lang_q[0], ref=self.source)
-        self.lang_wikidata = [x.get("wikidata")
+            if found_languages:
+                for lang in found_languages:
+                    lang_q = [x.get("q")
                               for x in
-                              lang_map if x["name"] == found_languages[0]]
+                              lang_map if x["name"] == lang]
+                    if lang_q:
+                        self.add_statement("language",
+                                           lang_q[0],
+                                           ref=self.source)
+            self.lang_wikidata = [x.get("wikidata")
+                                  for x in
+                                  lang_map if x["name"] == found_languages[0]]
+        elif self.mode == "local":
+            for el in self.raw_data:
+                found = el.get("language")
+
+            if found:
+                languages = []
+                for lang in found:
+                    if lang.get("@id"):
+                        canonical = lang["@id"].split("/")[-1]
+                        languages.append(canonical)
+                        lang_q = [x.get("q")
+                                  for x in
+                                  lang_map if x["name"] == canonical]
+                        if lang_q:
+                            self.add_statement(
+                                "language", lang_q[0], ref=self.source)
+
+            if languages:
+                self.lang_wikidata = [x.get("wikidata")
+                                      for x in lang_map if
+                                      x["name"] == languages[0]]
         if self.lang_wikidata:
             self.lang_wikidata = self.lang_wikidata[0]
 
@@ -287,6 +320,8 @@ class Edition(WikidataItem):
         """
         extent = self.raw_data[1].get("extent")
         required = ["s.", "s", "sidor", "sid", "sid."]
+        if not extent:
+            return
         if len(extent) != 1:
             return
         if extent[0].get("label"):
@@ -389,9 +424,10 @@ class Edition(WikidataItem):
         label = self.title
         if self.subtitle:
             label = "{} : {}".format(label, self.subtitle)
-        self.add_label(self.lang_wikidata, label)
+        self.add_label("sv", label)
 
-    def __init__(self, raw_data, repository, data_files, existing, cache):
+    def __init__(self, raw_data, repository,
+                 data_files, existing, cache, mode):
         """Initialize an empty object."""
         WikidataItem.__init__(self,
                               raw_data,
@@ -399,6 +435,7 @@ class Edition(WikidataItem):
                               data_files,
                               existing,
                               cache)
+        self.mode = mode
         self.raw_data = raw_data["@graph"]
         self.data_files = data_files
         self.create_sources()
