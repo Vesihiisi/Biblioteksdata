@@ -267,13 +267,13 @@ class Edition(WikidataItem):
         lang_map = self.data_files["languages"]
         if self.mode == "uri":
             found_languages = []
-            for el in self.raw_data:
-                graph = el.get("@graph")
-                if graph and len(graph) > 1:
-                    for el in graph[1]:
-                        if graph[1][el] == "Language":
-                            found_languages.append(graph[1].get("langCode"))
-
+            text_record = [
+                x for x in self.raw_data if x.get("@type") == "Text"]
+            for tr in text_record:
+                raw_languages = tr.get("language")
+                for rl in raw_languages:
+                    if rl.get("@id"):
+                        found_languages.append(rl["@id"].split("/")[-1])
             if found_languages:
                 for lang in found_languages:
                     lang_q = [x.get("q")
