@@ -20,9 +20,34 @@
     "wikidata": "no"
   },
   {
+    "name": "est",
+    "q": "Q9072",
+    "wikidata": "et"
+  },
+  {
+    "name": "ru",
+    "q": "Q7737",
+    "wikidata": "ru"
+  },
+  {
+    "name": "mul",
+    "q": "Q20923490",
+    "wikidata": "mul"
+  },
+  {
     "name": "dan",
     "q": "Q9035",
     "wikidata": "da"
+  },
+  {
+    "name": "spa",
+    "q": "Q1321",
+    "wikidata": "es"
+  },
+  {
+    "name": "ita",
+    "q": "Q652",
+    "wikidata": "it"
   },
   {
     "name": "ger",
