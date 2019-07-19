@@ -445,7 +445,7 @@ class Edition(WikidataItem):
         self.set_uri()
         self.set_libris()
         self.set_isbn()
-        # self.upload_if_nb()
+        self.upload_if_nb()
         self.set_is()
         self.set_language()
         self.set_contributors()
