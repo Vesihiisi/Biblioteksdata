@@ -2,17 +2,40 @@
 
 Tools for the Library Data 2018 project @ Wikimedia Sverige.
 
-## Import of Libris URI's
+## Import of Libris edition posts
+
+There are two ways to import edition posts from Libris to Wikidata. When importing a post, the script will attempt to locate an existing Wikidata item using the Libris identifiers (URI or Libris edition) as well as ISBN numbers. If a matching item is identified, the data will be added to it. Otherwise a new item will be created.
+
+Note that `Edition.py` checks whether the Libris post is tagged as belonging to the Swedish National Bibliography. Posts that are not will not be imported to Wikidata.
+
+In order to upload the data to Wikidata (as opposed to only processing the data), use the `upload` flag:
+
+`--upload` – upload changes to Wikidata, either to a `sandbox` or `live`
+
+### Import a single edition using the API
+
+This will import a single edition's data. You have to give the URI of the edition:
+
+`--uri` – find and process single file with specific Libris URI
+
+### Import of several posts from local database dump
+
+This mode was designed to work specificaly with the Swedish National Bibliography dump we received from the National Library. The dump is a directory of json-ld files.
+
+Here, the input must be a file of SELIBR ID's (old style), one per line.
+
+Use the following flags:
+
+`--dir` – location of the data directory
+`--source_selibr` – location of file with SELIBR ID's
+
+## Import of authorities
 
 * **importer/process_auth.py** – taking a directory of Libris authority posts (one json-ld object per file), match with Wikidata items with corresponding Selibr ID's and add Libris URI to it.
 
 Options:
 
 `--limit` – only process the first x files in the directory
-
-`--uri` – find and process single file with specific Libris URI
-
-`--upload` – upload changes to Wikidata, either to a `sandbox` or `live`
 
 ```
 python3 importer/process_auth.py --dir librisfiles/ --limit 1000 --upload live
