@@ -1,6 +1,19 @@
 # Biblioteksdata
 
-Tools for the Library Data 2018 project @ Wikimedia Sverige.
+Tools for the Library Data 2018–2019 project @ Wikimedia Sverige.
+
+## Download results of xsearch search
+
+`Biblioteksdata2/xsearch.py` performs a search in the Libris API using [xsearch codes](http://librishelp.libris.kb.se/help/search_codes_swe.jsp).
+
+Usage:
+
+```
+python3 xsearch.py --query "db:natbib AND mat:eresurser AND mat:bok" --file eresurser
+```
+
+This will download the results [of this API call](http://libris.kb.se/xsearch?query=db:natbib%20AND%20mat:eresurser&format=json) (looping over the pagination, so all the results) and save them in the file `eresurser.json`.
+
 
 ## Import of Libris edition posts
 
