@@ -2,6 +2,21 @@
 
 Tools for the Library Data 2018–2019 project @ Wikimedia Sverige.
 
+## Download and pre-process edition data
+
+`Biblioteksdata2/harvester.py` downloads the metadata of a given edition, or set of editions, from Libris and pre-processes it for further work e.g. in OpenRefine. The bulk of the data, which is not relevant for Wikidata, is removed, and the remaining parts are simplified so that the output is human-readable.
+
+Usage:
+
+```
+python3 harvester.py --book xxxxxxx -out books.json
+```
+
+Flags:
+* `--book` process a single entry, using either old Edition ID or URI (will be detected automatically)
+* `--list` process a file containing a list of identifiers (either old Edition ID or URI's), one per line
+* `--out` specify filename of the output
+
 ## Download results of xsearch search
 
 `Biblioteksdata2/xsearch.py` performs a search in the Libris API using [xsearch codes](http://librishelp.libris.kb.se/help/search_codes_swe.jsp).
