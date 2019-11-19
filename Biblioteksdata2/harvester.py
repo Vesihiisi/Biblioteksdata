@@ -201,8 +201,11 @@ def get_publication_place(raw):
                x["@type"] == "PrimaryPublication"]
     if primary:
         place = [x["place"] for x in primary][0]
-        return delistify([x["label"] for x in place if
-                          x["@type"] == "Place"][0])
+        if isinstance(place, list):
+            return delistify([x["label"] for x in place if
+                              x["@type"] == "Place"])
+        else:
+            return delistify(place.get("label"))
     return None
 
 
