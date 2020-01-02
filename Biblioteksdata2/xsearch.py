@@ -37,6 +37,8 @@ def permissive_json_loads(text):
         except ValueError as exc:
             if exc.msg == 'Invalid \\escape':
                 text = text[:exc.pos] + '\\' + text[exc.pos:]
+            elif exc.msg == "Expecting ',' delimiter":
+                text = text[:exc.pos - 1] + '\\' + text[exc.pos - 1:]
             else:
                 raise
         else:
