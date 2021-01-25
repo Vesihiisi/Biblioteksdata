@@ -1,8 +1,5 @@
 #!/usr/bin/python
 # -*- coding: utf-8  -*-
-"""
-xxx.
-"""
 import argparse
 import random
 import utils
@@ -12,19 +9,16 @@ PROPERTIES = {"viaf": "P214",
 
 
 def make_editgroups_summary(basetext):
-    """xx."""
     randomhash = "{:x}".format(random.randrange(0, 2**48))
     editgroup = "([[:toollabs:editgroups/b/CB/{}|details]])".format(randomhash)
     return "{} {}".format(basetext, editgroup)
 
 
 def is_old_selibr(idno):
-    """xx."""
     return idno.isdecimal() and len(idno) < 10
 
 
 def get_humans_with_selibr_no_viaf():
-    """xx."""
     return utils.run_query("get_humans_with_selibr_no_viaf.rq")
 
 
@@ -33,7 +27,6 @@ def get_humans_with_viaf_no_selibr():
 
 
 def main(args):
-    """xxxxx."""
     viaf_file = args.path
     if args.action == "add_viaf_from_selibr":
         add_viaf_from_selibr(viaf_file, args.upload)
@@ -72,7 +65,6 @@ def add_selibr_from_viaf(viaf_file, upload):
 
 
 def is_selibr_line(viaf_file_line):
-    """fsf."""
     cleanline = viaf_file_line.rstrip('\n').split("\t")
     if cleanline[1].startswith("SELIBR|"):
         selibr = cleanline[1].split("|")[-1]
@@ -81,7 +73,6 @@ def is_selibr_line(viaf_file_line):
 
 
 def add_viaf_from_selibr(viaf_file, upload):
-    """xxx."""
     edit_summary = make_editgroups_summary("Adding VIAF based on SELIBR")
     humans_with_selibr_no_viaf = get_humans_with_selibr_no_viaf()
     with open(viaf_file) as myfile:
