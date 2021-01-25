@@ -1,0 +1,5 @@
+SELECT ?item ?viaf WHERE {
+  MINUS { ?item wdt:P906 _:b4. }
+  ?item wdt:P31 wd:Q5;
+    wdt:P214 ?viaf.
+}

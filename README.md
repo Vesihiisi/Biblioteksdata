@@ -2,6 +2,24 @@
 
 Tools for the Library Data 2018–2019 project @ Wikimedia Sverige.
 
+## Work with authority items using VIAF
+
+`Biblioteksdata2/viaf.py` uses a data dump from [viaf.org](http://viaf.org/viaf/data/) (Txt file showing the correspondence between source IDs in clusters, e.g. *viaf-20210105-links.txt*) to add a VIAF ID based on the value a person item's Libris authority ID (SELIBR), and the other way round.
+
+Usage:
+
+To add VIAF ID's:
+
+```
+python3 viaf.py --path xxxxxxx.txt --action add_viaf_from_selibr
+```
+
+To add SELIBR ID's:
+
+```
+python3 viaf.py --path xxxxxxx.txt --action add_selibr_from_viaf
+```
+
 ## Download and pre-process edition data
 
 `Biblioteksdata2/harvester.py` downloads the metadata of a given edition, or set of editions, from Libris and pre-processes it for further work e.g. in OpenRefine. The bulk of the data, which is not relevant for Wikidata, is removed, and the remaining parts are simplified so that the output is human-readable.

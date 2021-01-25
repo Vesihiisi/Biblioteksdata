@@ -1,0 +1,12 @@
+SELECT ?item ?selibr WHERE {
+  {
+    SELECT ?item (COUNT(?item) AS ?cnt) WHERE {
+      ?item wdt:P31 wd:Q5.
+      MINUS { ?item wdt:P214 _:b4. }
+      ?item p:P906 ?valueStatement.
+    }
+    GROUP BY ?item
+  }
+  ?item wdt:P906 ?selibr.
+  FILTER(?cnt = 1 )
+}
